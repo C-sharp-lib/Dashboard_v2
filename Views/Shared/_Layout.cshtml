@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Financial Dashboard</title>
+    <link rel="icon" asp-href-include="~/img/favicon2.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" asp-href-include="~/assets/css/soft-design-system-pro.css">
+    <script asp-src-include="~/js/fullcalendar-scheduler/dist/index.global.min.js"></script>
+    <link rel="stylesheet" asp-href-include="~/Admin/css/admin.css" asp-append-version="true">
+    <link rel="stylesheet" asp-href-include="~/Identity/css/identity.css" asp-append-version="true">
+    <link rel="stylesheet" asp-href-include="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" asp-href-include="~/css/colors.css" asp-append-version="true"/>
+    <link rel="stylesheet" asp-href-include="~/Dash.styles.css" asp-append-version="true"/>
+</head>
+<body class="bg-gradient-dark">
+<div class="container">
+    <nav
+        class="navbar navbar-expand-lg bg-gradient-dark navbar-dark  blur blur-rounded top-0 position-absolute justify-content-center z-index-3 shadow-lg py-2 sticky-top start-0 end-0 mx-auto">
+        <div class="container px-0">
+            @if (ViewBag.user != null)
+            {
+                <a class="navbar-brand ubuntu-bold ms-sm-3 text-white " asp-action="Index" asp-controller="Dashboard" asp-area="Admin" rel="tooltip"
+                   title="Created By Kevin Stradtman" data-placement="bottom">
+                    Financial Dashboard - <span class="text-gradient text-success">@ViewBag.user.UserName</span> <img src="~/img/logo-2.png" height="50" width="50" alt="Site Logo"/>
+                </a>
+            }
+            else
+            {
+                <a class="navbar-brand ubuntu-bold ms-sm-3 text-white" asp-action="Index" asp-controller="Home" rel="tooltip"
+                   title="Created By Kevin Stradtman" data-placement="bottom">
+                    Financial Dashboard <img src="~/img/logo-2.png" height="50" width="50" alt="Site Logo"/>
+                </a>    
+            }
+            
+            <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="nav">
+                <div class="collapse navbar-collapse" id="navigation">
+                    <div class="d-flex justify-content-center gap-2">
+
+                        <div class="dropdown mx-auto">
+                            <a class="btn bg-gradient-dark dropdown-toggle ubuntu-bold text-gradient text-warning mx-auto" id="dropdownAccountA"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu bg-gradient-dark" aria-labelledby="dropdownAccountA">
+                                @if (ViewBag.user == null)
+                                {
+                                    <li><a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Register" asp-controller="Identity" asp-area="Identity">Register</a></li>
+                                    <li><a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Login" asp-controller="Identity" asp-area="Identity">Login</a></li>
+                                }
+                                else
+                                {
+                                    <form asp-controller="Identity" asp-action="Logout" asp-area="Identity" method="post">
+                                        <button class="dropdown-item ubuntu-bold text-white border-radius-md" type="submit">Logout</button>
+                                    </form>
+                                }
+                            </ul>
+                        </div>
+                        @if (ViewBag.user != null)
+                        {
+                            <li class="nav-item dropstart dropdown-hover mx-auto z-index-3">
+                                <a role="button" class="nav-link text-gradient text-info text-center ubuntu-bold mt-3 my-2 ps-2 mx-2 d-flex justify-content-center cursor-pointer align-items-center menu-link" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Menu
+                                    <img src="~/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                                </a>
+                                <div class="dropdown-menu bg-gradient-dark dropdown-menu-animation dropdown-xl p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
+                                    <div class="row d-none d-lg-block">
+                                        <div class="col-12 px-4 py-2">
+                                            <div class="row">
+                                                <div class="col-4 position-relative">
+                                                    <hr class="vertical bg-white">
+                                                    <div class="dropdown-header text-white ubuntu-bold font-weight-bolder d-flex align-items-center px-0 mt-3">
+                                                        <div class="d-inline-block">
+                                                            <div class="icon icon-shape icon-xs border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center ps-0">
+                                                                <i class="fa-solid fa-gauge fa-menu-style"></i>
+                                                            </div>
+                                                        </div>
+                                                        Admin Dashboard
+                                                    </div>
+                                                    <hr class="horizontal bg-gradient-warning">
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Dashboard" asp-area="Admin">Dashboard</a>
+                                                    <hr class="horizontal border-dashed bg-white">
+                                                    <div class="dropdown-header text-white ubuntu-bold font-weight-bolder d-flex align-items-center px-0 mt-3">
+                                                        <div class="d-inline-block">
+                                                            <div class="icon icon-shape icon-xs border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center ps-0">
+                                                                <i class="fa-regular fa-object-group fa-menu-style"></i>
+                                                            </div>
+                                                        </div>
+                                                        Entities
+                                                    </div>
+                                                    <hr class="horizontal bg-gradient-warning">
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Identity" asp-area="Identity">Users</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Product" asp-area="Admin">Products</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Customer" asp-area="Admin">Customers</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Event" asp-area="Admin">Events</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Job" asp-area="Admin">Jobs</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Campaign" asp-area="Admin">Campaigns</a>
+                                                </div>
+                            
+                                                <div class="col-4 position-relative">
+                                                    <hr class="vertical bg-white">
+                                                    <div class="dropdown-header text-white ubuntu-bold font-weight-bolder d-flex align-items-center px-0 mt-3">
+                                                        <div class="d-inline-block">
+                                                            <div class="icon icon-shape icon-xs border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center ps-0">
+                                                                <i class="fa-solid fa-money-bill-trend-up fa-menu-style"></i>
+                                                            </div>
+                                                        </div>
+                                                        Investments
+                                                    </div>
+                                                    <hr class="horizontal bg-gradient-warning">
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddCampaignPage" asp-controller="Campaign" asp-area="Admin">Add Campaign</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddProductPage" asp-controller="Product" asp-area="Admin">Add Product</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddEventPage" asp-controller="Event" asp-area="Admin">Add Event</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddCustomerPage" asp-controller="Customer" asp-area="Admin">Add Customer</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddJobPage" asp-controller="Job" asp-area="Admin">Add Job</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Calendar" asp-controller="Event" asp-area="Admin">Calendar</a>
+                                                </div>
+                                                <hr class="vertical bg-white"/>
+                                                <div class="col-4 position-relative">
+                                                    <div class="dropdown-header text-white ubuntu-bold font-weight-bolder d-flex align-items-center px-0 mt-3">
+                                                        <div class="d-inline-block">
+                                                            <div class="icon icon-shape icon-xs border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center ps-0">
+                                                                <i class="fa-solid fa-bag-shopping fa-menu-style"></i>
+                                                            </div>
+                                                        </div>
+                                                        Profits
+                                                    </div>
+                                                    <hr class="horizontal bg-gradient-warning">
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Customer" asp-area="Admin">Customers</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddCustomerPage" asp-controller="Customer" asp-area="Admin">Add Customer</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Product" asp-area="Admin">Orders</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddProductPage" asp-controller="Product" asp-area="Admin">Add Order</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Event" asp-area="Admin">Reviews</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Calendar" asp-controller="Event" asp-area="Admin">Case Studies</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddEventPage" asp-controller="Event" asp-area="Admin">Notes</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>    
+                            }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container-fluid mb-11">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row mt-11">
+            <div class="col-12 col-md-5">
+                <div class="text-center mx-auto">
+                    <span><img height="80" width="80" src="~/img/logo-2.png" alt="Logo"/></span>
+                    <h3 class="text-gradient text-primary ubuntu-bold">Financial Dashboard</h3>
+                    <div class="btn-group">
+                        <a href="https://linkedin.com" class="btn violet"><i class="fa-brands fa-linkedin text-white m-3"></i></a>
+                        <a href="https://github.com" class="btn violet"><i class="fa-brands fa-github text-white m-3"></i></a>
+                        <a href="https://stackoverflow.com" class="btn violet"><i class="fa-brands fa-stack-overflow text-white m-3"></i></a>
+                        <a href="https://google.com" class="btn violet"><i class="fa-brands fa-google-plus-g text-white m-3"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-7"></div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <p class="my-4 text-sm text-gradient text-info ubuntu-bold">
+                        All rights reserved. Copyright © <script>
+                            document.write(new Date().getFullYear())
+                        </script> Created by Kevin Stradtman
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script asp-src-include="~/lib/jquery/dist/jquery.min.js"></script>
+<script asp-src-include="~/assets/js/core/popper.min.js" type="text/javascript"></script>
+<script asp-src-include="~/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+
+<script asp-src-include="~/assets/js/plugins/perfect-scrollbar.min.js" type="text/javascript"></script>
+<script asp-src-include="~/assets/js/plugins/typedjs.js"></script>
+<script asp-src-include="~/assets/js/plugins/moment.min.js"></script>
+<script asp-src-include="~/assets/js/plugins/nouislider.min.js"></script>
+<script asp-src-include="~/assets/js/plugins/glidejs.min.js"></script>
+<script asp-src-include="~/assets/js/plugins/choices.min.js" type="text/javascript"></script>
+<script asp-src-include="~/assets/js/plugins/chartjs.min.js"></script>
+<script asp-src-include="~/assets/js/plugins/flatpickr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js" type="text/javascript"></script>
+<script asp-src-include="~/js/card-vue.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js" type="text/javascript"></script>
+<script asp-src-include="~/js/fullcalendar/fullcalendar/dist/index.global.min.js"></script>
+<script asp-src-include="~/assets/js/soft-design-system-pro.min.js" type="text/javascript"></script>
+
+<script src="~/js/site.js"></script>
+@await Component.InvokeAsync("Notyf")
+@RenderSection("Scripts", required: false)
+</body>
+</html>

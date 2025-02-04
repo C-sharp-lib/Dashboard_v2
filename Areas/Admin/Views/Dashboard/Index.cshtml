@@ -86,8 +86,8 @@
                         <div class="card-icon striped-blue-green">
                             <i class="fa-solid fa-person-circle-check text-white"></i>
                         </div>
-                        <p class="card-category text-white me-3 ubuntu-bold">Leads</p>
-                        <h3 class="card-title striped-blue-green-text me-3 ubuntu-bold">1020</h3>
+                        <p class="card-category text-white me-3 ubuntu-bold">Roles</p>
+                        <h3 class="card-title striped-blue-green-text me-3 ubuntu-bold">@Model.RoleCount</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -365,6 +365,12 @@
                 data: {
                     labels: ['Totals Of Entities'],
                     datasets: [
+                        {
+                            label: 'Roles',
+                            data: [@Model.RoleCount],
+                            borderColor: 'tomato',
+                            backgroundColor: 'tomato'
+                        },
                         {
                             label: 'Jobs',
                             data: [@Model.JobCount],

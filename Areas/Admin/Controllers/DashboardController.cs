@@ -4,6 +4,7 @@ using Dash.Areas.Identity.Models;
 using Dash.Data;
 using Dash.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -26,10 +27,11 @@ public class DashboardController : Controller
     private readonly ICampaignUserNoteRepository _campaignUserNoteRepository;
     private readonly ICampaignUserTaskRepository _campaignUserTaskRepository;
     private readonly INotyfService _notyfService;
+    private readonly RoleManager<AppRole> _roleManager;
     public DashboardController(ApplicationDbContext context, IUserRepository userRepository, IEventRepository eventRepository, 
         IProductRepository productRepository, ICustomerRepository customerRepository, INotyfService notyfService, 
         ICampaignRepository campaignRepository, ICampaignUserNoteRepository campaignUserNoteRepository,
-        ICampaignUserTaskRepository campaignUserTaskRepository, IJobRepository jobRepository)
+        ICampaignUserTaskRepository campaignUserTaskRepository, IJobRepository jobRepository, RoleManager<AppRole> roleManager)
     {
         _context = context;
         _userRepository = userRepository;
@@ -41,6 +43,7 @@ public class DashboardController : Controller
         _campaignUserNoteRepository = campaignUserNoteRepository;
         _campaignUserTaskRepository = campaignUserTaskRepository;
         _notyfService = notyfService;
+        _roleManager = roleManager;
     }
     private AppUser? ActiveUser
     {
@@ -92,6 +95,7 @@ public class DashboardController : Controller
             CampaignCount = await _campaignRepository.CampaignCountAsync(),
             CampaignUserNoteCount = await _campaignUserNoteRepository.CampaignUserNoteCountAsync(),
             CampaignUserTaskCount = await _campaignUserTaskRepository.CampaignUserTaskCountAsync(),
+            RoleCount = await _roleManager.Roles.CountAsync()
         };
         ViewBag.Users = await _userRepository.GetAllUsersAsync();
         ViewBag.Events = await _eventRepository.GetAllEventsAsync();

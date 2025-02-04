@@ -172,6 +172,7 @@ public class IdentityController : Controller
     }
 
     [HttpGet("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateUserPage(string id)
     {
         if (ActiveUser == null)
@@ -180,14 +181,20 @@ public class IdentityController : Controller
             return RedirectToAction("Login", "Identity", new { area = "Identity" });
         }
 
-        AppUser user = await _userManager.FindByIdAsync(id);
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null)
+        {
+            _notyfService.Error("User does not exist.");
+            return RedirectToAction("Index", "Identity", new { area = "Identity" });
+        }
         ViewBag.user = ActiveUser;
-        
-        return View(user);
+        ViewBag.theUser = user;
+        return View();
     }
     
     [HttpPost("{id}")]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateUser(string id, [FromForm] UpdateAppUserViewModel user)
     {
         if (ActiveUser == null)

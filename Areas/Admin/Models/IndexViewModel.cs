@@ -13,6 +13,7 @@ public class IndexViewModel
     public IEnumerable<CampaignUserNotes> CampaignUserNotes { get; set; }
     public IEnumerable<CampaignUserTasks> CampaignUserTasks { get; set; }
     public IEnumerable<Jobs> Jobs { get; set; }
+    public int RoleCount { get; set; }
     public int CustomerCount { get; set; }
 
     public Event SelectedEvent { get; set; }

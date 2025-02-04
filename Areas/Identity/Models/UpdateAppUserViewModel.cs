@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace Dash.Areas.Identity.Models;
 
-public class UpdateAppUserViewModel : AppUser
+public class UpdateAppUserViewModel : IdentityUser
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,7 +25,7 @@ public class UpdateAppUserViewModel : AppUser
     [Required(ErrorMessage = "Last name is required")]
     [DataType(DataType.Text)]
     public string LastName { get; set; }
-    public IFormFile ImageUrl { get; set; }
+    public IFormFile? ImageUrl { get; set; }
     [DataType(DataType.Date)]
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
     [Required(ErrorMessage = "Date of birth is required")]

@@ -23,6 +23,7 @@ public static class IdentityConfiguration
             options.Password.RequireLowercase = false;
             options.Password.RequireNonAlphanumeric = false;
         });
+        
         return services;
     }
 }

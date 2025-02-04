@@ -3,6 +3,7 @@ using Dash.Areas.Admin.Models;
 using Dash.Areas.Identity.Models;
 using Dash.Data;
 using Dash.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +27,10 @@ public class CustomerController : Controller
     {
         get
         {
-            return _context.AppUsers.FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
+            return _context.AppUsers
+                .Include(x => x.UserRoles)
+                .ThenInclude(x => x.Role)
+                .FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
         }
     }
 
@@ -157,6 +161,7 @@ public class CustomerController : Controller
 
     [HttpPost("{id}")]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteCustomer(int id)
     {
         if (ActiveUser == null)

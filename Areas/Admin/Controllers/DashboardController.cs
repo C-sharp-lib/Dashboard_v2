@@ -46,7 +46,10 @@ public class DashboardController : Controller
     {
         get
         {
-            return _context.AppUsers.FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
+            return _context.AppUsers
+                .Include(x => x.UserRoles)
+                .ThenInclude(x => x.Role)
+                .FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
         }
     }
 

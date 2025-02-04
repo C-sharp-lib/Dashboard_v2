@@ -13,7 +13,7 @@ namespace Dash.Data;
     {
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppRole> AppRoles { get; set; }
-        public DbSet<AppUserRoles> AppUserRoles { get; set; }
+        public DbSet<AppUserRoles> UserRoles { get; set; }
         public DbSet<Schedules> Schedules { get; set; }
         public DbSet<UserSchedules> UserSchedules { get; set; }
         public DbSet<Event> Events { get; set; }

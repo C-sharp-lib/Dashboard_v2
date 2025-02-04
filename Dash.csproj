@@ -88,4 +88,9 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\Uploads\AppUsers\" />
+      <Folder Include="wwwroot\Uploads\Products\" />
+    </ItemGroup>
+
 </Project>

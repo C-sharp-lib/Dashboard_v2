@@ -1,5 +1,6 @@
 using System.Text.Json;
 using AspNetCoreHero.ToastNotification;
+using Dash.Areas.Identity.Models;
 using Dash.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ namespace Dash;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddDatabaseConfiguration(builder.Configuration);
@@ -39,6 +40,19 @@ public class Program
             config.Position = NotyfPosition.TopCenter;
         });
         var app = builder.Build();
+        using (var scope = app.Services.CreateScope())
+        {
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
+
+            string[] roleNames = { "Admin", "User", "Manager" };
+            foreach (var roleName in roleNames)
+            {
+                if (!await roleManager.RoleExistsAsync(roleName))
+                {
+                    await roleManager.CreateAsync(new AppRole());
+                }
+            }
+        }
 
         // Configure the HTTP request pipeline.
         app.UseStaticFiles(new StaticFileOptions

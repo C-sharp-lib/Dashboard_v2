@@ -26,3 +26,88 @@
             });
             calendar.render();
         });*@
+        
+        
+            /*[HttpGet("{id}")]
+            public async Task<IActionResult> AssignRolePage(string id)
+            {
+                if (ActiveUser == null)
+                {
+                    _notyfService.Error("You are not logged in. You need to be logged in to view this page.");
+                    return RedirectToAction("Login", "Identity", new { area = "Identity" });
+                }
+                var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+                if (user == null)
+                {
+                    _notyfService.Error("User not found");
+                    return RedirectToAction("Index", "Identity", new { area = "Identity" });
+                }
+                var roles = await  _roleManager.Roles.ToListAsync();
+                var userRoles = await _userManager.GetRolesAsync(user);
+                List<RoleAssignViewModel> roleAssignViewModels = new List<RoleAssignViewModel>();
+                foreach (var item in roles)
+                {
+                    RoleAssignViewModel model = new RoleAssignViewModel();
+                    model.RoleID = item.Id;
+                    model.RoleName = item.Name;
+                    if (item.Name != null) model.RoleExist = userRoles.Contains(item.Name);
+                    roleAssignViewModels.Add(model);
+                }
+        
+                ViewBag.theUser = user;
+                ViewBag.user = ActiveUser;
+                return View(roleAssignViewModels);
+            }*/
+            
+           /*[HttpGet]
+            public async Task<IActionResult> AddRoleToUserPage()
+            {
+                if (ActiveUser == null)
+                {
+                    _notyfService.Error("You are not logged in. You need to be logged in to view this page.");
+                    return RedirectToAction("Login", "Identity", new { area = "Identity" });
+                }
+                var users = await _context.Users
+                    .Include(u => u.UserRoles)
+                    .ThenInclude(u => u.Role)
+                    .ToListAsync();
+                var roles = await _roleManager.Roles.ToListAsync();
+              
+                ViewBag.roles = roles;
+                ViewBag.users = users;
+                ViewBag.user = ActiveUser;
+                return View();
+            }
+        
+            [HttpPost("{userId}")]
+            [ValidateAntiForgeryToken]
+            public async Task<IActionResult> AssignRole(string userId, List<RoleAssignViewModel> model)
+            {
+                if (ActiveUser == null)
+                {
+                    _notyfService.Error("You are not logged in. You need to be logged in to view this page.");
+                    return RedirectToAction("Login", "Identity", new { area = "Identity" });
+                }
+                var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id.Equals(userId));
+                if (user == null)
+                {
+                    _notyfService.Error("User not found");
+                    return RedirectToAction("Index", "Identity", new { area = "Identity" });
+                }
+                foreach(var item in model)
+                {
+                    if (item.RoleExist)
+                    {
+                        if (item.RoleName != null) await _userManager.AddToRoleAsync(user, item.RoleName);
+                        _notyfService.Success("Role assigned successfully");
+                    }
+                    else
+                    {
+                        if (item.RoleName != null) await _userManager.RemoveFromRoleAsync(user, item.RoleName);
+                        _notyfService.Warning("Role removed due to an error");
+                    }
+                }
+                ViewBag.user = ActiveUser;
+                return RedirectToAction("Index", "Role", new { area = "Identity" });
+            }*/
+            

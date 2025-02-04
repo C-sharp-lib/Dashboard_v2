@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace Dash.Areas.Identity.Models;
 
-public class LoginViewModel
+public class LoginViewModel : IdentityUser
 {
     [Required]
     [EmailAddress]
@@ -13,7 +14,7 @@ public class LoginViewModel
     public bool RememberMe { get; set; }
 }
 
-public class RegisterViewModel
+public class RegisterViewModel : IdentityUser
 {
     [Required]
     [EmailAddress]
@@ -49,5 +50,5 @@ public class RegisterViewModel
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
     [DataType(DataType.Date)]
     public DateTime DateOfHire { get; set; }
-    public IFormFile ImageUrl { get; set; }
+    public IFormFile? ImageUrl { get; set; }
 }

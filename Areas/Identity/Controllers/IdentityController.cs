@@ -36,7 +36,10 @@ public class IdentityController : Controller
     {
         get
         {
-            return _context.AppUsers.FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
+            return _context.AppUsers
+                .Include(x => x.UserRoles)
+                .ThenInclude(x => x.Role)
+                .FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
         }
     }
     [HttpGet]
@@ -68,6 +71,7 @@ public class IdentityController : Controller
     }
     
     [HttpPost]
+    [ValidateAntiForgeryToken]
     [AllowAnonymous]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
@@ -95,8 +99,9 @@ public class IdentityController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     [AllowAnonymous]
-    public async Task<IActionResult> Register(RegisterViewModel model)
+    public async Task<IActionResult> Register([FromForm] RegisterViewModel model)
     {
         if (ModelState.IsValid)
         {
@@ -123,7 +128,8 @@ public class IdentityController : Controller
                     await model.ImageUrl.CopyToAsync(fileStream);
                 }
             }
-            var user = new AppUser
+            
+            var users = new AppUser
             {
                 UserName = model.UserName,
                 Email = model.Email,
@@ -138,23 +144,18 @@ public class IdentityController : Controller
                 ZipCode = model.ZipCode,
                 ImageUrl = (uniqueFileName3 != null ? Path.Combine("Uploads/AppUsers/", uniqueFileName3) : null)!
             };
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(users, model.Password);
+            
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, false);
-                HttpContext.Session.SetString("Id", user.Id);
-                HttpContext.Session.SetString("UserName", user.UserName);
+                await _signInManager.SignInAsync(users, false);
+                HttpContext.Session.SetString("Id", users.Id);
+                HttpContext.Session.SetString("UserName", users.UserName);
                 return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
-            }
-
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
             }
         }
         return View(model);
     }
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()

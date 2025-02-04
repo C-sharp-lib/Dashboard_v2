@@ -29,7 +29,10 @@ public class ProductController : Controller
     {
         get
         {
-            return _context.AppUsers.FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
+            return _context.AppUsers
+                .Include(x => x.UserRoles)
+                .ThenInclude(x => x.Role)
+                .FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
         }
     }
 
@@ -153,6 +156,7 @@ public class ProductController : Controller
 
     [HttpPost("{id}")]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteProduct(int id)
     {
         if (ActiveUser == null)

@@ -1,4 +1,5 @@
 ﻿using Dash.Areas.Identity.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dash.Services;

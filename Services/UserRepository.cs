@@ -12,13 +12,15 @@ public class UserRepository : Repository<AppUser>, IUserRepository
     private readonly DbSet<AppUser> _dbSet;
     private readonly IWebHostEnvironment _webenv;
     private readonly UserManager<AppUser> _userManager;
+    private readonly RoleManager<AppRole> _roleManager;
 
-    public UserRepository(ApplicationDbContext context, IWebHostEnvironment webenv, UserManager<AppUser> userManager) : base(context)
+    public UserRepository(ApplicationDbContext context, IWebHostEnvironment webenv, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager) : base(context)
     {
         _context = context;
         _dbSet = _context.Set<AppUser>();
         _webenv = webenv;
         _userManager = userManager;
+        _roleManager = roleManager;
     }
 
     public async Task<IEnumerable<AppUser>> GetAllUsersAsync()

@@ -11,6 +11,7 @@ namespace Dash.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Route("[area]/[controller]/[action]")]
+[Authorize(Roles = "Admin,User")]
 public class CustomerController : Controller
 {
     private readonly ApplicationDbContext _context;

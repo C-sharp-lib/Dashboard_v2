@@ -24,4 +24,5 @@ public class IndexViewModel
     public int CampaignUserNoteCount { get; set; }
     public int CampaignUserTaskCount { get; set; }
     public int JobCount { get; set; }
+    public int LeadCount { get; set; }
 }

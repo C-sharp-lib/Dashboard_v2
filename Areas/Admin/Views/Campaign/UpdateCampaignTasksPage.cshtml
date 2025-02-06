@@ -68,7 +68,13 @@
                         <div class="col-12 col-md-12">
                             <div class="form-group">
                                 <label asp-for="TaskDescription" class="form-label text-gradient text-info ubuntu-bold">Description</label>
-                                @Html.TextArea("TaskDescription", Model.TaskDescription, new {@class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold", cols=10, rows=5})
+                                <div class="main-container">
+                                    <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
+                                        <div class="editor-container__editor">
+                                            @Html.TextArea("TaskDescription", Model?.TaskDescription, new { id = "editor", rows=10, cols=10})
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

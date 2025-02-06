@@ -24,6 +24,7 @@ namespace Dash.Data;
         public DbSet<CampaignUserNotes> CampaignUserNotes { get; set; }
         public DbSet<CampaignUserTasks> CampaignUserTasks { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
+        public DbSet<Leads> Leads { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -58,6 +59,7 @@ namespace Dash.Data;
             builder.Entity<CampaignUserTasks>().HasKey(x => new { x.UserId, x.CampaignId, x.CampaignUserTaskId });
             builder.Entity<CampaignUserNotes>().HasKey(x => new { x.UserId, x.CampaignId, x.CampaignUserNoteId });
             builder.Entity<Jobs>().HasKey(x => new { x.JobId, x.UserId });
+            builder.Entity<Leads>().HasKey(x => new {x.LeadId, x.UserId});
             builder.Entity<UserSchedules>()
                 .HasOne(x => x.Schedule)
                 .WithMany(x => x.UserSchedules)
@@ -102,5 +104,9 @@ namespace Dash.Data;
                 .HasOne(x => x.Role)
                 .WithMany(x => x.UserRoles)
                 .HasForeignKey(x => x.RoleId);
+            builder.Entity<Leads>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.Leads)
+                .HasForeignKey(x => x.UserId);
         }
     }

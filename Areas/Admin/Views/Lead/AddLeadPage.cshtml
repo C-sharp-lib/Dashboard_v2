@@ -1,65 +1,104 @@
-﻿@model Dash.Areas.Admin.Models.AddCustomerViewModel
+﻿@model Dash.Areas.Admin.Models.AddLeadViewModel
 @{
-    Layout = "_Layout";
+Layout = "_Layout";
+var users = ViewBag.users;
 }
 
 
 <div class="row mt-11 mb-11">
     <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
         <div class="card shadow-lg bg-gradient-dark">
-            <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
-                <h1 class="green-text ubuntu-bold">Add A Customer</h1>
+            <div class="card-header bg-gradient-dark"
+                 style="display: flex; justify-content: space-between; align-items: center">
+                <h1 class="green-text ubuntu-bold">Add A Lead</h1>
                 <div class="btn-group">
-                    <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index" asp-controller="Customer" asp-area="Admin" title="Go back to customer list"><i class="fa-solid fa-backward-step"></i></a>
+                    <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Customer" asp-area="Admin" title="Go back to customer list"><i
+                            class="fa-solid fa-backward-step"></i></a>
                 </div>
             </div>
             <div class="card-body p-3">
 
-                <form id="customerForm" class="form" asp-action="AddCustomer" asp-controller="Customer" asp-area="Admin" method="post">
-                    <div class="row">
+                <form class="form" asp-action="AddLead" asp-controller="Lead" asp-area="Admin" method="post">
+                    <div class="row m-2">
+                        <div class="col-12 col-md-8 offset-md-2">
+                            <div asp-validation-summary="All" class="cherry-text list-no-style"></div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="FirstName" class="form-label text-gradient text-info ubuntu-bold">First Name</label>
-                                <input asp-for="FirstName" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="FirstName"/>
+                                <label asp-for="FirstName" class="form-label text-gradient text-info ubuntu-bold">First
+                                    Name</label>
+                                <input asp-for="FirstName" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="FirstName"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="LastName" class="form-label text-gradient text-info ubuntu-bold">Last Name</label>
-                                <input asp-for="LastName" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="LastName"/>
+                                <label asp-for="LastName" class="form-label text-gradient text-info ubuntu-bold">Last
+                                    Name</label>
+                                <input asp-for="LastName" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="LastName"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Email" class="form-label text-gradient text-info ubuntu-bold">Email</label>
-                                <input asp-for="Email" type="email" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Email"/>
+                                <label asp-for="Email"
+                                       class="form-label text-gradient text-info ubuntu-bold">Email</label>
+                                <input asp-for="Email" type="email"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="Email"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="UserName" class="form-label text-gradient text-info ubuntu-bold">Username</label>
-                                <input asp-for="UserName" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="UserName"/>
+                                <label asp-for="Phone"
+                                       class="form-label text-gradient text-info ubuntu-bold">Phone</label>
+                                <input asp-for="Phone" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="Phone"/>
                             </div>
                         </div>
                     </div>
-                    <div class="row-gap-5 row">
-                        <div class="col-12 col-md-4">
+                    <div class="row m-2">
+                        <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Address" class="form-label text-gradient text-info ubuntu-bold">Address</label>
-                                <input asp-for="Address" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Address"/>
+                                <label asp-for="AlternatePhone" class="form-label text-gradient text-info ubuntu-bold">Alternate
+                                    Phone</label>
+                                <input asp-for="AlternatePhone" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="UserName"/>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="City" class="form-label text-gradient text-info ubuntu-bold">City</label>
-                                <input asp-for="City" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="City"/>
+                                <label asp-for="Address"
+                                       class="form-label text-gradient text-info ubuntu-bold">Address</label>
+                                <input asp-for="Address" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="Address"/>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="State" class="col-form-label col-form-label-lg text-gradient text-info ubuntu-bold">State</label><br/>
-                                <select asp-for="State" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" style="cursor: pointer;" id="State">
-                                    <option value="0">Select A State</option>
+                                <label asp-for="City"
+                                       class="form-label text-gradient text-info ubuntu-bold">City</label>
+                                <input asp-for="City" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="City"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <label asp-for="State"
+                                       class="col-form-label col-form-label-lg text-gradient text-info ubuntu-bold">State</label><br/>
+                                <select asp-for="State"
+                                        class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
+                                        style="cursor: pointer;" id="State">
+                                    <option selected disabled>Select A State</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
@@ -115,18 +154,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="ZipCode" class="form-label text-gradient text-info ubuntu-bold">Zip Code</label>
-                                <input asp-for="ZipCode" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="ZipCode"/>
+                                <label asp-for="Zip" class="form-label text-gradient text-info ubuntu-bold">Zip
+                                    Code</label>
+                                <input asp-for="Zip" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="ZipCode"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Country" class="form-label text-gradient text-info ubuntu-bold">Country</label>
-                                <select asp-for="Country" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" style="cursor: pointer;" id="Country">
-                                    <option value="0">Select A Country</option>
+                                <label asp-for="Country"
+                                       class="form-label text-gradient text-info ubuntu-bold">Country</label>
+                                <select asp-for="Country"
+                                        class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
+                                        style="cursor: pointer;" id="Country">
+                                    <option selected disabled>Select A Country</option>
                                     <option value="AFG">Afghanistan</option>
                                     <option value="ALA">Åland Islands</option>
                                     <option value="ALB">Albania</option>
@@ -381,13 +426,137 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="PhoneNumber" class="form-label text-gradient text-info ubuntu-bold">Phone Number</label>
-                                <input asp-for="PhoneNumber" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="PhoneNumber"/>
+                                <label asp-for="Status"
+                                       class="form-label text-gradient text-info ubuntu-bold">Status</label>
+                                <select asp-for="Status"
+                                        class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
+                                        style="cursor: pointer;" id="Status">
+                                    <option value="Processing">Processing</option>
+                                    <option value="Created">Created</option>
+                                    <option value="Hold">Hold</option>
+                                    <option value="Finalizing">Finalizing</option>
+                                    <option value="Finished">Finished</option>
+                                    <option value="Sent">Sent</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+                    <div class="row m-2">
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Source"
+                                       class="form-label text-gradient text-info ubuntu-bold">Source</label>
+                                <input asp-for="Source" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="Source"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Priority" class="form-label text-gradient text-info ubuntu-bold">Priority</label>
+                                <select asp-for="Priority"
+                                        class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
+                                        style="cursor: pointer;" id="Priority">
+                                    <option value="None">None</option>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                    <option value="Critical">Critical</option>
+                                    <option value="Severe">Severe</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <label asp-for="JobTitle" class="form-label text-gradient text-info ubuntu-bold">Job
+                                    Title</label>
+                                <input asp-for="JobTitle" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="JobTitle"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <label asp-for="CompanyName" class="form-label text-gradient text-info ubuntu-bold">Company
+                                    Name</label>
+                                <input asp-for="CompanyName" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="CompanyName"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Industry" class="form-label text-gradient text-info ubuntu-bold">Industry</label>
+                                <input asp-for="Industry" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="Industry"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <label asp-for="UserId" class="form-label text-gradient text-info ubuntu-bold">Assigned
+                                    To</label>
+                                <select asp-for="UserId"
+                                        class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
+                                        style="cursor: pointer;" id="User">
+                                    @foreach (var user in users)
+                                    {
+                                        <option value="@user.Id">@user.UserName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <label asp-for="IsConverted" class="form-check-label text-gradient text-info ubuntu-bold">Converted</label>
+                                <br>
+                                <input asp-for="IsConverted" type="checkbox" checked="checked"
+                                       class="form-check  bg-gradient-dark text-white ubuntu"
+                                       id="IsConverted"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LastContactDate" class="form-label text-gradient text-info ubuntu-bold">Last
+                                    Contact Date</label>
+                                <input asp-for="LastContactDate" type="datetime-local"
+                                       class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="LastContactDate"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FollowUpDate" class="form-label text-gradient text-info ubuntu-bold">Follow
+                                    Up Date</label>
+                                <input asp-for="FollowUpDate" type="datetime-local"
+                                       class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="FollowUpDate"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-12 col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Notes" class="form-label text-gradient text-info ubuntu-bold">Notes</label>
+                                <div class="main-container">
+                                    <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
+                                        <div class="editor-container__editor">
+                                            <textarea id="editor" asp-for="Notes" cols="10" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                     <div class="mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white mt-3 mb-3" id="AddCustomerBtn">Add Customer</button>
+                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white mt-3 mb-3">Add
+                            Lead
+                        </button>
                     </div>
                 </form>
             </div>

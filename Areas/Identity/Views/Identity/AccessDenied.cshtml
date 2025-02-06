@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<section class="my-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 my-auto">
+                <h1 class="display-1 text-bolder cherry-text ubuntu-bold">Access Denied</h1>
+                <h2 class="blue-text ubuntu-bold">You are on a restricted page...</h2>
+                <p class="lead text-white ubuntu">We suggest you to go to the homepage.</p>
+                @if (ViewBag.user != null)
+                {
+                    <a class="btn bg-gradient-dark cherry-text ubuntu-bold" asp-action="Index" asp-controller="Dashboard" asp-area="Admin">Back To Dashboard</a>
+                }
+                else
+                {
+                    <a class="btn bg-gradient-dark violet-text ubuntu-bold" asp-action="Login" asp-controller="Identity" asp-area="Identity">Back To Login</a>
+                }
+            </div>
+            <div class="col-lg-6 my-auto position-relative">
+                <img class="w-100 position-relative" src="~/assets/img/illustrations/lock.png" alt="400 error">
+            </div>
+        </div>
+    </div>
+</section>

@@ -13,6 +13,10 @@ public static class AppConfiguration
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
         });
+        services.ConfigureApplicationCookie(options =>
+        {
+            options.AccessDeniedPath = "/Identity/Identity/AccessDenied";
+        });
         return services;
     }
 }

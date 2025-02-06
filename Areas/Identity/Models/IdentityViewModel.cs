@@ -50,5 +50,4 @@ public class RegisterViewModel : IdentityUser
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
     [DataType(DataType.Date)]
     public DateTime DateOfHire { get; set; }
-    public IFormFile? ImageUrl { get; set; }
 }

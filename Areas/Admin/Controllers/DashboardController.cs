@@ -14,7 +14,7 @@ using Exception = System.Exception;
 namespace Dash.Areas.Admin.Controllers;
 [Area("Admin")]
 [Route("[area]/[controller]/[action]")]
-[Authorize]
+[Authorize(Roles = "Admin,User,Customer")]
 public class DashboardController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -23,6 +23,7 @@ public class DashboardController : Controller
     private readonly IProductRepository _productRepository;
     private readonly ICustomerRepository _customerRepository;
     private readonly IJobRepository _jobRepository;
+    private readonly ILeadsRepository _leadsRepository;
     private readonly ICampaignRepository _campaignRepository;
     private readonly ICampaignUserNoteRepository _campaignUserNoteRepository;
     private readonly ICampaignUserTaskRepository _campaignUserTaskRepository;
@@ -31,7 +32,7 @@ public class DashboardController : Controller
     public DashboardController(ApplicationDbContext context, IUserRepository userRepository, IEventRepository eventRepository, 
         IProductRepository productRepository, ICustomerRepository customerRepository, INotyfService notyfService, 
         ICampaignRepository campaignRepository, ICampaignUserNoteRepository campaignUserNoteRepository,
-        ICampaignUserTaskRepository campaignUserTaskRepository, IJobRepository jobRepository, RoleManager<AppRole> roleManager)
+        ICampaignUserTaskRepository campaignUserTaskRepository, IJobRepository jobRepository, ILeadsRepository leadsRepository,  RoleManager<AppRole> roleManager)
     {
         _context = context;
         _userRepository = userRepository;
@@ -39,6 +40,7 @@ public class DashboardController : Controller
         _productRepository = productRepository;
         _customerRepository = customerRepository;
         _jobRepository = jobRepository;
+        _leadsRepository = leadsRepository;
         _campaignRepository = campaignRepository;
         _campaignUserNoteRepository = campaignUserNoteRepository;
         _campaignUserTaskRepository = campaignUserTaskRepository;
@@ -95,7 +97,8 @@ public class DashboardController : Controller
             CampaignCount = await _campaignRepository.CampaignCountAsync(),
             CampaignUserNoteCount = await _campaignUserNoteRepository.CampaignUserNoteCountAsync(),
             CampaignUserTaskCount = await _campaignUserTaskRepository.CampaignUserTaskCountAsync(),
-            RoleCount = await _roleManager.Roles.CountAsync()
+            RoleCount = await _roleManager.Roles.CountAsync(),
+            LeadCount = await _leadsRepository.CountLeadsAsync()
         };
         ViewBag.Users = await _userRepository.GetAllUsersAsync();
         ViewBag.Events = await _eventRepository.GetAllEventsAsync();

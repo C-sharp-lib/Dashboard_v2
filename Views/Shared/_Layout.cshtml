@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/assets/css/soft-design-system-pro.css">
     <script src="~/js/fullcalendar-scheduler/dist/index.global.min.js"></script>
+    <link rel="stylesheet" href="~/css/ckeditor.css">
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.css" crossorigin>
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5-premium-features/44.1.0/ckeditor5-premium-features.css" crossorigin>
     <link rel="stylesheet" href="/Admin/css/admin.css" asp-append-version="true">
     <link rel="stylesheet" href="/Identity/css/identity.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
@@ -106,6 +109,7 @@
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Event" asp-area="Admin">Events</a>
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Job" asp-area="Admin">Jobs</a>
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Campaign" asp-area="Admin">Campaigns</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Lead" asp-area="Admin">Leads</a>
                                                 </div>
                             
                                                 <div class="col-4 position-relative">
@@ -116,7 +120,7 @@
                                                                 <i class="fa-solid fa-money-bill-trend-up fa-menu-style"></i>
                                                             </div>
                                                         </div>
-                                                        Investments
+                                                        Add Entities
                                                     </div>
                                                     <hr class="horizontal bg-gradient-warning">
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddCampaignPage" asp-controller="Campaign" asp-area="Admin">Add Campaign</a>
@@ -125,6 +129,7 @@
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddCustomerPage" asp-controller="Customer" asp-area="Admin">Add Customer</a>
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddJobPage" asp-controller="Job" asp-area="Admin">Add Job</a>
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddRole" asp-controller="Role" asp-area="Identity">Add Role</a>
+                                                    <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="AddLeadPage" asp-controller="Lead" asp-area="Admin">Add A Lead</a>
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Calendar" asp-controller="Event" asp-area="Admin">Calendar</a>
                                                 </div>
                                                 <hr class="vertical bg-white"/>
@@ -135,7 +140,7 @@
                                                                 <i class="fa-solid fa-bag-shopping fa-menu-style"></i>
                                                             </div>
                                                         </div>
-                                                        Profits
+                                                        Add Items
                                                     </div>
                                                     <hr class="horizontal bg-gradient-warning">
                                                     <a class="dropdown-item ubuntu-bold text-white border-radius-md" asp-action="Index" asp-controller="Customer" asp-area="Admin">Customers</a>
@@ -211,7 +216,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js" type="text/javascript"></script>
 <script src="~/js/fullcalendar/dist/index.global.min.js"></script>
 <script src="~/assets/js/soft-design-system-pro.min.js" type="text/javascript"></script>
-
+<script src="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.umd.js" crossorigin></script>
+<script src="https://cdn.ckeditor.com/ckeditor5-premium-features/44.1.0/ckeditor5-premium-features.umd.js" crossorigin></script>
+<script src="https://cdn.ckbox.io/ckbox/2.6.1/ckbox.js" crossorigin></script>
+<script src="~/js/main.js"></script>
 <script src="~/js/site.js"></script>
 @await Component.InvokeAsync("Notyf")
 @RenderSection("Scripts", required: false)

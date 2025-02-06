@@ -219,19 +219,15 @@ public class RoleController : Controller
             _notyfService.Error("You are not logged in. You need to be logged in to view this page.");
             return RedirectToAction("Login", "Identity", new { area = "Identity" });
         }
-        var role = await _roleManager.FindByIdAsync(id);
+        var role = await _context.AppRoles.FindAsync(id);
         if (role == null)
         {
             _notyfService.Error("Role not found");
             return RedirectToAction("Index", "Role", new { area = "Identity" });
         }
-        var result = await _roleManager.DeleteAsync(role);
-        if (result.Succeeded)
-        {
-            _notyfService.Success("Role deleted successfully");
-            return RedirectToAction("Index", "Role", new { area = "Identity" });
-        }
         ViewBag.user = ActiveUser;
+        _context.AppRoles.Remove(role);
+        await _context.SaveChangesAsync();
         return RedirectToAction("Index", "Role", new { area = "Identity" });
     }
 }

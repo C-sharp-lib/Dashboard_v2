@@ -68,10 +68,10 @@
                 <div class="card card-stats bg-gradient-dark shadow-lg">
                     <div class="card-header bg-gradient-dark card-header-icon p-1">
                         <div class="card-icon cherry">
-                            <i class="fa-solid fa-truck-fast text-white"></i>
+                            <i class="fa-solid fa-medal text-white"></i>
                         </div>
-                        <p class="card-category text-white me-3 ubuntu-bold">Orders</p>
-                        <h3 class="card-title cherry-text me-3 ubuntu-bold">200</h3>
+                        <p class="card-category text-white me-3 ubuntu-bold">Leads</p>
+                        <h3 class="card-title cherry-text me-3 ubuntu-bold">@Model.LeadCount</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -366,6 +366,12 @@
                     labels: ['Totals Of Entities'],
                     datasets: [
                         {
+                            label: 'Leads',
+                            data: [@Model.LeadCount],
+                            borderColor: 'cyan',
+                            backgroundColor: 'cyan'
+                        },
+                        {
                             label: 'Roles',
                             data: [@Model.RoleCount],
                             borderColor: 'tomato',
@@ -424,7 +430,7 @@
                 options: {
                     plugins: {
                         legend: {
-                            display: true,
+                            display: false,
                             position: 'bottom',
                             labels: {
                                 color: 'white',

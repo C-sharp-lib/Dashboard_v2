@@ -46,6 +46,9 @@ public class UpdateAppUserViewModel : IdentityUser
     [Required(ErrorMessage = "Zipcode is required")]
     [DataType(DataType.Text)]
     public string ZipCode { get; set; }
+    [Required(ErrorMessage = "Bio is required")]
+    [DataType(DataType.Text)]
+    public string? Bio { get; set; }
     [Required(ErrorMessage = "Phone number is required")]
     [DataType(DataType.Text)]
     public string? PhoneNumber { get; set; }

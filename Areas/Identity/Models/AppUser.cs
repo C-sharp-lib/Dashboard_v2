@@ -22,10 +22,13 @@ public class AppUser : IdentityUser
     public string? City { get; set; }
     public string? State { get; set; }
     public string? ZipCode { get; set; }
+    [DataType(DataType.Text)]
+    public string? Bio { get; set; }
     public IEnumerable<UserSchedules> UserSchedules { get; set; }
     public IEnumerable<UserEvents> UserEvents { get; set; }
     public IEnumerable<CampaignUserNotes> CampaignUserNotes { get; set; }
     public IEnumerable<CampaignUserTasks> CampaignUserTasks { get; set; }
     public IEnumerable<AppUserRoles> UserRoles { get; set; }
     public IEnumerable<Jobs> Jobs { get; set; }
+    public IEnumerable<Leads> Leads { get; set; }
 }

@@ -12,25 +12,10 @@
                 <a class="btn bg-gradient-warning text-white ubuntu-bold" asp-action="Login" asp-controller="Identity" asp-area="Identity">Go To Login Page Instead</a>
             </div>
             <div class="card-body p-4">
-                <form asp-action="Register" asp-controller="Identity" asp-area="Identity" method="post"
-                      enctype="multipart/form-data">
-                    <div asp-validation-summary="All" class="validation-summary"></div>
+                <form asp-action="Register" asp-controller="Identity" asp-area="Identity" method="post">
                     <div class="row">
-                        <div class="col-12">
-                            <h6 class="text-gradient text-info ubuntu-bold">Image Preview</h6>
-                            <img id="previewImage" src="" alt="Image Preview"
-                                 style="width: auto; display: none; margin-top: 10px; height: 400px"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-12">
-                            <div class="form-group">
-                                <input type="file" asp-for="ImageUrl" id="ImageUrl" style="display: none;"
-                                       accept="image/*">
-                                <label asp-for="ImageUrl" class="btn bg-gradient-dark custom-file-button">Choose
-                                    File</label>
-                                <span id="fileName" class="file-name text-warning ubuntu-bold">No file selected</span>
-                            </div>
+                        <div class="col-12 col-md-10 offset-md-1">
+                            <div asp-validation-summary="All" class="validation-summary"></div>
                         </div>
                     </div>
                     <div class="row">

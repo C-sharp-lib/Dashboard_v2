@@ -10,8 +10,8 @@
             <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
                 <h1 class="text-gradient text-warning ubuntu-bold">Roles</h1>
                 <div class="btn-group">
-                    <a class="btn violet text-white ubuntu-bold" asp-action="Index" asp-controller="Dashboard" asp-area="Admin">Go To Dashboard</a>
-                    <a asp-action="AddRole" asp-controller="Role" asp-area="Identity" class="btn blue text-white ubuntu-bold">Add New Role</a>
+                    <a class="btn bg-gradient-dark violet-text ubuntu-bold" asp-action="Index" asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-backward-step"></i></a>
+                    <a asp-action="AddRole" asp-controller="Role" asp-area="Identity" class="btn bg-gradient-dark green-text ubuntu-bold btn-tooltip" title="Add a new role"><i class="fa-solid fa-plus"></i></a>
                 </div>
             </div>
             <div class="card-body p-3">
@@ -21,7 +21,7 @@
                         <th>ID</th>
                         <th>Username</th>
                         <th>Roles</th>
-                        <th>Actions</th>
+                        <th>Add A Role</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,7 @@
                                 }
                             </td>
                             <td>
-                                <a asp-action="AddRoleToUserPage" asp-controller="Role" asp-area="Identity" asp-route-id="@user?.Id" class="btn green text-white ubuntu-bold">Add Role To User</a>
+                                <a asp-action="AddRoleToUserPage" asp-controller="Role" asp-area="Identity" asp-route-id="@user?.Id"  class="btn bg-gradient-dark green-text ubuntu-bold btn-tooltip text-xs" title="Add a new role"><i class="fa-solid fa-plus"></i></a>
                             </td>
                         </tr>
                     }
@@ -68,7 +68,9 @@
                                 <td>@role.Id</td>
                                 <td>@role.Name</td>
                                 <td>
-                                    <a asp-action="DeleteRole" asp-controller="Role" asp-area="Identity" asp-route-id="@role.Id" class="btn cherry ubuntu-bold text-white">Delete Role</a>
+                                    <form asp-action="DeleteRole" asp-controller="Role" asp-route-id="@role.Id" asp-area="Identity" method="post">
+                                        <button type="submit" class="btn bg-gradient-dark cherry-text ubuntu-bold text-xs"><i class="fa-solid fa-trash-can"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         }

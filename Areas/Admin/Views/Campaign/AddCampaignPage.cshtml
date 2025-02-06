@@ -146,7 +146,13 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label asp-for="Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
-                                <textarea asp-for="Description" cols="10" rows="5" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Description"></textarea>
+                                <div class="main-container">
+                                    <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
+                                        <div class="editor-container__editor">
+                                            <textarea id="editor" asp-for="Description" cols="10" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

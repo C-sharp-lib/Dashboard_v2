@@ -1,0 +1,279 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Oswald&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@media print {
+    body {
+        margin: 0 !important;
+    }
+}
+
+.main-container {
+    font-family: 'Ubuntu', sans-serif;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div {
+    height: auto !important;
+    min-height: 250px !important;
+    max-height: 1000px !important;
+}
+.ck-content {
+    font-family: 'Ubuntu', sans-serif !important;
+    line-height: 1.6;
+    word-break: break-word;
+    background-image: linear-gradient(120deg, rgb(22,22,22), rgb(55,55,55)) !important;
+    background-image: -webkit-linear-gradient(120deg, rgb(22,22,22), rgb(55,55,55)) !important;
+    background-image: -moz-linear-gradient(120deg, rgb(22,22,22), rgb(55,55,55)) !important;
+    background-image: -ms-linear-gradient(120deg, rgb(22,22,22), rgb(55,55,55)) !important;
+    color: white !important;
+}
+
+.editor-container_classic-editor .editor-container__editor {
+    min-width: auto;
+    max-width: 100%;
+}
+
+.ck-content h3.category {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+    letter-spacing: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.ck-content h2.document-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.ck-content h3.document-subtitle {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    color: #555;
+    margin: 0 0 1em;
+    font-weight: bold;
+    padding: 0;
+}
+
+.ck-content p.info-box {
+    --background-size: 30px;
+    --background-color: #e91e63;
+    padding: 1.2em 2em;
+    border: 1px solid var(--background-color);
+    background: linear-gradient(
+            135deg,
+            var(--background-color) 0%,
+            var(--background-color) var(--background-size),
+            transparent var(--background-size)
+    ),
+    linear-gradient(
+            135deg,
+            transparent calc(100% - var(--background-size)),
+            var(--background-color) calc(100% - var(--background-size)),
+            var(--background-color)
+    );
+    border-radius: 10px;
+    margin: 1.5em 2em;
+    box-shadow: 5px 5px 0 #ffe6ef;
+}
+
+.ck-content blockquote.side-quote {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    float: right;
+    width: 35%;
+    position: relative;
+    border: 0;
+    overflow: visible;
+    z-index: 1;
+    margin-left: 1em;
+}
+
+.ck-content blockquote.side-quote::before {
+    content: '“';
+    position: absolute;
+    top: -37px;
+    left: -10px;
+    display: block;
+    font-size: 200px;
+    color: #e7e7e7;
+    z-index: -1;
+    line-height: 1;
+}
+
+.ck-content blockquote.side-quote p {
+    font-size: 2em;
+    line-height: 1;
+}
+
+.ck-content blockquote.side-quote p:last-child:not(:first-child) {
+    font-size: 1.3em;
+    text-align: right;
+    color: #555;
+}
+
+.ck-content span.marker {
+    background: yellow;
+}
+
+.ck-content span.spoiler {
+    background: #000;
+    color: #000;
+}
+
+.ck-content span.spoiler:hover {
+    background: #000;
+    color: #fff;
+}
+
+.ck-content pre.fancy-code {
+    border: 0;
+    margin-left: 2em;
+    margin-right: 2em;
+    border-radius: 10px;
+}
+
+.ck-content pre.fancy-code::before {
+    content: '';
+    display: block;
+    height: 13px;
+    background: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NCAxMyI+CiAgPGNpcmNsZSBjeD0iNi41IiBjeT0iNi41IiByPSI2LjUiIGZpbGw9IiNGMzZCNUMiLz4KICA8Y2lyY2xlIGN4PSIyNi41IiBjeT0iNi41IiByPSI2LjUiIGZpbGw9IiNGOUJFNEQiLz4KICA8Y2lyY2xlIGN4PSI0Ny41IiBjeT0iNi41IiByPSI2LjUiIGZpbGw9IiM1NkM0NTMiLz4KPC9zdmc+Cg==);
+    margin-bottom: 8px;
+    background-repeat: no-repeat;
+}
+
+.ck-content pre.fancy-code-dark {
+    background: #272822;
+    color: #fff;
+    box-shadow: 5px 5px 0 #0000001f;
+}
+
+.ck-content pre.fancy-code-bright {
+    background: #dddfe0;
+    color: #000;
+    box-shadow: 5px 5px 0 #b3b3b3;
+}
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-merge-fields-preview-dropdown > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-merge-fields-preview-dropdown > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-insert-merge-field-dropdown > div > div > div.ck.ck-labeled-field-view.ck-labeled-field-view_empty.ck-labeled-field-view_focused.ck-search__query_with-icon.ck-search__query_with-reset > div.ck.ck-labeled-field-view__input-wrapper > input.ck.ck-input.ck-input_focused,
+.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible,
+.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible > ul.ck.ck-reset.ck-list,
+.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible > ul.ck.ck-reset.ck-list > li.ck.ck-list__item,
+.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se > ul.ck.ck-reset.ck-list,
+.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se > ul.ck.ck-reset.ck-list > li.ck.ck-list__item,
+.ck.ck-toolbar.ck-toolbar_grouping,
+.ck.ck-menu-bar,
+.ck.ck-label,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(1n) > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(1n) > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(1n) > div > ul > li:nth-child(1n) > div > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(3) > div > ul > li > div > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(3) > div > ul > li > div > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(3) > div > ul > li > div > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(9) > div > div > ul > li > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(9) > div > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(3) > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(1) > div > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(1) > div > div > ul > li > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(3) > div > div > div > div.ck-insert-table-dropdown__grid,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(1n) > div > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(6) > div > ul > li > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(6) > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(3) > div > div > div > div.ck-insert-table-dropdown__grid > button.ck.ck-button.ck-insert-table-dropdown-grid-box.ck-on,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(7) > div > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(5) > div > div > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(5) > div > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(5) > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(2) > div > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(4) > div > div > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(4) > div > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(1n) > div > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(1n) > div > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(1) > div > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(5) > div > div > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(1n) > div > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(1n) > div > button,
+input.ck.ck-input.ck-input_focused.ck-input-text_empty.ck-input-number,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(4) > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(1) > div > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(6) > div > div > div > div > button:nth-child(1n),
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(6) > div > div > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(1n) > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(5) > div > div > div > div > button:nth-child(1n),
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(1n) > div > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(35) > div.ck.ck-splitbutton.ck-splitbutton_open.ck-dropdown__button > button.ck.ck-button.ck-on.ck-splitbutton__arrow,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(22) > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__arrow,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(35) > div.ck.ck-splitbutton.ck-splitbutton_open.ck-dropdown__button > button.ck.ck-button.ck-on.ck-splitbutton__arrow,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(34) > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__arrow,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(34) > div.ck.ck-splitbutton.ck-dropdown__button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(34) > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__action,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(33) > div.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible > div > div > button:nth-child(1n),
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(33) > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__action,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(22) > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-file-dialog-button.ck-splitbutton__action,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(33) > div.ck.ck-splitbutton.ck-splitbutton_open.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__action,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(34) > div.ck.ck-splitbutton.ck-splitbutton_open.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__action,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > button:nth-child(1n),
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(28) > div.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(28) > div.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(28) > div.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible > div > div > button:nth-child(1n),
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(28) > div.ck.ck-splitbutton.ck-splitbutton_open.ck-dropdown__button > button.ck.ck-button.ck-on.ck-splitbutton__arrow,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-style-dropdown > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(33) > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__arrow,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(28) > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__action,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-toolbar-dropdown.ck-alignment-dropdown > div > div > div > button.ck.ck-button.ck-on,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-toolbar-dropdown.ck-alignment-dropdown > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(35) > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__action,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(1n) > div.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_se.ck-dropdown__panel-visible > div > div.ck.ck-list-styles-list > button:nth-child(1n),
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > button.ck.ck-button.ck-on,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(1n) > div > div > div.ck-color-grids-fragment,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-font-family-dropdown > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-font-family-dropdown > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-font-family-dropdown > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-font-size-dropdown > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-font-size-dropdown > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-font-size-dropdown > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-style-dropdown > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div > div > div.ck.ck-dropdown.ck-style-dropdown > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > div > div,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-heading-dropdown > div > ul,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-format-painter-dropdown > div.ck.ck-splitbutton.ck-dropdown__button > button.ck.ck-button.ck-off.ck-splitbutton__action,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > button:nth-child(1n),
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-heading-dropdown > div > ul > li:nth-child(1n) > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-heading-dropdown > div > ul > li:nth-child(1n),
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-heading-dropdown > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-disabled.ck-case-change-dropdown > button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > button.ck.ck-button.ck-off.ck-file-dialog-button,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-toolbar.ck-toolbar_grouping > div.ck.ck-toolbar__items > div.ck.ck-dropdown.ck-insert-merge-field-dropdown > div > div > div.ck.ck-search__results > div > span:nth-child(1),
+.ck.ck-toolbar.ck-toolbar_grouping > .ck.ck-toolbar__items > .ck.ck-dropdown.ck-merge-fields-preview-dropdown > button,
+.ck.ck-toolbar.ck-toolbar_grouping > .ck.ck-toolbar__items > .ck.ck-dropdown.ck-insert-merge-field-dropdown > button,
+.ck.ck-menu-bar > .ck.ck-menu-bar__menu.ck-menu-bar__menu_top-level > button{
+    list-style-type: none;
+    font-family: 'Ubuntu', sans-serif !important;
+    background-image: linear-gradient(120deg, rgb(22,22,22), rgb(55,55,55)) !important;
+    background-image: -webkit-linear-gradient(120deg, rgb(22,22,22), rgb(55,55,55)) !important;
+    background-image: -moz-linear-gradient(120deg, rgb(22,22,22), rgb(55,55,55)) !important;
+    background-image: -ms-linear-gradient(120deg, rgb(22,22,22), rgb(55,55,55)) !important;
+    color: white !important;
+    background-color: rgb(22,22,22) !important;
+}
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(4) > div > ul > li:nth-child(3) > div > div > div > div.ck.ck-insert-table-dropdown__label,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(5) > div > div > div > div > button > svg,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(5) > div > div > div > div > button > span,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(4) > div > div > div > div > button > svg,
+#editor-container > div > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__top.ck-reset_all > div > div.ck.ck-sticky-panel__content > div.ck.ck-menu-bar > div:nth-child(5) > div > ul > li:nth-child(2) > div > div > ul > li:nth-child(4) > div > div > div > div > button > span {
+    font-family: 'Ubuntu', sans-serif !important;
+    color: white !important;
+}

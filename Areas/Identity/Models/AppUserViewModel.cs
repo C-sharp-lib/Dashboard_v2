@@ -43,6 +43,9 @@ public class AppUserViewModel : AppUser
     [Required(ErrorMessage = "Zipcode is required")]
     [DataType(DataType.Text)]
     public string ZipCode { get; set; }
+    [Required(ErrorMessage = "Bio is required")]
+    [DataType(DataType.Text)]
+    public string? Bio { get; set; }
     [Required]
     [DataType(DataType.Password)]
     public string? Password { get; set; }

@@ -12,7 +12,7 @@ namespace Dash.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Route("[area]/[controller]/[action]")]
-[Authorize]
+[Authorize(Roles = "Admin,User")]
 public class EventController : Controller
 {
     private readonly ApplicationDbContext _context;

@@ -52,8 +52,13 @@
                         <div class="col-12 col-md-12">
                             <div class="form-group">
                                 <label asp-for="NoteContent" class="form-label text-gradient text-info ubuntu-bold">Note Content</label>
-                                <textarea asp-for="NoteContent" type="text"
-                                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" cols="10" rows="5"></textarea>
+                                <div class="main-container">
+                                    <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
+                                        <div class="editor-container__editor">
+                                            <textarea id="editor" asp-for="NoteContent" cols="10" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

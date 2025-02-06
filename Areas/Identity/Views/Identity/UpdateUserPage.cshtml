@@ -8,21 +8,26 @@
   <div class="row mt-11 mb-11">
     <div class="col-12 col-md-12">
       <div class="card shadow-lg p-3 bg-gradient-dark mb-3">
-        <div class="card-header bg-gradient-dark text-gradient text-primary" style="display: flex; justify-content: space-between; align-items: center">
-          <h3 class="ubuntu-bold">Update User</h3>
-          <a class="btn btn-outline-info text-gradient text-info ubuntu-bold" asp-action="Index" asp-controller="Dashboard" asp-area="Admin">Go Back</a>
+        <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
+          <h3 class="ubuntu-bold orange-text">Update User</h3>
+          <a class="btn bg-gradient-dark violet-text ubuntu-bold btn-tooltip" asp-action="Index" asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-backward-step"></i></a>
         </div>
         <div class="card-body bg-gradient-dark p-3">
           <form asp-action="UpdateUser" asp-controller="Identity" asp-route-id="@user?.Id" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
-            <div class="row">
+            <div class="row m-2">
+              <div class="col-12 col-md-8 offset-md-2">
+                <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
+              </div>
+            </div>
+            <div class="row m-2">
               <div class="col-12">
                 <h6 class="text-gradient text-info ubuntu-bold">Image Preview</h6>
                 <img id="previewImage" src="" alt="Image Preview"
                      style="width: auto; display: none; margin-top: 10px; height: 400px"/>
               </div>
             </div>
-            <div class="row">
+            <div class="row m-2">
               <div class="col-12 col-md-12">
                 <div class="form-group">
                   <input asp-for="ImageUrl" value="@user?.ImageUrl" id="ImageUrl" style="display: none;"
@@ -33,7 +38,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row m-2">
               <div class="col-12 col-md-6">
                 <div class="form-group">
                   <label asp-for="DateOfBirth" class="ubuntu-bold text-gradient text-primary">Date of Birth</label>
@@ -53,7 +58,7 @@
 
             </div>
 
-            <div class="row">
+            <div class="row m-2">
               <div class="col-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="UserName" class="ubuntu-bold text-gradient text-primary">UserName</label>
@@ -80,7 +85,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row m-2">
               <div class="col-12 col-sm-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="FirstName" class="ubuntu-bold text-gradient text-primary">First Name</label>
@@ -106,7 +111,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row m-2">
               <div class="col-12 col-sm-12 col-md-3">
                 <div class="form-group">
                   <label asp-for="Address" class="ubuntu-bold text-gradient text-primary">Address</label>
@@ -136,6 +141,20 @@
                   <input asp-for="ZipCode" value="@user?.ZipCode"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="ZipCode" class="text-danger m-2 p-2"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row m-2">
+              <div class="col-12">
+                <div class="form-group">
+                  <label asp-for="Bio" class="form-label ubuntu-bold violet-text">Bio</label>
+                  <div class="main-container">
+                    <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
+                      <div class="editor-container__editor">
+                        @Html.TextArea("Bio", user?.Bio, 10, 10, new { id = "editor" })
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

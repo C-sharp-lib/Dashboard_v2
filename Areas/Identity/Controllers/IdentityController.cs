@@ -1,5 +1,6 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Dash.Areas.Identity.Models;
+using Dash.Controllers;
 using Dash.Data;
 using Dash.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -10,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Dash.Areas.Identity.Controllers;
 
 [Area("Identity")]
-[Route("[area]/[controller]/[action]")]
+[Route("{area?}/[controller]/[action]")]
 public class IdentityController : Controller
 {
     private readonly UserManager<AppUser> _userManager;
@@ -36,7 +37,7 @@ public class IdentityController : Controller
     {
         get
         {
-            return _context.AppUsers
+            return _context.Users
                 .Include(x => x.UserRoles)
                 .ThenInclude(x => x.Role)
                 .FirstOrDefault(u => u.Id == HttpContext.Session.GetString("Id"));
@@ -77,16 +78,19 @@ public class IdentityController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _context.UserRoles
+                .Include(x => x.User)
+                .Include(x => x.Role)
+                .FirstOrDefaultAsync(x => x.User.Email == model.Email);
 
             if (user != null)
             {
-                var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(user.User, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    HttpContext.Session.SetString("Id", user.Id);
-                    HttpContext.Session.SetString("UserName", user.UserName);
-                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                    HttpContext.Session.SetString("Id", user.User.Id);
+                    HttpContext.Session.SetString("UserName", user.User.UserName!);
+                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });    
                 }
                 _notyfService.Error("Invalid login attempt.");
             }
@@ -105,30 +109,6 @@ public class IdentityController : Controller
     {
         if (ModelState.IsValid)
         {
-            string uniqueFileName3 = null;
-            if (model.ImageUrl != null && model.ImageUrl.Length > 0)
-            {
-                var permittedExtensions3 = new[] { ".jpg", ".jpeg", ".png", ".gif" };
-                var extension3 = Path.GetExtension(model.ImageUrl.FileName).ToLowerInvariant();
-
-                if (string.IsNullOrEmpty(extension3) || !permittedExtensions3.Contains(extension3))
-                {
-                    _notyfService.Error("Invalid image extension.");
-                }
-                string fileName3 = Path.GetFileNameWithoutExtension(model.ImageUrl.FileName);
-                uniqueFileName3 = $"{fileName3}_{Guid.NewGuid()}{extension3}";
-                string uploadsFolder3 = Path.Combine(_webenv.WebRootPath, "Uploads/AppUsers/");
-                if (!Directory.Exists(uploadsFolder3))
-                {
-                    Directory.CreateDirectory(uploadsFolder3);
-                }
-                string filePath = Path.Combine(uploadsFolder3, uniqueFileName3);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await model.ImageUrl.CopyToAsync(fileStream);
-                }
-            }
-            
             var users = new AppUser
             {
                 UserName = model.UserName,
@@ -141,8 +121,7 @@ public class IdentityController : Controller
                 Address = model.Address,
                 City = model.City,
                 State = model.State,
-                ZipCode = model.ZipCode,
-                ImageUrl = (uniqueFileName3 != null ? Path.Combine("Uploads/AppUsers/", uniqueFileName3) : null)!
+                ZipCode = model.ZipCode
             };
             var result = await _userManager.CreateAsync(users, model.Password);
             
@@ -255,5 +234,17 @@ public class IdentityController : Controller
         _notyfService.Success("User deleted.");
         ViewBag.user = ActiveUser;
         return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+    }
+    
+    [HttpGet]
+    public IActionResult AccessDenied()
+    {
+        if (ActiveUser == null)
+        {
+            _notyfService.Error("You are not logged in");
+            return RedirectToAction("Login", "Identity", new { area = "Identity" });
+        }
+        ViewBag.user = ActiveUser;
+        return View();
     }
 }

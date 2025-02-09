@@ -21,7 +21,12 @@
             <div class="card-body p-5">
 
                 <form id="campaignUserNoteForm" class="form" asp-action="AddCampaignUserNote" asp-controller="Campaign" asp-area="Admin" method="post">
-                    <div class="row">
+                    <div class="row m-2">
+                        <div class="col-12 col-md-8 offset-md-2">
+                            <div class="cherry-text ubuntu-bold list-no-style" asp-validation-summary="All"></div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label asp-for="CampaignId" class="form-label text-gradient text-info ubuntu-bold">Campaign</label>
@@ -45,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-12">
                             <div class="form-group">
                                 <label asp-for="NoteTitle" class="form-label text-gradient text-info ubuntu-bold">Note Title</label>
@@ -54,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-12">
                             <div class="form-group">
                                 <label asp-for="NoteContent" class="form-label text-gradient text-info ubuntu-bold">Note Content</label>
@@ -68,8 +73,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white">Add Campaign User Note</button>
+                    <div class="modal-footer m-2">
+                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white text-2xl">Add Campaign User Note</button>
                     </div>
                 </form>
             </div>

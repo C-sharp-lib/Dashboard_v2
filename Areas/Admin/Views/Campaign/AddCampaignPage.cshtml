@@ -20,7 +20,12 @@
             <div class="card-body p-5">
 
                 <form id="campaignForm" class="form" asp-action="AddCampaign" asp-controller="Campaign" asp-area="Admin" method="post">
-                    <div class="row">
+                    <div class="row m-2">
+                        <div class="col-12 col-md-8 offset-md-2">
+                            <div class="cherry-text ubuntu-bold list-no-style" asp-validation-summary="All"></div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
@@ -54,7 +59,7 @@
                             </div>        
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="StartDate" class="form-label text-gradient text-info ubuntu-bold">Start Date</label>
@@ -74,7 +79,7 @@
                             </div>        
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Spend" class="form-label text-gradient text-info ubuntu-bold">Spend</label>
@@ -94,7 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Goals" class="form-label text-gradient text-info ubuntu-bold">Goals</label>
@@ -114,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Impressions" class="form-label text-gradient text-info ubuntu-bold">Impressions</label>
@@ -134,7 +139,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label asp-for="Conversions" class="form-label text-gradient text-info ubuntu-bold">Conversions</label>
@@ -148,7 +153,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12">
                             <div class="form-group">
                                 <label asp-for="Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
@@ -162,8 +167,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white">Add Campaign</button>
+                    <div class="modal-footer m-2">
+                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white text-2xl">Add Campaign</button>
                     </div>
                 </form>
             </div>

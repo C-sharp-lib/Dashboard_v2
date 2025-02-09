@@ -17,22 +17,34 @@
                             <div class="cherry-text ubuntu-bold list-no-style" asp-validation-summary="All"></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Email" class="text-gradient text-primary ubuntu-bold">Email</label>
-                        <input type="email" asp-for="Email" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu">
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="Email" class="text-gradient text-primary ubuntu-bold">Email</label>
+                                <input type="email" asp-for="Email" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group password-container">
-                        <label asp-for="Password"
-                               class="ubuntu-bold text-gradient text-primary">Password</label>
-                        <input id="Password" asp-for="Password"
-                               class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
-                        <i class="fa-solid fa-eye-slash text-danger" id="togglePassword"></i>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <div class="form-group password-container">
+                                <label asp-for="Password"
+                                       class="ubuntu-bold text-gradient text-primary">Password</label>
+                                <input id="Password" asp-for="Password"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
+                                <i class="fa-solid fa-eye-slash text-danger" id="togglePassword"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="checkbox" asp-for="RememberMe" class="color-background bg-gradient-dark text-white ubuntu">
-                        <label asp-for="RememberMe" class="text-gradient text-primary ubuntu-bold">Remember Me</label>
+                    <div class="row m-2">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="checkbox" asp-for="RememberMe" class="color-background bg-gradient-dark text-white ubuntu">
+                            <label asp-for="RememberMe" class="text-gradient text-primary ubuntu-bold">Remember Me</label>
+                        </div>
                     </div>
-                    <div class="m-3">
+                    </div>
+                    <div class="m-2">
                         <input type="submit" class="btn violet d-block w-100 text-white text-2xl ubuntu-bold" value="Login">
                     </div>
                 </form>

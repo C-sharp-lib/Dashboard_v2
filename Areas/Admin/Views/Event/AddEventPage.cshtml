@@ -27,52 +27,75 @@
                             <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
-                        <input asp-for="Title" type="text"
-                               class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
-                               id="Title"/>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Description"
-                               class="form-label text-gradient text-info ubuntu-bold">Description</label>
-                        <div class="main-container">
-                            <div class="editor-container editor-container_classic-editor editor-container_include-style"
-                                 id="editor-container">
-                                <div class="editor-container__editor">
-                                    <textarea id="editor" asp-for="Description" cols="10" rows="10"></textarea>
-                                </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
+                                <input asp-for="Title" type="text"
+                                       class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                                       id="Title"/>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label asp-for="StartDate" class="form-label text-gradient text-info ubuntu-bold">Start
-                            Date</label>
-                        <input asp-for="StartDate"
-                               class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu datepicker"
-                               id="StartDate"/>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="Description"
+                                       class="form-label text-gradient text-info ubuntu-bold">Description</label>
+                                <div class="main-container">
+                                    <div class="editor-container editor-container_classic-editor editor-container_include-style"
+                                         id="editor-container">
+                                        <div class="editor-container__editor">
+                                            <textarea id="editor" asp-for="Description" cols="10" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
-                        <input asp-for="EndDate"
-                               class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu datepicker"
-                               id="EndDate"/>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="StartDate" class="form-label text-gradient text-info ubuntu-bold">Start
+                                    Date</label>
+                                <input asp-for="StartDate"
+                                       class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu datepicker"
+                                       id="StartDate"/>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Color" class="form-label text-gradient text-info ubuntu-bold">Background
-                            Color</label>
-                        <input asp-for="Color" class="form-control color-background bg-gradient-dark" type="color"
-                               id="Color">
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
+                                <input asp-for="EndDate"
+                                       class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu datepicker"
+                                       id="EndDate"/>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="ForegroundColor" class="form-label text-gradient text-info ubuntu-bold">Foreground
-                            Color</label>
-                        <input asp-for="ForegroundColor" class="form-control color-background bg-gradient-dark"
-                               type="color" id="ForegroundColor">
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="Color" class="form-label text-gradient text-info ubuntu-bold">Background
+                                    Color</label>
+                                <input asp-for="Color" class="form-control color-background bg-gradient-dark" type="color"
+                                       id="Color">
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white" id="saveEventBtn">
+                    <div class="row m-2">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label asp-for="ForegroundColor" class="form-label text-gradient text-info ubuntu-bold">Foreground
+                                Color</label>
+                            <input asp-for="ForegroundColor" class="form-control color-background bg-gradient-dark"
+                                   type="color" id="ForegroundColor">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="m-2">
+                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white text-2xl" id="saveEventBtn">
                             Save Event
                         </button>
                     </div>

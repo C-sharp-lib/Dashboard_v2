@@ -19,6 +19,11 @@
             <div class="card-body p-5">
                 <form id="campaignUserTaskForm" class="form" asp-action="UpdateCampaignTasksPage" asp-controller="Campaign" asp-route-id="@Model.CampaignUserTaskId" asp-area="Admin" method="post">
                     <div class="row m-2">
+                        <div class="col-12 col-md-8 offset-md-2">
+                            <div class="cherry-text ubuntu-bold list-no-style" asp-validation-summary="All"></div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label asp-for="CampaignId" class="form-label text-gradient text-info ubuntu-bold">Campaign</label>
@@ -84,8 +89,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white">Update Campaign User Task</button>
+                    <div class="modal-footer m-2">
+                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white text-2xl">Update Campaign User Task</button>
                     </div>
                 </form>
             </div>

@@ -42,7 +42,7 @@
                                 </div>
                             </td>
                             <td class="text-white ubuntu">@jobs.TruncateWords(jobs.Title, 3)</td>
-                            <td class="text-white ubuntu">@jobs.TruncateWords(jobs.Description, 3)</td>
+                            <td class="text-white ubuntu">@Html.Raw(jobs.TruncateWords(jobs.Description, 3))</td>
                             <td class="text-white ubuntu">@jobs.Priority</td>
                             <td class="text-white ubuntu">@jobs.Status</td>
                             <td class="text-white ubuntu">@jobs.StartDate.ToString("d") - @jobs.EndDate.ToString("d")</td>

@@ -1,4 +1,5 @@
-﻿using Dash.Areas.Admin.Models;
+﻿using System.Text.RegularExpressions;
+using Dash.Areas.Admin.Models;
 using Dash.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +38,7 @@ public class JobRepository : Repository<Jobs>, IJobRepository
         var job = new Jobs
         {
             Title = model.Title,
-            Description = model.Description,
+            Description = StripHtmlTags(model.Description),
             UserId = model.UserId,
             StartDate = model.StartDate,
             EndDate = model.EndDate,
@@ -59,7 +60,7 @@ public class JobRepository : Repository<Jobs>, IJobRepository
             throw new NullReferenceException("Job not found");
         }
         job.Title = model.Title;
-        job.Description = model.Description;
+        job.Description = StripHtmlTags(model.Description);
         job.UserId = model.UserId;
         job.StartDate = model.StartDate;
         job.EndDate = model.EndDate;
@@ -86,5 +87,12 @@ public class JobRepository : Repository<Jobs>, IJobRepository
     public async Task<int> CountJobsAsync()
     {
         return await _dbSet.CountAsync();
+    }
+    private string StripHtmlTags(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+
+        return Regex.Replace(input, "<.*?>", string.Empty); // Removes all HTML tags
     }
 }

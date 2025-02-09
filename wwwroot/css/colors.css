@@ -5,7 +5,6 @@
     background-image: -ms-linear-gradient(120deg, #134e5e, #71b280);
 }
 .moss-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #134e5e, #71b280);
     -webkit-background-clip: text;
@@ -18,7 +17,6 @@
     background-image: -ms-linear-gradient(120deg, #4776e6, #8e54e9);
 }
 .violet-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #4776e6, #8e54e9);
     -webkit-background-clip: text;
@@ -31,7 +29,6 @@
     background-image: -ms-linear-gradient(120deg, #1f1c2c, #928dab);
 }
 .steel-gray-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #1f1c2c, #928dab);
     -webkit-background-clip: text;
@@ -44,7 +41,6 @@
     background-image: -ms-linear-gradient(120deg, #eb3349, #f45c43);
 }
 .cherry-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #eb3349, #f45c43);
     -webkit-background-clip: text;
@@ -57,7 +53,6 @@
     background-image: -ms-linear-gradient(120deg, #1fa2ff, #12d8fa, #a6ffcb);
 }
 .striped-blue-green-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #1fa2ff, #12d8fa, #a6ffcb);
     -webkit-background-clip: text;
@@ -70,7 +65,6 @@
     background-image: -ms-linear-gradient(120deg, #1a2980, #26d0ce);
 }
 .aqua-marine-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #1a2980, #26d0ce);
     -webkit-background-clip: text;
@@ -83,7 +77,6 @@
     background-image: -ms-linear-gradient(120deg, #aa076b, #61045f);
 }
 .maroon-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #aa076b, #61045f);
     -webkit-background-clip: text;
@@ -96,7 +89,6 @@
     background-image: -webkit-linear-gradient(120deg, #003973, #e5e5be);
 }
 .horizon-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #003973, #e5e5be);
     -webkit-background-clip: text;
@@ -109,7 +101,6 @@
     background-image: -webkit-linear-gradient(120deg, #3ca55c, #b5ac49);
 }
 .sprite-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #3ca55c, #b5ac49);
     -webkit-background-clip: text;
@@ -122,7 +113,6 @@
     background-image: -webkit-linear-gradient(120deg, #2b5876, #4e4376);
 }
 .sea-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #2b5876, #4e4376);
     -webkit-background-clip: text;
@@ -135,7 +125,6 @@
     background-image: -webkit-linear-gradient(120deg, #e65c00, #f9d423);
 }
 .orange-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #e65c00, #f9d423);
     -webkit-background-clip: text;
@@ -148,7 +137,6 @@
     background-image: -webkit-linear-gradient(120deg, #1488cc, #2b32b2);
 }
 .blue-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #1488cc, #2b32b2);
     -webkit-background-clip: text;
@@ -161,7 +149,6 @@
     background-image: -webkit-linear-gradient(120deg, #56ab2f, #a8e063);
 }
 .green-text {
-    font-size: 2rem;
     font-weight: bold;
     background: linear-gradient(120deg, #56ab2f, #a8e063);
     -webkit-background-clip: text;

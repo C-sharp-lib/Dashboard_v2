@@ -1,8 +1,119 @@
 ﻿@{
     Layout = "_Layout";
+    var users = ViewBag.users;
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row mb-3">
+    <header class="bg-gradient-dark">
+        <div class="page-header min-vh-75" style="background-image: url('assets/img/office-dark.jpeg');">
+            <span class="mask bg-gradient-info opacity-8"></span>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center mx-auto my-auto">
+                        <p class="lead mb-4 text-white opacity-8 ubuntu-bold">World's best CRM at your disposal.  Come, become a member and take your company to new heights.</p>
+                        <a asp-action="Register" asp-controller="Identity" asp-area="Identity" class="btn violet text-white ubuntu-bold text-2xl">Create Account</a>
+                        <h6 class="text-white mb-2 mt-5 ubuntu-bold">Find us on</h6>
+                        <div class="d-flex justify-content-center">
+                            <a href="https://linkedin.com" class="btn bg-gradient-dark violet-text btn-sm"><i class="fa-brands fa-linkedin text-white m-3"></i></a>
+                            <a href="https://github.com" class="btn  bg-gradient-dark violet-text btn-sm"><i class="fa-brands fa-github text-white m-3"></i></a>
+                            <a href="https://stackoverflow.com" class="btn bg-gradient-dark violet-text btn-sm"><i class="fa-brands fa-stack-overflow text-white m-3"></i></a>
+                            <a href="https://google.com" class="btn bg-gradient-dark violet-text btn-sm"><i class="fa-brands fa-google-plus-g text-white m-3"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="position-absolute w-100 z-index-1 bottom-0">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="moving-waves">
+                        <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40" />
+                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+                        <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+                        <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+                        <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </header>
 </div>
+<div class="row mb-11">
+    <div class="row mt-3 mb-3">
+        <div class="col-md-12 mb-5 mt-5">
+            <h3 class="orange-text z-index-1 ubuntu-bold text-center position-relative">The Executive Team</h3>
+        </div>
+    </div>
+    <div class="row">
+        @foreach(var user in users)
+        {
+            <div class="col-lg-6 col-12">
+                <div class="card bg-gradient-dark shadow-xl card-profile overflow-hidden">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+                            <a href="javascript:;">
+                                <div class="p-3 pe-md-0">
+                                    <img class="w-100 border-radius-md" src="@Url.Content($"~/Uploads/AppUsers/{user.ImageUrl}")" alt="image">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                            <div class="card-body">
+                                <h5 class="mb-0 ubuntu-bold violet-text text-2xl" id="typed-strings">@user.FirstName @user.LastName</h5>
+                                <h6 class="ubuntu-bold green-text">@user.UserName</h6>
+                                <button type="button" class="btn orange text-white ubuntu-bold btn-block mb-3" data-bs-toggle="modal" data-bs-target="#@user?.UserName-@user?.Id">
+                                    Bio
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="modal bg-gradient-dark text-white ubuntu fade" id="@user?.UserName-@user?.Id" tabindex="-1" role="dialog" aria-labelledby="@user?.FirstName" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content bg-gradient-dark text-white ubuntu">
+                        <div class="modal-header">
+                            <h5 class="modal-title violet-text ubuntu-bold" id="@user?.FirstName">@user?.FirstName's Bio</h5>
+                            <button type="button" class="btn-close cherry-text ubuntu-bold text-2xl" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="cherry-text ubuntu-bold text-2xl">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="mb-0 ubuntu text-white">@Html.Raw(user?.Bio)</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-dark orange-text" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        }
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+    
+        if (document.getElementsByClassName('page-header')) {
+            window.addEventListener('scroll', function() {
+                let scrollPosition = window.pageYOffset;
+                let bgParallax = document.querySelector('.page-header');
+                let limit = bgParallax.offsetTop + bgParallax.offsetHeight;
+                if (scrollPosition > bgParallax.offsetTop && scrollPosition <= limit) {
+                    bgParallax.style.backgroundPositionY = (50 - 10 * scrollPosition / limit * 3) + '%';
+                } else {
+                    bgParallax.style.backgroundPositionY = '50%';
+                }
+            });
+        }
+    
+    </script>
+}

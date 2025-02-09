@@ -15,7 +15,12 @@
             </div>
             <div class="card-body p-5">
                 <form id="campaignUserTaskForm" class="form" asp-action="AddCampaignUserTasks" asp-controller="Campaign" asp-area="Admin" method="post">
-                    <div class="row">
+                    <div class="row m-2">
+                        <div class="col-12 col-md-8 offset-md-1">
+                            <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label asp-for="CampaignId" class="form-label text-gradient text-info ubuntu-bold">Campaign</label>
@@ -39,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label asp-for="TaskTitle" class="form-label text-gradient text-info ubuntu-bold">Task Title</label>
@@ -69,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-12">
                             <div class="form-group">
                                 <label asp-for="TaskDescription" class="form-label text-gradient text-info ubuntu-bold">Description</label>
@@ -91,3 +96,9 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        
+    </script>
+}

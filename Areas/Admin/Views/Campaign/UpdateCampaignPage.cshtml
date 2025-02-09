@@ -8,18 +8,24 @@
         <div class="card shadow-lg bg-gradient-dark">
             <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
                 <h1 class="text-gradient text-warning ubuntu-bold">Update Campaign</h1>
-                <a asp-action="Index" asp-controller="Campaign" asp-area="Admin" class="btn bg-gradient-info ubuntu-bold">Back To Campaign List</a>
+                <div class="btn-group text-sm">
+                    <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Campaign" asp-area="Admin" title="Go back to campaign list"><i
+                            class="fa-solid fa-backward-step"></i></a>
+                    <a class="btn bg-gradient-dark green-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-table-columns"></i></a>
+                </div>
             </div>
             <div class="card-body p-5">
 
                 <form class="form" asp-action="UpdateCampaign" asp-controller="Campaign" asp-route-id="@Model.CampaignId" asp-area="Admin" method="post">
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-8 offset-md-2">
-                            <div asp-validation-summary="All" class="text-danger ubuntu-bold list-no-style"></div>
+                            <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
                         </div>
                     </div>
                     <input type="hidden" name="_method" value="PUT">
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
@@ -53,17 +59,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="StartDate" class="form-label text-gradient text-info ubuntu-bold">Start Date</label>
-                                @Html.TextBox("StartDate", Model?.StartDate, Model?.StartDate.ToString("d"), new {@class="form-control datepicker form-control-lg color-background bg-gradient-dark text-white ubuntu"})
+                                @Html.TextBox("StartDate", Model?.StartDate, Model?.StartDate.ToString("d"), new {@class="datepicker form-control datepicker form-control-lg color-background bg-gradient-dark text-white ubuntu"})
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
-                                @Html.TextBox("EndDate", Model?.EndDate, Model?.EndDate.ToString("d"), new {@class="form-control datepicker form-control-lg color-background bg-gradient-dark text-white ubuntu"})
+                                @Html.TextBox("EndDate", Model?.EndDate, Model?.EndDate.ToString("d"), new {@class="datepicker form-control datepicker form-control-lg color-background bg-gradient-dark text-white ubuntu"})
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
@@ -73,7 +79,7 @@
                             </div>        
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Spend" class="form-label text-gradient text-info ubuntu-bold">Spend</label>
@@ -93,7 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Goals" class="form-label text-gradient text-info ubuntu-bold">Goals</label>
@@ -113,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Impressions" class="form-label text-gradient text-info ubuntu-bold">Impressions</label>
@@ -133,7 +139,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label asp-for="Conversions" class="form-label text-gradient text-info ubuntu-bold">Conversions</label>
@@ -147,7 +153,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12">
                             <div class="form-group">
                                 <label asp-for="Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
@@ -169,3 +175,8 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script type="text/javascript">
+
+    </script>
+}

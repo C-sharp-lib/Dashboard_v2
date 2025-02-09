@@ -1,4 +1,5 @@
-﻿using Dash.Areas.Admin.Models;
+﻿using System.Text.RegularExpressions;
+using Dash.Areas.Admin.Models;
 using Dash.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -53,7 +54,7 @@ public class LeadsRepository : Repository<Leads>, ILeadsRepository
             CompanyName = model.CompanyName,
             Industry = model.Industry,
             IsConverted = model.IsConverted,
-            Notes = model.Notes,
+            Notes = StripHtmlTags(model.Notes),
             LastContactDate = model.LastContactDate,
             FollowUpDate = model.FollowUpDate
         };
@@ -85,7 +86,7 @@ public class LeadsRepository : Repository<Leads>, ILeadsRepository
         lead.IsConverted = model.IsConverted;
         lead.LastContactDate = model.LastContactDate;
         lead.FollowUpDate = model.FollowUpDate;
-        lead.Notes = model.Notes;
+        lead.Notes = StripHtmlTags(model.Notes);
         lead.UserId = model.UserId;
         _dbSet.Update(lead);
         await _context.SaveChangesAsync();
@@ -105,5 +106,12 @@ public class LeadsRepository : Repository<Leads>, ILeadsRepository
     public async Task<int> CountLeadsAsync()
     {
         return await _dbSet.CountAsync();
+    }
+    private string StripHtmlTags(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+
+        return Regex.Replace(input, "<.*?>", string.Empty); // Removes all HTML tags
     }
 }

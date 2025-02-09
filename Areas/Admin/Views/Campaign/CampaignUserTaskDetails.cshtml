@@ -20,7 +20,7 @@
                 <div class="card-body p-4">
                     <h3>@Model.TaskTitle</h3>
                     <p class="text-white ubuntu lead">
-                        @Model.TaskDescription
+                        @Html.Raw(Model.TaskDescription)
                     </p>
                     <h4 class="text-gradient text-info ubuntu-bold">Dates</h4>
                     <p class="text-gradient text-success">@Model.StartDate.ToString("d") - @Model.EndDate.ToString("d")</p>

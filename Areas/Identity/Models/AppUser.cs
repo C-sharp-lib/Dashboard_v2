@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 using Dash.Areas.Admin.Models;
 using Microsoft.AspNetCore.Identity;
 
@@ -31,4 +32,5 @@ public class AppUser : IdentityUser
     public IEnumerable<AppUserRoles> UserRoles { get; set; }
     public IEnumerable<Jobs> Jobs { get; set; }
     public IEnumerable<Leads> Leads { get; set; }
+    
 }

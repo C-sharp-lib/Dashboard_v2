@@ -1,4 +1,5 @@
-﻿using Dash.Areas.Admin.Models;
+﻿using System.Text.RegularExpressions;
+using Dash.Areas.Admin.Models;
 using Dash.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -43,7 +44,7 @@ public class CampaignUserNoteRepository : Repository<CampaignUserNotes>, ICampai
             CampaignId = model.CampaignId,
             UserId = model.UserId,
             NoteTitle = model.NoteTitle,
-            NoteContent = model.NoteContent
+            NoteContent = StripHtmlTags(model.NoteContent)
         };
         _dbSet.Add(campaignUserNotes);
         await _context.SaveChangesAsync();
@@ -53,7 +54,7 @@ public class CampaignUserNoteRepository : Repository<CampaignUserNotes>, ICampai
     {
         var campaignUserNotes = await GetCampaignUserNoteByIdAsync(id);
         campaignUserNotes.NoteTitle = model.NoteTitle;
-        campaignUserNotes.NoteContent = model.NoteContent;
+        campaignUserNotes.NoteContent = StripHtmlTags(model.NoteContent);
         campaignUserNotes.CampaignId = model.CampaignId;
         campaignUserNotes.UserId = model.UserId;
         _dbSet.Update(campaignUserNotes);
@@ -70,5 +71,12 @@ public class CampaignUserNoteRepository : Repository<CampaignUserNotes>, ICampai
     public async Task<int> CampaignUserNoteCountAsync()
     {
         return await _dbSet.CountAsync();
+    }
+    private string StripHtmlTags(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+
+        return Regex.Replace(input, "<.*?>", string.Empty); // Removes all HTML tags
     }
 }

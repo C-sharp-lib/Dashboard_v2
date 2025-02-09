@@ -184,6 +184,7 @@ public class IdentityController : Controller
         try
         {
             await _userRepository.UpdateUserAsync(id, user);
+            
             ViewBag.user = ActiveUser;
             _notyfService.Success("User updated.");
             return RedirectToAction("UserDetails", "Identity", new { area = "Identity", id });

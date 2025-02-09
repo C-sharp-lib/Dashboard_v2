@@ -43,7 +43,7 @@
                                     <td class="text-white ubuntu">@Model.TruncateWords(notes.Campaign.Title, 3)</td>
                                     <td class="text-white ubuntu">@notes.User.UserName</td>
                                     <td class="text-white ubuntu">@Model.TruncateWords(notes.NoteTitle, 3)</td>
-                                    <td class="text-white ubuntu">@Model.TruncateWords(notes.NoteContent, 3)</td>
+                                    <td class="text-white ubuntu">@Html.Raw(Model.TruncateWords(notes.NoteContent, 3))</td>
                                     <td class="text-white ubuntu">@String.Format("{0:MM/dd/yyyy}", notes.CreatedAt)</td>
                                     <td class="btn-group btn-group-sm">
                                         <a asp-action="CampaignUserNoteDetails" asp-controller="Campaign" asp-area="Admin" asp-route-id="@notes.CampaignUserNoteId" title="View ID: @notes.CampaignUserNoteId" class="btn bg-gradient-dark text-info shadow-md ubuntu-bold btn-tooltip"><i class="fa-solid fa-list text-gradient text-info text-sm"></i></a>
@@ -90,7 +90,7 @@
                                     <td class="text-white ubuntu">@Model.TruncateWords(tasks.Campaign.Title, 3)</td>
                                     <td class="text-white ubuntu">@tasks.User.UserName</td>
                                     <td class="text-white ubuntu">@Model.TruncateWords(tasks.TaskTitle, 3)</td>
-                                    <td class="text-white ubuntu">@Model.TruncateWords(tasks.TaskDescription, 3)</td>
+                                    <td class="text-white ubuntu">@Html.Raw(Model.TruncateWords(tasks.TaskDescription, 3))</td>
                                     <td class="text-white ubuntu">@Model.StartDate.ToString("d") - @Model.EndDate.ToString("d")</td>
                                     <td class="text-white ubuntu">@String.Format("{0:MM/dd/yyyy}", tasks.CreatedAt)</td>
                                     <td class="btn-group btn-group-sm">
@@ -131,6 +131,10 @@
                 <p class="text-white ubuntu">
                     <span class="text-gradient text-info ubuntu-bold lead">Goals</span><br>
                     @Model.Goals
+                </p>
+                <p class="text-white ubuntu">
+                    <span class="text-gradient text-info ubuntu-bold lead">Description</span><br>
+                    @Html.Raw(Model.Description)
                 </p>
             </div>
             </div>

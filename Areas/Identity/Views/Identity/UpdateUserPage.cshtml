@@ -1,4 +1,4 @@
-﻿@using Dash.Areas.Identity.Models
+﻿
 @model Dash.Areas.Identity.Models.UpdateAppUserViewModel
 @{
     Layout = "_Layout";
@@ -10,16 +10,21 @@
       <div class="card shadow-lg p-3 bg-gradient-dark mb-3">
         <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
           <h3 class="ubuntu-bold orange-text">Update User</h3>
-          <a class="btn bg-gradient-dark violet-text ubuntu-bold btn-tooltip" asp-action="Index" asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-backward-step"></i></a>
+          <div class="btn-group text-sm">
+            <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+               asp-controller="Identity" asp-area="Identity" title="Go back to user list"><i class="fa-solid fa-backward-step"></i></a>
+            <a class="btn bg-gradient-dark green-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+               asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-table-columns"></i></a>
+          </div>
         </div>
         <div class="card-body bg-gradient-dark p-3">
           <form asp-action="UpdateUser" asp-controller="Identity" asp-route-id="@user?.Id" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="_method" value="PUT">
             <div class="row m-2">
               <div class="col-12 col-md-8 offset-md-2">
-                <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
+                <div class="cherry-text ubuntu-bold list-no-style" asp-validation-summary="All"></div>
               </div>
             </div>
+            <input type="hidden" name="_method" value="PUT">
             <div class="row m-2">
               <div class="col-12">
                 <h6 class="text-gradient text-info ubuntu-bold">Image Preview</h6>
@@ -42,7 +47,7 @@
               <div class="col-12 col-md-6">
                 <div class="form-group">
                   <label asp-for="DateOfBirth" class="ubuntu-bold text-gradient text-primary">Date of Birth</label>
-                  @Html.TextBox("DateOfBirth", user?.DateOfBirth, "{0:MM/dd/yyyy}", new {@class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold"})
+                  @Html.TextBox("DateOfBirth", user?.DateOfBirth, "{0:MM/dd/yyyy}", new { @class = "datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" })
                   <span asp-validation-for="DateOfBirth" class="text-danger m-2 p-2"></span>
                 </div>
               </div>
@@ -51,7 +56,7 @@
                   <label asp-for="DateOfHire" class="ubuntu-bold text-gradient text-primary">Hire Date</label>
                   @*<input asp-for="HireDate" value="@user?.HireDate?.ToString("MM/dd/yyyy")"
                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">*@
-                  @Html.TextBox("DateOfHire", user?.DateOfHire, "{0:MM/dd/yyyy}", new {@class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold"})
+                  @Html.TextBox("DateOfHire", user?.DateOfHire, "{0:MM/dd/yyyy}", new { @class = "datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" })
                   <span asp-validation-for="DateOfHire" class="text-danger m-2 p-2"></span>
                 </div>
               </div>
@@ -75,7 +80,7 @@
                   <span asp-validation-for="Email" class="text-danger m-2 p-2"></span>
                 </div>
               </div>
-            
+
               <div class="col-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="PhoneNumber" class="ubuntu-bold text-gradient text-primary">Phone</label>
@@ -147,19 +152,19 @@
             <div class="row m-2">
               <div class="col-12">
                 <div class="form-group">
-                  <label asp-for="Bio" class="form-label ubuntu-bold violet-text">Bio</label>
+                  <label asp-for="Bio" class="ubuntu-bold text-gradient text-primary">Bio</label>
                   <div class="main-container">
                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                       <div class="editor-container__editor">
-                        @Html.TextArea("Bio", user?.Bio, 10, 10, new { id = "editor" })
+                        <textarea asp-for="Bio" id="editor" cols="10" rows="10"></textarea>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card-footer">
-              <input type="submit" class="btn bg-gradient-success" value="Update User"/>
+            <div class="card-footer mt-3 mb-3">
+              <input type="submit" class="btn orange d-block w-100 ubuntu-bold text-white text-2xl" value="Update User"/>
             </div>
           </form>
         </div>
@@ -183,6 +188,5 @@
       let fileName = event.target.files.length > 0 ? event.target.files[0].name : "No file selected";
       document.getElementById('fileName').textContent = fileName;
     });
-
   </script>
 }

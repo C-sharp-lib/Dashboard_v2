@@ -1,4 +1,5 @@
-﻿using Dash.Areas.Admin.Models;
+﻿using System.Text.RegularExpressions;
+using Dash.Areas.Admin.Models;
 using Dash.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -43,7 +44,7 @@ public class CampaignUserTaskRepository : Repository<CampaignUserTasks>, ICampai
             CampaignId = model.CampaignId,
             UserId = model.UserId,
             TaskTitle = model.TaskTitle,
-            TaskDescription = model.TaskDescription,
+            TaskDescription = StripHtmlTags(model.TaskDescription),
             Priority = model.Priority,
             StartDate = model.StartDate,
             EndDate = model.EndDate,
@@ -57,7 +58,7 @@ public class CampaignUserTaskRepository : Repository<CampaignUserTasks>, ICampai
     {
         var campaignUserTask = await GetCampaignUserTaskByIdAsync(id);
         campaignUserTask.TaskTitle = model.TaskTitle;
-        campaignUserTask.TaskDescription = model.TaskDescription;
+        campaignUserTask.TaskDescription = StripHtmlTags(model.TaskDescription);
         campaignUserTask.Priority = model.Priority;
         campaignUserTask.StartDate = model.StartDate;
         campaignUserTask.EndDate = model.EndDate;
@@ -81,5 +82,12 @@ public class CampaignUserTaskRepository : Repository<CampaignUserTasks>, ICampai
     public async Task<int> CampaignUserTaskCountAsync()
     {
         return await _dbSet.CountAsync();
+    }
+    private string StripHtmlTags(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+
+        return Regex.Replace(input, "<.*?>", string.Empty); // Removes all HTML tags
     }
 }

@@ -68,6 +68,10 @@
                     <span class="text-gradient text-info ubuntu-bold">Address</span>
                     @Model?.Address @Model?.City, @Model?.State, @Model?.ZipCode
                 </p>
+                <div class="text-white ubuntu">
+                    <span class="text-gradient text-info ubuntu-bold">Bio</span><br>
+                    @Html.Raw(@Model?.Bio)
+                </div>
             </div>
             </div>
         </div>

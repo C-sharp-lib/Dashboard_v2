@@ -1,4 +1,5 @@
-﻿using Dash.Areas.Admin.Models;
+﻿using System.Text.RegularExpressions;
+using Dash.Areas.Admin.Models;
 using Dash.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,7 +45,7 @@ public class CampaignRepository : Repository<Campaigns>, ICampaignRepository
         Campaigns campaign = new Campaigns
         {
             Title = model.Title,
-            Description = model.Description,
+            Description = StripHtmlTags(model.Description),
             Type = model.Type,
             Status = model.Status,
             StartDate = model.StartDate,
@@ -74,7 +75,7 @@ public class CampaignRepository : Repository<Campaigns>, ICampaignRepository
             throw new NullReferenceException($"Campaign with id {id} was not found");
         }
         campaign.Title = model.Title;
-        campaign.Description = model.Description;
+        campaign.Description = StripHtmlTags(model.Description);
         campaign.Type = model.Type;
         campaign.Status = model.Status;
         campaign.StartDate = model.StartDate;
@@ -109,5 +110,12 @@ public class CampaignRepository : Repository<Campaigns>, ICampaignRepository
     public async Task<int> CampaignCountAsync()
     {
         return await _dbSet.CountAsync();
+    }
+    private string StripHtmlTags(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+
+        return Regex.Replace(input, "<.*?>", string.Empty); // Removes all HTML tags
     }
 }

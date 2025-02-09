@@ -9,14 +9,18 @@
         <div class="card shadow-lg bg-gradient-dark">
             <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
                 <h1 class="green-text ubuntu-bold">Add A Customer</h1>
-                <div class="btn-group">
-                    <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index" asp-controller="Customer" asp-area="Admin" title="Go back to customer list"><i class="fa-solid fa-backward-step"></i></a>
+                <div class="btn-group text-sm">
+                    <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Customer" asp-area="Admin" title="Go back to customer list"><i
+                            class="fa-solid fa-backward-step"></i></a>
+                    <a class="btn bg-gradient-dark green-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-table-columns"></i></a>
                 </div>
             </div>
             <div class="card-body p-3">
 
                 <form id="customerForm" class="form" asp-action="AddCustomer" asp-controller="Customer" asp-area="Admin" method="post">
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label asp-for="FirstName" class="form-label text-gradient text-info ubuntu-bold">First Name</label>
@@ -42,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row-gap-5 row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Address" class="form-label text-gradient text-info ubuntu-bold">Address</label>
@@ -115,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="ZipCode" class="form-label text-gradient text-info ubuntu-bold">Zip Code</label>

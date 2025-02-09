@@ -9,12 +9,19 @@
         <div class="card shadow-lg bg-gradient-dark">
             <div class="card-header bg-gradient-dark">
                 <h1 class="text-gradient text-primary ubuntu-bold">Update Event</h1>
+                <div class="btn-group text-sm">
+                    <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Event" asp-area="Admin" title="Go back to event list"><i
+                            class="fa-solid fa-backward-step"></i></a>
+                    <a class="btn bg-gradient-dark green-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-table-columns"></i></a>
+                </div>
             </div>
             <div class="card-body p-5">
                 <form id="eventForm" class="form" asp-action="UpdateEventsById" asp-controller="Event" asp-route-id="@eve.EventId" asp-area="Admin" method="post">
-                    <div class="row">
+                    <div class="row m-2">
                         <div class="col-12 col-md-8 offset-md-2">
-                            <div asp-validation-summary="All" class="text-danger ubuntu-bold list-no-style"></div>
+                            <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
                         </div>
                     </div>
                     <input type="hidden" name="_method" value="PUT">
@@ -28,11 +35,11 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="StartDate" class="form-label text-gradient text-info ubuntu-bold">Start Date</label>
-                        @Html.TextBox("StartDate", eve.StartDate, eve.StartDate.ToString("d"), new {@class="form-control datepicker form-control-lg color-background bg-gradient-dark text-white ubuntu"})
+                        @Html.TextBox("StartDate", eve.StartDate, eve.StartDate.ToString("d"), new {@class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"})
                     </div>
                     <div class="form-group">
                         <label asp-for="EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
-                        @Html.TextBox("EndDate", eve.EndDate, eve.EndDate.ToString("d"), new {@class="form-control datepicker form-control-lg color-background bg-gradient-dark text-white ubuntu"})
+                        @Html.TextBox("EndDate", eve.EndDate, eve.EndDate.ToString("d"), new {@class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"})
                     </div>
                     <div class="form-group">
                         <label asp-for="Color" class="form-label text-gradient text-info ubuntu-bold">Color</label>

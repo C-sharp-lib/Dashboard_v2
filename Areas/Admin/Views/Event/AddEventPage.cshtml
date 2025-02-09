@@ -7,39 +7,74 @@
 <div class="row mt-11 mb-11">
     <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
         <div class="card shadow-lg bg-gradient-dark">
-            <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
+            <div class="card-header bg-gradient-dark"
+                 style="display: flex; justify-content: space-between; align-items: center">
                 <h1 class="text-gradient text-warning ubuntu-bold">Add An Event</h1>
-                <a asp-action="Index" asp-controller="Event" asp-area="Admin" class="btn bg-gradient-info ubuntu-bold">Back To Dashboard</a>
+                <div class="btn-group text-sm">
+                    <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Lead" asp-area="Admin" title="Go back to lead list"><i
+                            class="fa-solid fa-backward-step"></i></a>
+                    <a class="btn bg-gradient-dark green-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-table-columns"></i></a>
+                </div>
             </div>
             <div class="card-body p-3">
 
-                <form id="eventForm" class="form" asp-action="AddEvent" asp-controller="Event" asp-area="Admin" method="post">
+                <form id="eventForm" class="form" asp-action="AddEvent" asp-controller="Event" asp-area="Admin"
+                      method="post">
+                    <div class="row m-2">
+                        <div class="col-12 col-md-8 offset-md-1">
+                            <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label asp-for="Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
-                        <input asp-for="Title" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Title"/>
+                        <input asp-for="Title" type="text"
+                               class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
+                               id="Title"/>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
-                        <textarea asp-for="Description" cols="10" rows="5" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Description"></textarea>
+                        <label asp-for="Description"
+                               class="form-label text-gradient text-info ubuntu-bold">Description</label>
+                        <div class="main-container">
+                            <div class="editor-container editor-container_classic-editor editor-container_include-style"
+                                 id="editor-container">
+                                <div class="editor-container__editor">
+                                    <textarea id="editor" asp-for="Description" cols="10" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="form-group">
-                        <label asp-for="StartDate" class="form-label text-gradient text-info ubuntu-bold">Start Date</label>
-                        <input asp-for="StartDate" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu datepicker" id="StartDate"/>
+                        <label asp-for="StartDate" class="form-label text-gradient text-info ubuntu-bold">Start
+                            Date</label>
+                        <input asp-for="StartDate"
+                               class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu datepicker"
+                               id="StartDate"/>
                     </div>
                     <div class="form-group">
                         <label asp-for="EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
-                        <input asp-for="EndDate" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu datepicker" id="EndDate"/>
+                        <input asp-for="EndDate"
+                               class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu datepicker"
+                               id="EndDate"/>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Color" class="form-label text-gradient text-info ubuntu-bold">Background Color</label>
-                        <input asp-for="Color" class="form-control color-background bg-gradient-dark" type="color" id="Color">
+                        <label asp-for="Color" class="form-label text-gradient text-info ubuntu-bold">Background
+                            Color</label>
+                        <input asp-for="Color" class="form-control color-background bg-gradient-dark" type="color"
+                               id="Color">
                     </div>
                     <div class="form-group">
-                        <label asp-for="ForegroundColor" class="form-label text-gradient text-info ubuntu-bold">Foreground Color</label>
-                        <input asp-for="ForegroundColor" class="form-control color-background bg-gradient-dark" type="color" id="ForegroundColor">
+                        <label asp-for="ForegroundColor" class="form-label text-gradient text-info ubuntu-bold">Foreground
+                            Color</label>
+                        <input asp-for="ForegroundColor" class="form-control color-background bg-gradient-dark"
+                               type="color" id="ForegroundColor">
                     </div>
                     <div class="modal-footer mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white" id="saveEventBtn">Save Event</button>
+                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white" id="saveEventBtn">
+                            Save Event
+                        </button>
                     </div>
                 </form>
             </div>

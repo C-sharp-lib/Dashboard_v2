@@ -10,7 +10,13 @@
         <div class="card shadow-lg bg-gradient-dark">
             <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
                 <h1 class="text-gradient text-warning ubuntu-bold">Add A Campaign User Note</h1>
-                <a asp-action="Index" asp-controller="Campaign" asp-area="Admin" class="btn bg-gradient-info ubuntu-bold">Back To Dashboard</a>
+                <div class="btn-group text-sm">
+                    <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Campaign" asp-area="Admin" title="Go back to campaign list"><i
+                            class="fa-solid fa-backward-step"></i></a>
+                    <a class="btn bg-gradient-dark green-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
+                       asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-table-columns"></i></a>
+                </div>
             </div>
             <div class="card-body p-5">
 
@@ -70,3 +76,8 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script type="text/javascript">
+  
+    </script>
+}

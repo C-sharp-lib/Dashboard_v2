@@ -1,4 +1,5 @@
-﻿using Dash.Areas.Identity.Models;
+﻿using System.Text.RegularExpressions;
+using Dash.Areas.Identity.Models;
 using Dash.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -70,22 +71,27 @@ public class UserRepository : Repository<AppUser>, IUserRepository
             }
         }
 
-        var user = new AppUser
+        if (model.Bio != null)
         {
-            UserName = model.UserName,
-            Email = model.Email,
-            FirstName = model.FirstName,
-            MiddleName = model.MiddleName,
-            LastName = model.LastName,
-            DateOfBirth = model.DateOfBirth,
-            DateOfHire = model.DateOfHire,
-            Address = model.Address,
-            City = model.City,
-            State = model.State,
-            ZipCode = model.ZipCode,
-            ImageUrl = (uniqueFileName3 != null ? Path.Combine("Uploads/AppUsers/", uniqueFileName3) : null)!
-        };
-        await _userManager.CreateAsync(user, model.Password);
+            var user = new AppUser
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                MiddleName = model.MiddleName,
+                LastName = model.LastName,
+                DateOfBirth = model.DateOfBirth,
+                DateOfHire = model.DateOfHire,
+                Address = model.Address,
+                City = model.City,
+                State = model.State,
+                ZipCode = model.ZipCode,
+                Bio = model.Bio,
+                ImageUrl = (uniqueFileName3 != null ? Path.Combine("Uploads/AppUsers/", uniqueFileName3) : null)!
+            };
+            if (model.Password != null) await _userManager.CreateAsync(user, model.Password);
+        }
+
         await _context.SaveChangesAsync();
     }
 
@@ -118,6 +124,7 @@ public class UserRepository : Repository<AppUser>, IUserRepository
         userToUpdate.City = user.City;
         userToUpdate.State = user.State;
         userToUpdate.ZipCode = user.ZipCode;
+        userToUpdate.Bio = user.Bio;
         userToUpdate.PhoneNumberConfirmed = true;
         await _userManager.UpdateAsync(userToUpdate);
         await _context.SaveChangesAsync();
@@ -134,4 +141,32 @@ public class UserRepository : Repository<AppUser>, IUserRepository
     {
         return await _dbSet.CountAsync();
     }
+    /*private string StripHtmlTags(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+
+        return Regex.Replace(input, "<.*?>", string.Empty); // Removes all HTML tags
+    }
+    private string ConvertHtmlToPlainText(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+        
+        input = Regex.Replace(input, @"<\/p>", "\n\n", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<p>", "", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<\/?(?!b|i|em|strong|u|span[^>]*style=[""][^""]*color:[^""]+[""][^>]*>)[^>]+>", "", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<span[^>]*style=[""][^""]*color:([^""]+)[""][^>]*>", "<span style=\"color:$1\">", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<br\s#1#?>", "\n", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<ul>", "\n", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<\/ul>", "", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<li>", "• ", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<\/li>", "\n", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<strong>(.*?)<\/strong>", "<span style=\"font-weight:bold;\">", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<b>(.*?)<\/b>", "<span style=\"font-weight:bold;\">", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<em>(.*?)<\/em>", "<span style=\"font-style: italic\">", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, @"<i>(.*?)<\/i>", "<span style=\"font-style: italic\">", RegexOptions.IgnoreCase);
+        input = Regex.Replace(input, "<.*?>", string.Empty);
+        return input.Trim();
+    }*/
 }

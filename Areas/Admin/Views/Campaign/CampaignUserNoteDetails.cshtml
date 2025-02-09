@@ -20,7 +20,7 @@
             <div class="card-body p-4">
                 <h3>@Model.NoteTitle</h3>
                 <p class="text-white ubuntu lead">
-                    @Model.NoteContent
+                    @Html.Raw(Model.NoteContent)
                 </p>
                 <p class="text-gradient text-success">@Model.CreatedAt.ToString("d")</p>
             </div>

@@ -1,4 +1,5 @@
-﻿using Dash.Areas.Admin.Models;
+﻿using System.Text.RegularExpressions;
+using Dash.Areas.Admin.Models;
 using Dash.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -63,7 +64,7 @@ public class ProductRepository : Repository<Products>, IProductRepository
         var product = new Products
         {
             Name = model.Name,
-            Description = model.Description,
+            Description = StripHtmlTags(model.Description),
             ImageUrl = (uniqueFileName3 != null ? Path.Combine("Uploads/Products/", uniqueFileName3) : null)!,
             Category = model.Category,
             Currency = model.Currency,
@@ -94,7 +95,7 @@ public class ProductRepository : Repository<Products>, IProductRepository
         }
 
         product.Name = model.Name;
-        product.Description = model.Description;
+        product.Description = StripHtmlTags(model.Description);
         product.Category = model.Category;
         product.Currency = model.Currency;
         product.QuantityInStock = model.QuantityInStock;
@@ -115,5 +116,12 @@ public class ProductRepository : Repository<Products>, IProductRepository
     public async Task<int> CountProductsAsync()
     {
         return await _dbSet.CountAsync();
+    }
+    private string StripHtmlTags(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+
+        return Regex.Replace(input, "<.*?>", string.Empty); // Removes all HTML tags
     }
 }

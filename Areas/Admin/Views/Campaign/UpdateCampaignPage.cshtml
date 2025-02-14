@@ -160,7 +160,7 @@
                                 <div class="main-container">
                                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                                         <div class="editor-container__editor">
-                                            @Html.TextArea("Description", Model?.Description, new { id = "editor", rows=10, cols=10})
+                                            <textarea asp-for="Description" id="editor" cols="10" rows="10" onload="Description()"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -177,6 +177,11 @@
 </div>
 @section Scripts {
     <script type="text/javascript">
-
+        function Description() {
+            ClassicEditor
+                .create(document.querySelector('#editor'), {
+                    initialData: @Html.Raw(Model.Description)
+                });
+        }
     </script>
 }

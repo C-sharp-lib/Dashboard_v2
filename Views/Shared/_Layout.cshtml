@@ -14,11 +14,13 @@
     <link rel="stylesheet" href="~/css/ckeditor.css">
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.css" crossorigin>
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5-premium-features/44.1.0/ckeditor5-premium-features.css" crossorigin>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
     <link rel="stylesheet" href="/Admin/css/admin.css" asp-append-version="true">
     <link rel="stylesheet" href="/Identity/css/identity.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/colors.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Dash.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/flatpickr-custom-styles.css" asp-append-version="true">
 </head>
 <body class="bg-gradient-dark">
 <div class="container">
@@ -230,7 +232,11 @@
         defaultDate: "today",
         minDate: "01-01-1940",
         maxDate: "12-31-2100",
-        enableTime: true
+        enableTime: true,
+        styles: {
+            font: "Ubuntu",
+            fontsize: 18
+        }
     });
 </script>
 @await Component.InvokeAsync("Notyf")

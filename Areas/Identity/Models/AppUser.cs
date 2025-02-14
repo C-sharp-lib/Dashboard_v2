@@ -30,7 +30,7 @@ public class AppUser : IdentityUser
     public IEnumerable<CampaignUserNotes> CampaignUserNotes { get; set; }
     public IEnumerable<CampaignUserTasks> CampaignUserTasks { get; set; }
     public IEnumerable<AppUserRoles> UserRoles { get; set; }
-    public IEnumerable<Jobs> Jobs { get; set; }
+    public IEnumerable<UserJobs> UserJobs { get; set; }
     public IEnumerable<Leads> Leads { get; set; }
     
 }

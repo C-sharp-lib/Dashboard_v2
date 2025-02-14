@@ -64,7 +64,7 @@
                                 <div class="main-container">
                                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                                         <div class="editor-container__editor">
-                                            @Html.TextArea("NoteContent", Model?.NoteContent, new { id = "editor", rows=10, cols=10})
+                                            <textarea asp-for="NoteContent" id="editor" cols="10" rows="10" onload="Notes()"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -81,6 +81,11 @@
 </div>
 @section Scripts {
     <script type="text/javascript">
-
+        function Notes() {
+            ClassicEditor
+                .create(document.querySelector('#editor'), {
+                    initialData: @Html.Raw(Model.NoteContent)
+                });
+        }
     </script>
 }

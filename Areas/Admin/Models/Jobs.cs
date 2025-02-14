@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Dash.Areas.Identity.Models;
+using Microsoft.AspNetCore.Html;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dash.Areas.Admin.Models;
@@ -11,6 +12,7 @@ public class Jobs
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int JobId { get; set; }
     public string Title { get; set; }
+    [DataType(DataType.Text)]
     public string Description { get; set; }
     public string Category { get; set; }
     public string Type { get; set; }
@@ -28,9 +30,8 @@ public class Jobs
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
     [DataType(DataType.Date)]
     public DateTime UpdatedAt { get; set; }
-    [ForeignKey(nameof(UserId))]
-    public string UserId { get; set; }
-    public AppUser User { get; set; }
+    public IEnumerable<UserJobs> UserJobs { get; set; }
+    
     [Precision(10,2)]
     public decimal EstimatedCost { get; set; }
     

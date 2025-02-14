@@ -1,0 +1,14 @@
+{
+  "name": "crm-dashboard",
+  "version": "1.0.0",
+  "description": "A starter crm in asp.net core mvc bootstrap",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Stradtman",
+  "license": "MIT",
+  "dependencies": {
+    "notyf": "^3.10.0"
+  }
+}

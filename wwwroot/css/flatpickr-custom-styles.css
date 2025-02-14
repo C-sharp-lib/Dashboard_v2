@@ -1,0 +1,48 @@
+﻿body > div.flatpickr-calendar.hasTime.animate.open.arrowTop.arrowLeft > div.flatpickr-months > div > div > div > input,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowTop.arrowLeft > div.flatpickr-months > div > div > select,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-months > div > div > div > input,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-months > div > div > select,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-months > div > div > select > option:nth-child(1n) {
+    font-family: "Ubuntu", sans-serif !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+}
+body > div.flatpickr-calendar.hasTime.animate.open.arrowTop.arrowLeft > div.flatpickr-innerContainer > div > div.flatpickr-days > div > span:nth-child(1n),
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-innerContainer > div > div.flatpickr-days > div > span:nth-child(1n) {
+    font-family: "Ubuntu", sans-serif !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+}
+body > div.flatpickr-calendar.hasTime.animate.open.arrowTop.arrowLeft > div.flatpickr-innerContainer > div > div.flatpickr-weekdays > div > span:nth-child(1n),
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-innerContainer > div > div.flatpickr-weekdays > div > span:nth-child(1n) {
+    font-family: "Ubuntu", sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+}
+body > div.flatpickr-calendar.hasTime.animate.open.arrowTop.arrowLeft > div.flatpickr-time > div:nth-child(1n) > input,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowTop.arrowLeft > div.flatpickr-time > div.numInputWrapper.is-filled > input,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-time > div:nth-child(1n) > input,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-time > div.numInputWrapper.is-filled > input {
+    font-family: "Ubuntu", sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: darkorange !important;
+}
+body > div.flatpickr-calendar.hasTime.animate.open.arrowTop.arrowLeft > div.flatpickr-time > span.flatpickr-am-pm,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-time > span.flatpickr-am-pm {
+    font-family: "Ubuntu", sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: dodgerblue !important;
+}
+
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-time > div.numInputWrapper.is-filled > span.arrowUp,
+body > div.flatpickr-calendar.hasTime.animate.open.arrowBottom.arrowLeft > div.flatpickr-time > div.numInputWrapper.is-filled > span.arrowDown {
+    font-family: "Ubuntu", sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: darkgrey !important;
+}
+input.datepicker {
+    cursor: pointer !important;
+}

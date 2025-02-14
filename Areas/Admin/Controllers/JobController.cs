@@ -42,9 +42,9 @@ public class JobController : Controller
             return RedirectToAction("Login", "Identity", new {area = "Identity"});
         }
 
-        var jobs = await _jobRepository.GetAllJobsAsync();
+        var userJob = await _jobRepository.GetAllUserJobsAsync();
         ViewBag.user = ActiveUser;
-        return View(jobs);
+        return View(userJob);
     }
 
     [HttpGet("{id}")]
@@ -55,8 +55,8 @@ public class JobController : Controller
             _notyfService.Error("You are not logged in, you need to be to view this page.");
             return RedirectToAction("Login", "Identity", new {area = "Identity"});
         }
-        
-        var job = await _jobRepository.GetJobByIdAsync(id);
+
+        var job = await _jobRepository.GetUserJobByIdAsync(id);
         ViewBag.user = ActiveUser;
         return View(job);
     }
@@ -76,7 +76,7 @@ public class JobController : Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddJob([FromForm] AddJobsViewModel model)
+    public async Task<IActionResult> AddJob([FromForm] UserJobs jobs)
     {
         if (ActiveUser == null)
         {
@@ -86,7 +86,7 @@ public class JobController : Controller
 
         try
         {
-            await _jobRepository.AddJobAsync(model);
+            await _jobRepository.AddJobAsync(jobs);
             _notyfService.Success("Job added.");
             ViewBag.user = ActiveUser;
             return RedirectToAction("Index", "Job", new {area = "Admin"});
@@ -106,25 +106,31 @@ public class JobController : Controller
             _notyfService.Error("You are not logged in, you need to be to view this page.");
             return RedirectToAction("Login", "Identity", new {area = "Identity"});
         }
-        var job = await _jobRepository.GetJobByIdAsync(id);
+
+        var userJob = await _jobRepository.GetUserJobByIdAsync(id);
+        if (userJob == null)
+        {
+            _notyfService.Error("Job not found.");
+            return RedirectToAction("Index", "Job", new {area = "Admin"});
+        }
         ViewBag.user = ActiveUser;
         ViewBag.users = await _context.Users.ToListAsync();
-        return View(job);
+        return View(userJob);
     }
 
     [HttpPost("{id}")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> UpdateJob(int id, [FromForm] UpdateJobsViewModel model)
+    public async Task<IActionResult> UpdateJob(int id, [FromForm] UserJobs jobs)
     {
         if (ActiveUser == null)
         {
             _notyfService.Error("You are not logged in, you need to be to view this page.");
             return RedirectToAction("Login", "Identity", new {area = "Identity"});
         }
-
+        
         try
         {
-            await _jobRepository.UpdateJobAsync(id, model);
+            await _jobRepository.UpdateJobAsync(id, jobs);
             _notyfService.Success("Job updated.");
             ViewBag.users = await _context.Users.ToListAsync();
             ViewBag.user = ActiveUser;
@@ -133,17 +139,17 @@ public class JobController : Controller
         catch (DbUpdateConcurrencyException ex)
         {
             _notyfService.Error(ex.Message);
-            return RedirectToAction("Index", "Job", new { area = "Admin" });
+            throw new DbUpdateConcurrencyException(ex.Message);
         }
         catch (DbUpdateException ex)
         {
             _notyfService.Error(ex.Message);
-            return RedirectToAction("Index", "Job", new { area = "Admin" });
+            throw new DbUpdateException(ex.Message);
         }
         catch (Exception ex)
         {
             _notyfService.Error(ex.Message);
-            return RedirectToAction("Index", "Job", new { area = "Admin" });
+            throw new Exception(ex.Message);
         }
     }
 

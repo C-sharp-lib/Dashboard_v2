@@ -340,7 +340,6 @@ const editorConfig = {
             'ckboxImageEdit'
         ]
     },
-    initialData: '',
     licenseKey: LICENSE_KEY,
     link: {
         addTargetToExternalLinks: true,
@@ -378,7 +377,6 @@ const editorConfig = {
     mergeFields: {
         /* Read more: https://ckeditor.com/docs/ckeditor5/latest/features/merge-fields.html#configuration */
     },
-    placeholder: 'Type or paste your content here!',
     style: {
         definitions: [
             {

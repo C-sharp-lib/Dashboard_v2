@@ -160,15 +160,21 @@ public class IdentityController : Controller
             return RedirectToAction("Login", "Identity", new { area = "Identity" });
         }
 
-        var user = await _userManager.FindByIdAsync(id);
+        var user = await _context.Users
+            .Include(x => x.UserJobs)
+            .ThenInclude(x => x.Job)
+            .Include(x => x.UserEvents)
+            .ThenInclude(x => x.Event)
+            .Include(x => x.CampaignUserNotes)
+            .ThenInclude(x => x.Campaign)
+            .FirstOrDefaultAsync(x => x.Id == id);
         if (user == null)
         {
             _notyfService.Error("User does not exist.");
             return RedirectToAction("Index", "Identity", new { area = "Identity" });
         }
         ViewBag.user = ActiveUser;
-        ViewBag.theUser = user;
-        return View();
+        return View(user);
     }
     
     [HttpPost("{id}")]

@@ -483,10 +483,17 @@
                         </div>
                     </div>
                     <div class="row m-2">
-                        <div class="col-12 col-md-12">
+                        <div class="col-12">
                             <div class="form-group">
-                                <label asp-for="Notes" class="form-label text-gradient text-info ubuntu-bold">Notes</label>
-                                @Html.TextArea("Description", lead?.Notes, 5, 10, new {@class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"})
+                                <label asp-for="Notes" class="form-label text-gradient text-info ubuntu-bold">Description</label>
+                                <div class="main-container">
+                                    <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
+                                        <div class="editor-container__editor">
+                                            <textarea asp-for="Notes" id="editor" cols="10" rows="10" onload="Notes()"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -501,6 +508,11 @@
 
 @section Scripts {
     <script type="text/javascript">
-
+        function Notes() {
+            ClassicEditor
+                .create(document.querySelector('#editor'), {
+                    initialData: @Html.Raw(Model.Notes)
+                });
+        }
     </script>
 }

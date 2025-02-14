@@ -12,7 +12,7 @@
                 <div class="btn-group text-sm">
                     <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
                        asp-controller="Event" asp-area="Admin" title="Go back to event list"><i
-                            class="fa-solid fa-backward-step"></i></a>
+                                                                                                 class="fa-solid fa-backward-step"></i></a>
                     <a class="btn bg-gradient-dark green-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
                        asp-controller="Dashboard" asp-area="Admin" title="Go back to admin dashboard"><i class="fa-solid fa-table-columns"></i></a>
                 </div>
@@ -37,7 +37,14 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label asp-for="Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
-                                @Html.TextArea("Description", eve.Description, 5, 10, new {@class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"})
+                                <div class="main-container">
+                                    <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
+                                        <div class="editor-container__editor">
+                                            <textarea asp-for="Description" id="editor" cols="10" rows="10" onload="Description()"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -66,12 +73,12 @@
                         </div>
                     </div>
                     <div class="row m-2">
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label asp-for="ForegroundColor" class="form-label text-gradient text-info ubuntu-bold">Color</label>
-                            <input asp-for="ForegroundColor" class="form-control color-background bg-gradient-dark" type="color" value="@eve.ForegroundColor" id="ForegroundColor">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="ForegroundColor" class="form-label text-gradient text-info ubuntu-bold">Color</label>
+                                <input asp-for="ForegroundColor" class="form-control color-background bg-gradient-dark" type="color" value="@eve.ForegroundColor" id="ForegroundColor">
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="m-2">
                         <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white text-2xl" id="saveEventBtn">Update Event</button>
@@ -81,3 +88,15 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function Description() {
+            ClassicEditor
+                .create(document.querySelector('#editor'), {
+                    initialData: @Html.Raw(Model.Description)
+                });
+        }
+    </script>
+}

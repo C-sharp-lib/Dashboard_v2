@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Dash.Areas.Admin.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace Dash.Areas.Identity.Models;
@@ -51,3 +53,4 @@ public class RegisterViewModel : IdentityUser
     [DataType(DataType.Date)]
     public DateTime DateOfHire { get; set; }
 }
+

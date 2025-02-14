@@ -25,6 +25,7 @@ namespace Dash.Data;
         public DbSet<CampaignUserTasks> CampaignUserTasks { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Leads> Leads { get; set; }
+        public DbSet<UserJobs> UserJobs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -58,7 +59,8 @@ namespace Dash.Data;
             builder.Entity<Campaigns>().HasKey(x => x.CampaignId);
             builder.Entity<CampaignUserTasks>().HasKey(x => new { x.UserId, x.CampaignId, x.CampaignUserTaskId });
             builder.Entity<CampaignUserNotes>().HasKey(x => new { x.UserId, x.CampaignId, x.CampaignUserNoteId });
-            builder.Entity<Jobs>().HasKey(x => new { x.JobId, x.UserId });
+            builder.Entity<Jobs>().HasKey(x => x.JobId);
+            builder.Entity<UserJobs>().HasKey(x => new {x.UserJobId, x.JobId, x.UserId});
             builder.Entity<Leads>().HasKey(x => new {x.LeadId, x.UserId});
             builder.Entity<UserSchedules>()
                 .HasOne(x => x.Schedule)
@@ -92,10 +94,14 @@ namespace Dash.Data;
                 .HasOne(x => x.User)
                 .WithMany(x => x.CampaignUserNotes)
                 .HasForeignKey(x => x.UserId);
-            builder.Entity<Jobs>()
+            builder.Entity<UserJobs>()
                 .HasOne(x => x.User)
-                .WithMany(x => x.Jobs)
+                .WithMany(x => x.UserJobs)
                 .HasForeignKey(x => x.UserId);
+            builder.Entity<UserJobs>()
+                .HasOne(x => x.Job)
+                .WithMany(x => x.UserJobs)
+                .HasForeignKey(x => x.JobId);
             builder.Entity<AppUserRoles>()
                 .HasOne(x => x.User)
                 .WithMany(x => x.UserRoles)

@@ -1,4 +1,5 @@
-﻿@model Dash.Areas.Admin.Models.AddJobsViewModel
+﻿@using Dash.Areas.Admin.Models
+@model Dash.Areas.Admin.Models.UserJobs
 @{
     Layout = "_Layout";
 }
@@ -18,7 +19,7 @@
             </div>
             <div class="card-body p-5">
 
-                <form class="form" asp-action="AddJob" asp-controller="Job" asp-area="Admin" method="post">
+                <form class="form" asp-action="AddJob" asp-controller="Job" asp-area="Admin" method="post" enctype="multipart/form-data">
                     <div class="row m-2">
                         <div class="col-12 col-md-8 offset-md-1">
                             <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
@@ -27,14 +28,14 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
-                                <input asp-for="Title" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Title"/>
+                                <label asp-for="Job.Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
+                                <input asp-for="Job.Title" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Title"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Type" class="form-label text-gradient text-info ubuntu-bold">Type</label>
-                                <select asp-for="Type" id="Type" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
+                                <label asp-for="Job.Type" class="form-label text-gradient text-info ubuntu-bold">Type</label>
+                                <select asp-for="Job.Type" id="Type" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
                                     <option value="Individual">Individual</option>
                                     <option value="Enterprise">Enterprise</option>
                                     <option value="Family Owned">Family Owned</option>
@@ -46,8 +47,8 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Status" class="form-label text-gradient text-info ubuntu-bold">Status</label>
-                                <select asp-for="Status" id="Status" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
+                                <label asp-for="Job.Status" class="form-label text-gradient text-info ubuntu-bold">Status</label>
+                                <select asp-for="Job.Status" id="Status" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
                                     <option value="Created">Created</option>
                                     <option value="Processing">Processing</option>
                                     <option value="Started">Started</option>
@@ -61,28 +62,28 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="StartDate" class="form-label text-gradient text-info ubuntu-bold">Start Date</label>
-                                <input asp-for="StartDate" class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="StartDate">
+                                <label asp-for="Job.StartDate" class="form-label text-gradient text-info ubuntu-bold">Start Date</label>
+                                <input asp-for="Job.StartDate" class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="StartDate">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
-                                <input asp-for="EndDate" class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="EndDate">
+                                <label asp-for="Job.EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
+                                <input asp-for="Job.EndDate" class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="EndDate">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Category" class="form-label text-gradient text-info ubuntu-bold">Category</label>
-                                <input asp-for="Category" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Category">
+                                <label asp-for="Job.Category" class="form-label text-gradient text-info ubuntu-bold">Category</label>
+                                <input asp-for="Job.Category" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Category">
                             </div>        
                         </div>
                     </div>
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Priority" class="form-label text-gradient text-info ubuntu-bold">Priority</label>
-                                <select asp-for="Priority" id="Priority" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
+                                <label asp-for="Job.Priority" class="form-label text-gradient text-info ubuntu-bold">Priority</label>
+                                <select asp-for="Job.Priority" id="Priority" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
                                     <option value="Low">Low</option>
                                     <option value="Medium">Medium</option>
                                     <option value="High">High</option>
@@ -92,8 +93,8 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="EstimatedCost" class="form-label text-gradient text-info ubuntu-bold">Estimated Cost</label>
-                                <input asp-for="EstimatedCost" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="EstimatedCost">
+                                <label asp-for="Job.EstimatedCost" class="form-label text-gradient text-info ubuntu-bold">Estimated Cost</label>
+                                <input asp-for="Job.EstimatedCost" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="EstimatedCost">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
@@ -111,11 +112,11 @@
                     <div class="row m-2">
                         <div class="col-12">
                             <div class="form-group">
-                                <label asp-for="Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
+                                <label asp-for="Job.Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
                                 <div class="main-container">
                                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                                         <div class="editor-container__editor">
-                                            <textarea id="editor" asp-for="Description" cols="10" rows="10"></textarea>
+                                            <textarea id="editor" asp-for="Job.Description" cols="10" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -132,6 +133,6 @@
 </div>
 @section Scripts {
     <script type="text/javascript">
-
+    
     </script>
 }

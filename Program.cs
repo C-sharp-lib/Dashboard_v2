@@ -4,9 +4,11 @@ using Dash.Areas.Identity.Models;
 using Dash.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Dash.Data;
 using Dash.Services;
 using Microsoft.Extensions.FileProviders;
+using Newtonsoft.Json.Serialization;
 
 namespace Dash;
 
@@ -21,10 +23,17 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddControllers().AddJsonOptions(options =>
         {
-            options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase; // Custom setting
+            options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            // Custom setting
+        });
+        builder.Services.AddControllers().AddNewtonsoftJson(options =>
+        {   
+            options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         });
         builder.Services.AddAppConfiguration();
         builder.Services.AddScoped<ApplicationDbContext>();
+        builder.Services.AddScoped<OnlineUserService>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IEventRepository, EventRepository>();
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -34,6 +43,7 @@ public class Program
         builder.Services.AddScoped<ICampaignUserTaskRepository, CampaignUserTaskRepository>();
         builder.Services.AddScoped<ILeadsRepository, LeadsRepository>();
         builder.Services.AddScoped<IJobRepository, JobRepository>();
+        builder.Services.AddScoped<IContactRepository, ContactRepository>();
         builder.Services.AddNotyf(config =>
         {
             config.DurationInSeconds = 10;
@@ -56,6 +66,7 @@ public class Program
         }
 
         // Configure the HTTP request pipeline.
+        
         app.UseStaticFiles(new StaticFileOptions
         {
             FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Areas", "Admin", "wwwroot")),

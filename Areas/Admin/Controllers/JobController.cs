@@ -17,6 +17,7 @@ public class JobController : Controller
     private readonly  ApplicationDbContext _context;
     private readonly IJobRepository _jobRepository;
     private readonly INotyfService _notyfService;
+    private const int PageSize = 10;
     public JobController(ApplicationDbContext context, IJobRepository jobRepository, INotyfService notyfService)
     {
         _context = context;
@@ -34,7 +35,7 @@ public class JobController : Controller
         }
     }
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string searchString,  int page = 1)
     {
         if (ActiveUser == null)
         {
@@ -42,9 +43,25 @@ public class JobController : Controller
             return RedirectToAction("Login", "Identity", new {area = "Identity"});
         }
 
-        var userJob = await _jobRepository.GetAllUserJobsAsync();
+        var userJobs = await _context.UserJobs.Include(u => u.User).Include(u => u.Job).OrderBy(u => u.User.UserName)
+            .Skip((page - 1) * PageSize).Take(PageSize).ToListAsync();
+        var totalJobs = await _context.Jobs.CountAsync();
+        var jobs = _context.UserJobs.Include(u => u.User).Include(j => j.Job).AsQueryable();
+        var totalPages = (int)System.Math.Ceiling((double)totalJobs / PageSize);
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            jobs = jobs.Where(j => j.User.UserName!.Contains(searchString) || j.Job.StartDate.ToShortDateString().Contains(searchString) || j.Job.Title.Contains(searchString) || j.Job.Status.Contains(searchString));
+        }
+        
+        var index = new JobsPaginateViewModel
+        {
+            Jobs = jobs,
+            UserJobs = userJobs,
+            CurrentPage = page,
+            TotalPages = totalPages
+        };
         ViewBag.user = ActiveUser;
-        return View(userJob);
+        return View(index);
     }
 
     [HttpGet("{id}")]

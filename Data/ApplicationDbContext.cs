@@ -26,6 +26,7 @@ namespace Dash.Data;
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Leads> Leads { get; set; }
         public DbSet<UserJobs> UserJobs { get; set; }
+        public DbSet<Contacts> Contacts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -52,6 +53,7 @@ namespace Dash.Data;
             builder.Entity<AppUserRoles>().HasKey(x => new { x.UserId, x.RoleId, x.Id });
             builder.Entity<Schedules>().HasKey(x => x.ScheduleId);
             builder.Entity<Event>().HasKey(x => x.EventId);
+            builder.Entity<Contacts>().HasKey(x => x.ContactId);
             builder.Entity<UserEvents>().HasKey(x => new { x.UserId, x.EventId, x.UserEventId });
             builder.Entity<UserSchedules>().HasKey(x => new { x.UserId, x.ScheduleId, x.UserScheduleId });
             builder.Entity<Products>().HasKey(p => p.ProductId);

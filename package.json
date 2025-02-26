@@ -9,6 +9,7 @@
   "author": "Kevin Stradtman",
   "license": "MIT",
   "dependencies": {
+    "ag-grid-community": "^33.1.1",
     "notyf": "^3.10.0"
   }
 }

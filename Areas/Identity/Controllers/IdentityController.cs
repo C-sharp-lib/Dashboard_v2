@@ -20,10 +20,11 @@ public class IdentityController : Controller
     private readonly IWebHostEnvironment _webenv;
     private readonly ApplicationDbContext _context;
     private readonly IUserRepository _userRepository;
+    private readonly OnlineUserService _onlineUserService;
     private readonly INotyfService _notyfService;
     public IdentityController(UserManager<AppUser> userM, SignInManager<AppUser> signInM, 
         IHttpContextAccessor contextAccessor, ApplicationDbContext context, IWebHostEnvironment webenv,
-        IUserRepository userRepository, INotyfService notyfService)
+        IUserRepository userRepository, OnlineUserService onlineUserService, INotyfService notyfService)
     {
         _userManager = userM;
         _signInManager = signInM;
@@ -31,6 +32,7 @@ public class IdentityController : Controller
         _context = context;
         _webenv = webenv;
         _userRepository = userRepository;
+        _onlineUserService = onlineUserService;
         _notyfService = notyfService;
     }
     private AppUser? ActiveUser
@@ -85,6 +87,7 @@ public class IdentityController : Controller
 
             if (user != null)
             {
+                _onlineUserService.UpdateUserActivity(user.User.Id);
                 var result = await _signInManager.PasswordSignInAsync(user.User, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
@@ -121,15 +124,18 @@ public class IdentityController : Controller
                 Address = model.Address,
                 City = model.City,
                 State = model.State,
-                ZipCode = model.ZipCode
+                ZipCode = model.ZipCode,
+                IsOnline = true
             };
             var result = await _userManager.CreateAsync(users, model.Password);
             
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(users, false);
+                
                 HttpContext.Session.SetString("Id", users.Id);
                 HttpContext.Session.SetString("UserName", users.UserName);
+                _onlineUserService.UpdateUserActivity(users.Id);
                 return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
             }
         }
@@ -146,6 +152,7 @@ public class IdentityController : Controller
         }
         ViewBag.user = ActiveUser;
         await _signInManager.SignOutAsync();
+        _onlineUserService.MarkUserOffline(ActiveUser.Id);
         _notyfService.Information("User logged out.");
         return RedirectToAction("Login", "Identity", new { area = "Identity" });
     }
@@ -173,6 +180,8 @@ public class IdentityController : Controller
             _notyfService.Error("User does not exist.");
             return RedirectToAction("Index", "Identity", new { area = "Identity" });
         }
+
+        ViewBag.theUser = user;
         ViewBag.user = ActiveUser;
         return View(user);
     }

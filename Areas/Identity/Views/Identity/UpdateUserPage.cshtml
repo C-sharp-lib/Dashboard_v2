@@ -1,14 +1,15 @@
 ﻿@using Dash.Areas.Identity.Models
-@model Dash.Areas.Identity.Models.AppUser
+@model AppUser
 @{
     Layout = "_Layout";
+    var user = ViewBag.theUser;
 }
 <div class="container">
   <div class="row mt-11 mb-11">
     <div class="col-12 col-md-12">
       <div class="card shadow-lg p-3 bg-gradient-dark mb-3">
         <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
-          <h3 class="ubuntu-bold orange-text">Update User</h3>
+          <h3 class="maven-pro-title green-text">Update User</h3>
           <div class="btn-group text-sm">
             <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
                asp-controller="Identity" asp-area="Identity" title="Go back to user list"><i class="fa-solid fa-backward-step"></i></a>
@@ -34,11 +35,10 @@
             <div class="row m-2">
               <div class="col-12 col-md-12">
                 <div class="form-group">
-                  <input asp-for="ImageUrl" value="@Model.ImageUrl" id="ImageUrl" style="display: none;"
+                  <input asp-for="ImageUrl" type="file" value="@Model?.ImageUrl" id="ImageUrl" style="display: none;"
                          accept="image/*">
                   <label asp-for="ImageUrl" class="btn bg-gradient-dark custom-file-button">Choose File</label>
                   <span id="fileName" class="file-name green-text text-sm ubuntu-bold">No file selected</span>
-                  <span asp-validation-for="ImageUrl" class="text-danger m-2 p-2"></span>
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@
               <div class="col-12 col-md-6">
                 <div class="form-group">
                   <label asp-for="DateOfBirth" class="ubuntu-bold text-gradient text-primary">Date of Birth</label>
-                  @Html.TextBox("DateOfBirth", Model.DateOfBirth, "{0:MM/dd/yyyy}", new { @class = "datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" })
+                  @Html.TextBox("DateOfBirth", Model?.DateOfBirth, "{0:MM/dd/yyyy}", new { @class = "datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" })
                   <span asp-validation-for="DateOfBirth" class="text-danger m-2 p-2"></span>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                   <label asp-for="DateOfHire" class="ubuntu-bold text-gradient text-primary">Hire Date</label>
                   @*<input asp-for="HireDate" value="@user?.HireDate?.ToString("MM/dd/yyyy")"
                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">*@
-                  @Html.TextBox("DateOfHire", Model.DateOfHire, "{0:MM/dd/yyyy}", new { @class = "datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" })
+                  @Html.TextBox("DateOfHire", Model?.DateOfHire, "{0:MM/dd/yyyy}", new { @class = "datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" })
                   <span asp-validation-for="DateOfHire" class="text-danger m-2 p-2"></span>
                 </div>
               </div>
@@ -66,7 +66,7 @@
               <div class="col-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="UserName" class="ubuntu-bold text-gradient text-primary">UserName</label>
-                  <input asp-for="UserName" value="@Model.UserName"
+                  <input asp-for="UserName" value="@Model?.UserName"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="UserName" class="text-danger m-2 p-2"></span>
                 </div>
@@ -74,7 +74,7 @@
               <div class="col-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="Email" class="ubuntu-bold text-gradient text-primary">Email</label>
-                  <input asp-for="Email" value="@Model.Email"
+                  <input asp-for="Email" value="@Model?.Email"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="Email" class="text-danger m-2 p-2"></span>
                 </div>
@@ -83,7 +83,7 @@
               <div class="col-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="PhoneNumber" class="ubuntu-bold text-gradient text-primary">Phone</label>
-                  <input asp-for="PhoneNumber" value="@Model.PhoneNumber"
+                  <input asp-for="PhoneNumber" value="@Model?.PhoneNumber"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="PhoneNumber" class="text-danger m-2 p-2"></span>
                 </div>
@@ -93,7 +93,7 @@
               <div class="col-12 col-sm-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="FirstName" class="ubuntu-bold text-gradient text-primary">First Name</label>
-                  <input asp-for="FirstName" value="@Model.FirstName" id="FirstName"
+                  <input asp-for="FirstName" value="@Model?.FirstName" id="FirstName"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="FirstName" class="text-danger m-2 p-2"></span>
                 </div>
@@ -101,7 +101,7 @@
               <div class="col-12 col-sm-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="MiddleName" class="ubuntu-bold text-gradient text-primary">Middle Name</label>
-                  <input asp-for="MiddleName" value="@Model.MiddleName"
+                  <input asp-for="MiddleName" value="@Model?.MiddleName"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="MiddleName" class="text-danger m-2 p-2"></span>
                 </div>
@@ -109,7 +109,7 @@
               <div class="col-12 col-sm-12 col-md-4">
                 <div class="form-group">
                   <label asp-for="LastName" class="ubuntu-bold text-gradient text-primary">Last Name</label>
-                  <input asp-for="LastName" value="@Model.LastName"
+                  <input asp-for="LastName" value="@Model?.LastName"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="LastName" class="text-danger m-2 p-2"></span>
                 </div>
@@ -119,7 +119,7 @@
               <div class="col-12 col-sm-12 col-md-3">
                 <div class="form-group">
                   <label asp-for="Address" class="ubuntu-bold text-gradient text-primary">Address</label>
-                  <input asp-for="Address" value="@Model.Address"
+                  <input asp-for="Address" value="@Model?.Address"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="Address" class="text-danger m-2 p-2"></span>
                 </div>
@@ -127,14 +127,14 @@
               <div class="col-12 col-sm-12 col-md-3">
                 <div class="form-group">
                   <label asp-for="City" class="ubuntu-bold text-gradient text-primary">City</label>
-                  <input asp-for="City" value="@Model.City" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
+                  <input asp-for="City" value="@Model?.City" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="City" class="text-danger m-2 p-2"></span>
                 </div>
               </div>
               <div class="col-12 col-sm-12 col-md-3">
                 <div class="form-group">
                   <label asp-for="State" class="ubuntu-bold text-gradient text-primary">State</label>
-                  <input asp-for="State" value="@Model.State"
+                  <input asp-for="State" value="@Model?.State"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="State" class="text-danger m-2 p-2"></span>
                 </div>
@@ -142,7 +142,7 @@
               <div class="col-12 col-sm-12 col-md-3">
                 <div class="form-group">
                   <label asp-for="ZipCode" class="ubuntu-bold text-gradient text-primary">Zip Code</label>
-                  <input asp-for="ZipCode" value="@Model.ZipCode"
+                  <input asp-for="ZipCode" value="@Model?.ZipCode"
                          class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                   <span asp-validation-for="ZipCode" class="text-danger m-2 p-2"></span>
                 </div>
@@ -155,15 +155,15 @@
                   <div class="main-container">
                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                       <div class="editor-container__editor">
-                        <textarea asp-for="Bio" id="editor" cols="10" rows="10" onload="Bio()"></textarea>
+                        <textarea asp-for="Bio" id="editor" cols="10" rows="10"></textarea>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card-footer m-2">
-              <input type="submit" class="btn orange d-block w-100 ubuntu-bold text-white text-2xl" value="Update User"/>
+            <div class="me-2 mx-2 mt-5 mb-3">
+              <input type="submit" class="btn violet d-block w-100 ubuntu-bold text-white text-2xl" value="Update User"/>
             </div>
           </form>
         </div>
@@ -174,12 +174,19 @@
 
 @section Scripts {
   <script type="text/javascript">
-    function Bio(){
-      ClassicEditor
-        .create(document.querySelector('#editor'), {
-          initialData: @Html.Raw(Model.Bio)
-        });
-    }
+    document.addEventListener("DOMContentLoaded", function () {
+      function Bio(){
+        ClassicEditor
+          .create(document.querySelector('#editor'), {
+            initialData: @Html.Raw(Model.Bio)
+          });
+      }
+      Bio();
+    })
+    
+  
+  </script>
+  <script type="text/javascript">
     document.getElementById('ImageUrl').onchange = function (event) {
       let reader = new FileReader();
       reader.onload = function () {
@@ -187,13 +194,9 @@
         output.src = reader.result;
         output.style.display = 'block';
       };
-      reader.readAsDataURL(event.target.files[0]);
-    };
-    document.getElementById('ImageUrl').addEventListener('change', function (event) {
       let fileName = event.target.files.length > 0 ? event.target.files[0].name : "No file selected";
       document.getElementById('fileName').textContent = fileName;
-    });
-   
-  
+      reader.readAsDataURL(event.target.files[0]);
+    };
   </script>
 }

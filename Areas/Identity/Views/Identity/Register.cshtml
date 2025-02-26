@@ -6,13 +6,13 @@
 
 <div class="row mt-11 mb-11">
     <div class="col-12 col-md-8 offset-md-2">
-        <div class="card shadow-lg bg-gradient-dark">
+        <div class="card shadow-lg card-background-color">
             <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
                 <h1 class="green-text ubuntu-bold">Register</h1>
                 <a class="btn blue text-white ubuntu-bold" asp-action="Login" asp-controller="Identity" asp-area="Identity">Go To Login</a>
             </div>
             <div class="card-body p-4">
-                <form asp-action="Register" asp-controller="Identity" asp-area="Identity" method="post">
+                <form asp-action="Register" asp-controller="Identity" asp-area="Identity" method="post" autocomplete="off">
                     <div class="row m-2">
                         <div class="col-12 col-md-8 offset-md-1">
                             <div asp-validation-summary="All" class="cherry-text ubuntu-bold list-no-style"></div>
@@ -21,7 +21,7 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="FirstName" class="violet-text ubuntu-bold">First
+                                <label asp-for="FirstName" class="form-label violet-text ubuntu-bold">First
                                     Name</label>
                                 <input type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="MiddleName" class="violet-text ubuntu-bold">Middle
+                                <label asp-for="MiddleName" class="form-label violet-text ubuntu-bold">Middle
                                     Name</label>
                                 <input type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="LastName" class="violet-text ubuntu-bold">Last
+                                <label asp-for="LastName" class="form-label violet-text ubuntu-bold">Last
                                     Name</label>
                                 <input type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -50,7 +50,7 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label asp-for="DateOfBirth" class="ubuntu-bold violet-text">Date of
+                                <label asp-for="DateOfBirth" class="form-label ubuntu-bold violet-text">Date of
                                     Birth</label>
                                 <input asp-for="DateOfBirth" id="dob"
                                        class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label asp-for="DateOfHire" class="ubuntu-bold violet-text">Date of
+                                <label asp-for="DateOfHire" class="form-label ubuntu-bold violet-text">Date of
                                     Hire</label>
                                 <input id="HireDate" asp-for="DateOfHire"
                                        class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
@@ -70,7 +70,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label asp-for="UserName"
-                                       class="violet-text ubuntu-bold">Username</label>
+                                       class="form-label violet-text ubuntu-bold">Username</label>
                                 <input type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        asp-for="UserName">
@@ -78,7 +78,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label asp-for="Email" class="violet-text ubuntu-bold">Email</label>
+                                <label asp-for="Email" class="form-label violet-text ubuntu-bold">Email</label>
                                 <input type="email"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        asp-for="Email">
@@ -88,7 +88,7 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Address" class="violet-text ubuntu-bold">Address</label>
+                                <label asp-for="Address" class="form-label violet-text ubuntu-bold">Address</label>
                                 <input type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        asp-for="Address">
@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="City" class="violet-text ubuntu-bold">City</label>
+                                <label asp-for="City" class="form-label violet-text ubuntu-bold">City</label>
                                 <input type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        asp-for="City">
@@ -104,7 +104,7 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="State" class="col-form-label col-form-label-lg violet-text ubuntu-bold">State</label><br/>
+                                <label asp-for="State" class="form-label violet-text ubuntu-bold">State</label><br/>
                                 <select asp-for="State" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" style="cursor: pointer;" id="State">
                                     <option value="0">Select A State</option>
                                     <option value="AL">Alabama</option>
@@ -163,7 +163,7 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="ZipCode" class="violet-text ubuntu-bold">Zip Code</label>
+                                <label asp-for="ZipCode" class="form-label violet-text ubuntu-bold">Zip Code</label>
                                 <input type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        asp-for="ZipCode">
@@ -174,7 +174,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group password-container">
                                 <label asp-for="Password"
-                                       class="ubuntu-bold violet-text">Password</label>
+                                       class="form-label ubuntu-bold violet-text">Password</label>
                                 <input id="Password" asp-for="Password"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                                 <i class="fa-solid fa-eye-slash text-danger" id="togglePassword"></i>
@@ -183,14 +183,14 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group password-container">
                                 <label asp-for="ConfirmPassword"
-                                       class="ubuntu-bold violet-text">Password</label>
+                                       class="form-label ubuntu-bold violet-text">Password</label>
                                 <input id="ConfirmPassword" asp-for="ConfirmPassword"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold">
                                 <i class="fa-solid fa-eye-slash text-danger" id="toggleConfirmPassword"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="me-2 mx-2 mt-3 mb-2">
+                    <div class="me-2 mx-2 mt-5 mb-3">
                         <input type="submit" class="btn violet d-block w-100 text-white ubuntu-bold text-2xl" value="Register">
                     </div>
                 </form>
@@ -202,20 +202,6 @@
 @section Scripts {
     <script type="text/javascript">
         const togglePassword = document.getElementById('togglePassword');
-        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
-        document.getElementById('ImageUrl').onchange = function (event) {
-            let reader = new FileReader();
-            reader.onload = function () {
-                let output = document.getElementById('previewImage');
-                output.src = reader.result;
-                output.style.display = 'block';
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        };
-        document.getElementById('ImageUrl').addEventListener('change', function (event) {
-            let fileName = event.target.files.length > 0 ? event.target.files[0].name : "No file selected";
-            document.getElementById('fileName').textContent = fileName;
-        });
         togglePassword.addEventListener("click", function () {
             const passwordInput = document.getElementById("Password");
             const type = passwordInput.type === "password" ? "text" : "password";
@@ -232,22 +218,22 @@
                 togglePassword.classList.add("text-success");
             }
         });
-        toggleConfirmPassword.addEventListener("click", function () {
-            const passwordInput = document.getElementById("ConfirmPassword");
-            const type = passwordInput.type === "password" ? "text" : "password";
-            passwordInput.type = type;
+        const togglePasswordConfirm = document.getElementById("toggleConfirmPassword");
+        togglePasswordConfirm.addEventListener("click", function () {
+            const confirmPasswordInput = document.getElementById("ConfirmPassword");
+            const type = confirmPasswordInput.type === "password" ? "text" : "password";
+            confirmPasswordInput.type = type;
             if (type === "password") {
-                toggleConfirmPassword.classList.remove("fa-eye");
-                toggleConfirmPassword.classList.remove("text-success");
-                toggleConfirmPassword.classList.add("fa-eye-slash");
-                toggleConfirmPassword.classList.add("text-danger");
+                togglePasswordConfirm.classList.remove("fa-eye");
+                togglePasswordConfirm.classList.remove("text-success");
+                togglePasswordConfirm.classList.add("fa-eye-slash");
+                togglePasswordConfirm.classList.add("text-danger");
             } else {
-                toggleConfirmPassword.classList.remove("fa-eye-slash");
-                toggleConfirmPassword.classList.remove("text-danger");
-                toggleConfirmPassword.classList.add("fa-eye");
-                toggleConfirmPassword.classList.add("text-success");
+                togglePasswordConfirm.classList.remove("fa-eye-slash");
+                togglePasswordConfirm.classList.remove("text-danger");
+                togglePasswordConfirm.classList.add("fa-eye");
+                togglePasswordConfirm.classList.add("text-success");
             }
-        });
-
+        })
     </script>
 }

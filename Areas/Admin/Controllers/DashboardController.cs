@@ -27,12 +27,14 @@ public class DashboardController : Controller
     private readonly ICampaignRepository _campaignRepository;
     private readonly ICampaignUserNoteRepository _campaignUserNoteRepository;
     private readonly ICampaignUserTaskRepository _campaignUserTaskRepository;
+    private readonly OnlineUserService _onlineUserService;
     private readonly INotyfService _notyfService;
     private readonly RoleManager<AppRole> _roleManager;
     public DashboardController(ApplicationDbContext context, IUserRepository userRepository, IEventRepository eventRepository, 
         IProductRepository productRepository, ICustomerRepository customerRepository, INotyfService notyfService, 
         ICampaignRepository campaignRepository, ICampaignUserNoteRepository campaignUserNoteRepository,
-        ICampaignUserTaskRepository campaignUserTaskRepository, IJobRepository jobRepository, ILeadsRepository leadsRepository,  RoleManager<AppRole> roleManager)
+        ICampaignUserTaskRepository campaignUserTaskRepository, IJobRepository jobRepository, ILeadsRepository leadsRepository,  RoleManager<AppRole> roleManager,
+        OnlineUserService onlineUserService)
     {
         _context = context;
         _userRepository = userRepository;
@@ -46,6 +48,7 @@ public class DashboardController : Controller
         _campaignUserTaskRepository = campaignUserTaskRepository;
         _notyfService = notyfService;
         _roleManager = roleManager;
+        _onlineUserService = onlineUserService;
     }
     private AppUser? ActiveUser
     {
@@ -58,6 +61,26 @@ public class DashboardController : Controller
         }
     }
 
+    private decimal ConversionRate
+    {
+        get
+        {
+            var clicks = _context.Campaigns.Select(c => c.Clicks).Count();
+            var conversions = _context.Campaigns.Select(c => c.Conversions).Count();
+            if (clicks == 0) return 0;
+            return ((decimal)conversions / clicks) * 100;
+        }
+    }
+    private decimal RevemuePercentage
+    {
+        get
+        {
+            var revenueTarget = _context.Campaigns.Select(c => c.RevenueTarget).Sum(c => c);
+            var actualRevenue = _context.Campaigns.Select(c => c.ActualRevenue).Sum(c => c);
+            var revenuePercentage = revenueTarget > 0 ? (actualRevenue / revenueTarget) * 100 : 0;
+            return revenuePercentage;
+        }
+    }
     private List<AppUser> GetUsers()
     {
         return _context.AppUsers.ToList();
@@ -84,7 +107,8 @@ public class DashboardController : Controller
             UserEvents = await _eventRepository.GetAllUserEventsAsync(),
             Events = await _eventRepository.GetAllEventsAsync(),
             Products = await _productRepository.GetAllProductsAsync(),
-            Users = await _userRepository.GetAllUsersAsync(),
+            Users = await _onlineUserService.GetOnlineUsers(),
+            OfflineUsers = await _onlineUserService.GetOfflineUsers(),
             Jobs = await _jobRepository.GetAllJobsAsync(),
             Campaigns = await _campaignRepository.GetAllCampaignsAsync(),
             CampaignUserNotes = await _campaignUserNoteRepository.GetAllCampaignUserNotesAsync(),
@@ -100,6 +124,9 @@ public class DashboardController : Controller
             RoleCount = await _roleManager.Roles.CountAsync(),
             LeadCount = await _leadsRepository.CountLeadsAsync()
         };
+        ViewBag.ClicksToConversions = ConversionRate;
+        ViewBag.ActualToTarget = RevemuePercentage;
+        ViewBag.JobProfitPercentage = _context.Jobs.Select(j => j.GetProfitPercentage());
         ViewBag.Users = await _userRepository.GetAllUsersAsync();
         ViewBag.Events = await _eventRepository.GetAllEventsAsync();
         ViewBag.Products = await _productRepository.GetAllProductsAsync();

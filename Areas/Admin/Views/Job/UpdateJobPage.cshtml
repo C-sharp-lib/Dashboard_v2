@@ -5,9 +5,9 @@
 
 <div class="row mt-11 mb-11">
     <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
-        <div class="card shadow-lg bg-gradient-dark">
+        <div class="card shadow-lg card-background-color">
             <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
-                <h3 class="green-text ubuntu-bold">Update @Model.Job.Title</h3>
+                <h3 class="green-text maven-pro-title">Update: @Model.Job.Title</h3>
                 <div class="btn-group text-sm">
                     <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
                        asp-controller="Job" asp-area="Admin" title="Go back to job list"><i
@@ -28,13 +28,13 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
+                                <label asp-for="Job.Title" class="form-label green-text ubuntu-bold">Title</label>
                                 <input asp-for="Job.Title" value="@Model.Job.Title" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Title"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.Type" class="form-label text-gradient text-info ubuntu-bold">Type</label>
+                                <label asp-for="Job.Type" class="form-label green-text ubuntu-bold">Type</label>
                                 <select asp-for="Job.Type" id="Type" value="@Model?.Job.Type" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark">
                                     <option value="Individual">Individual</option>
                                     <option value="Enterprise">Enterprise</option>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.Status" class="form-label text-gradient text-info ubuntu-bold">Status</label>
+                                <label asp-for="Job.Status" class="form-label green-text ubuntu-bold">Status</label>
                                 <select asp-for="Job.Status" id="Status" value="@Model?.Job.Status" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark">
                                     <option value="Created">Created</option>
                                     <option value="Processing">Processing</option>
@@ -62,27 +62,27 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.StartDate" class="form-label text-gradient text-info ubuntu-bold">Start Date</label>
+                                <label asp-for="Job.StartDate" class="form-label green-text ubuntu-bold">Start Date</label>
                                 @Html.TextBox("StartDate", Model?.Job.StartDate.ToString("MM/dd/yyyy"), new { @class = "datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" })
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
+                                <label asp-for="Job.EndDate" class="form-label green-text ubuntu-bold">End Date</label>
                                 @Html.TextBox("EndDate", Model?.Job.EndDate.ToString("MM/dd/yyyy"), new { @class = "datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu-bold" })
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.Category" class="form-label text-gradient text-info ubuntu-bold">Category</label>
+                                <label asp-for="Job.Category" class="form-label green-text ubuntu-bold">Category</label>
                                 <input asp-for="Job.Category" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Category" value="@Model?.Job.Category">
                             </div>
                         </div>
                     </div>
                     <div class="row m-2">
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.Priority" class="form-label text-gradient text-info ubuntu-bold">Priority</label>
+                                <label asp-for="Job.Priority" class="form-label green-text ubuntu-bold">Priority</label>
                                 <select asp-for="Job.Priority" id="Priority" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" value="@Model?.Job.Priority">
                                     <option value="Low">Low</option>
                                     <option value="Medium">Medium</option>
@@ -91,15 +91,21 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.EstimatedCost" class="form-label text-gradient text-info ubuntu-bold">Estimated Cost</label>
+                                <label asp-for="Job.EstimatedCost" class="form-label green-text ubuntu-bold">Estimated Cost</label>
                                 <input asp-for="Job.EstimatedCost" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="EstimatedCost" value="@Model?.Job.EstimatedCost">
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="UserId" class="form-label text-gradient text-info ubuntu-bold">User</label>
+                                <label asp-for="Job.Revenue" class="form-label text-gradient text-info ubuntu-bold">Revenue</label>
+                                <input asp-for="Job.Revenue" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Revenue" value="@Model?.Job.Revenue">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <label asp-for="UserId" class="form-label green-text ubuntu-bold">User</label>
                                 <select asp-for="UserId" disabled id="UserId" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" style="cursor: pointer;" value="@Model?.UserId">
                                     @foreach (var user in ViewBag.users)
                                     {
@@ -112,11 +118,11 @@
                     <div class="row m-2">
                         <div class="col-12">
                             <div class="form-group">
-                                <label asp-for="Job.Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
+                                <label asp-for="Job.Description" class="form-label green-text ubuntu-bold">Description</label>
                                 <div class="main-container">
                                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                                         <div class="editor-container__editor">
-                                            <textarea asp-for="Job.Description" id="editor" cols="10" rows="10" onload="Description()"></textarea>
+                                            <textarea asp-for="Job.Description" id="editor" cols="10" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -124,8 +130,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white text-2xl">Update Job</button>
+                    <div class="me-2 mx-2 mt-5 mb-3">
+                        <button type="submit" class="btn violet btn-lg w-100 maven-pro-button text-white text-2xl">Update Job</button>
                     </div>
                 </form>
             </div>
@@ -135,11 +141,14 @@
 
 @section Scripts {
     <script type="text/javascript">
-        function Description() {
-            ClassicEditor
-                .create(document.querySelector('#editor'), {
-                    initialData: @Html.Raw(Model.Job.Description)
-                });
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            function Description() {
+                ClassicEditor
+                    .create(document.querySelector('#editor'), {
+                        initialData: @Html.Raw(Model.Job.Description)
+                    });
+            }
+            Description();
+        })
     </script>
 }

@@ -7,7 +7,7 @@
     <div class="col-12 col-md-6">
         <div class="card shadow-lg bg-gradient-dark">
             <div class="page-header min-vh-45 rounded"
-                 style="background-image: url(@Url.Content($"~/Uploads/AppUsers/{Model.ImageUrl}")); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                 style="background-image: url(@Url.Content($"~/Uploads/AppUsers/{Model?.ImageUrl}")); background-position: center; background-size: cover; background-repeat: no-repeat;">
                 <div class="container">
                     <div class="row justify-content-center">
                     </div>
@@ -34,7 +34,7 @@
     <div class="col-12 col-md-6">
         <div class="card shadow-lg bg-gradient-dark">
             <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
-                <h1 class="text-gradient text-info ubuntu-bold">@Model.FirstName's Details</h1>
+                <h1 class="text-gradient text-info ubuntu-bold">@Model?.FirstName's Details</h1>
                 <div class="btn-group m-3">
                     <a class="btn bg-gradient-dark text-info shadow-md ubuntu-bold btn-tooltip" asp-action="Index" asp-controller="Identity" asp-area="Identity" title="Go back to the user list"><i class="fa-solid fa-backward-step"></i></a>
                     <a class="btn bg-gradient-dark text-warning shadow-md ubuntu-bold btn-tooltip" asp-action="UpdateUserPage" asp-controller="Identity" asp-area="Identity" asp-route-id="@Model?.Id" title="Edit @Model?.UserName"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -44,32 +44,33 @@
                 </div>
             </div>
             <div class="card-body p-4">
-                <h3 class="text-white ubuntu">
-                    <span class="text-gradient text-info ubuntu-bold">Name</span> 
-                    @Model.FirstName @Model.MiddleName @Model.LastName
-                </h3>
-                <h6 class="text-white ubuntu">
-                    <span class="text-gradient text-info ubuntu-bold">ID</span>
-                    @Model.Id
-                </h6>
-                <p class="text-white ubuntu">
-                    <span class="text-gradient text-info ubuntu-bold">Email</span>
-                    @Model.Email
-                </p>
-                <p class="text-white ubuntu">
-                    <span class="text-gradient text-info ubuntu-bold">UserName</span>
-                    @Model.UserName
-                </p>
-                <p class="text-white ubuntu">
-                    <span class="text-gradient text-info ubuntu-bold">PhoneNumber</span>
-                    @Model?.PhoneNumber
-                </p>
-                <p class="text-white ubuntu">
-                    <span class="text-gradient text-info ubuntu-bold">Address</span>
-                    @Model?.Address @Model?.City, @Model?.State, @Model?.ZipCode
-                </p>
                 <div class="text-white ubuntu">
-                    <span class="text-gradient text-info ubuntu-bold">Bio</span><br>
+                    <p class="violet-text lead ubuntu-bold">Name</p> 
+                    @Model?.FirstName @Model?.MiddleName @Model?.LastName
+                </div>
+                <div class="text-white ubuntu">
+                    <p class="violet-text lead ubuntu-bold">ID</p>
+                    @Model?.Id
+                </div>
+                <div class="text-white ubuntu">
+                    <p class="violet-text lead ubuntu-bold">Email</p>
+                    @Model?.Email
+                </div>
+                <div class="text-white ubuntu">
+                    <p class="violet-text lead ubuntu-bold">UserName</p>
+                    @Model?.UserName
+                </div>
+                <div class="text-white ubuntu">
+                    <p class="violet-text lead ubuntu-bold">PhoneNumber</p>
+                    @Model?.PhoneNumber
+                </div>
+                <div class="text-white ubuntu">
+                    <p class="violet-text lead ubuntu-bold">Address</p>
+                    @Model?.Address @Model?.City, @Model?.State, @Model?.ZipCode
+                </div>
+                <div class="text-white ubuntu">
+                    <p class="violet-text lead ubuntu-bold">Bio</p>
+                    <hr class="horizontal green">
                     @Html.Raw(@Model?.Bio)
                 </div>
             </div>

@@ -1,11 +1,14 @@
 ﻿using Dash.Areas.Identity.Models;
+using Dash.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dash.Areas.Admin.Models;
 
 public class IndexViewModel
 {
     public IEnumerable<AppUser> Users { get; set; }
+    public IEnumerable<AppUser> OfflineUsers { get; set; }
     public IEnumerable<UserEvents> UserEvents { get; set; }
     public IEnumerable<Event> Events { get; set; }
     public IEnumerable<Products> Products { get; set; }
@@ -25,4 +28,5 @@ public class IndexViewModel
     public int CampaignUserTaskCount { get; set; }
     public int JobCount { get; set; }
     public int LeadCount { get; set; }
+    
 }

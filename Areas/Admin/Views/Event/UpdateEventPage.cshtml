@@ -40,7 +40,7 @@
                                 <div class="main-container">
                                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                                         <div class="editor-container__editor">
-                                            <textarea asp-for="Description" id="editor" cols="10" rows="10" onload="Description()"></textarea>
+                                            <textarea asp-for="Description" id="editor" cols="10" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                     <div class="row m-2">
                         <div class="col-12">
                             <div class="form-group">
-                                <label asp-for="Color" class="form-label text-gradient text-info ubuntu-bold">Color</label>
+                                <label asp-for="Color" class="form-label text-gradient text-info ubuntu-bold">Background Color</label>
                                 <input asp-for="Color" class="form-control color-background bg-gradient-dark" type="color" value="@eve.Color" id="Color">
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                     <div class="row m-2">
                         <div class="col-12">
                             <div class="form-group">
-                                <label asp-for="ForegroundColor" class="form-label text-gradient text-info ubuntu-bold">Color</label>
+                                <label asp-for="ForegroundColor" class="form-label text-gradient text-info ubuntu-bold">Font Color</label>
                                 <input asp-for="ForegroundColor" class="form-control color-background bg-gradient-dark" type="color" value="@eve.ForegroundColor" id="ForegroundColor">
                             </div>
                         </div>
@@ -92,11 +92,14 @@
 
 @section Scripts {
     <script type="text/javascript">
-        function Description() {
-            ClassicEditor
-                .create(document.querySelector('#editor'), {
-                    initialData: @Html.Raw(Model.Description)
-                });
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            function Description() {
+                ClassicEditor
+                    .create(document.querySelector('#editor'), {
+                        initialData: @Html.Raw(Model.Description)
+                    });
+            }
+            Description();
+        })
     </script>
 }

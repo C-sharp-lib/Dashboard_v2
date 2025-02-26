@@ -223,26 +223,92 @@
     </div>
 </div>*@
 <div class="row mt-11 mb-11">
-    <div class="col-12 col-md-12 col-lg-5">
-        <div class="card shadow-lg bg-gradient-dark z-index-2">
-            <div class="card-header p-3 pb-0 bg-gradient-dark">
-                <h6 class="text-gradient text-info ubuntu-bold">Company Analytics</h6>
-            </div>
-            <div class="card-body p-3">
-                <div class="chart">
-                    <canvas id="line-chart-gradient" class="chart-canvas" height="300"></canvas>
+    <div class="col-12 col-md-12 col-lg-8">
+
+        <ul class="nav nav-tabs dash-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="analytics-tab" data-bs-toggle="tab" data-bs-target="#analytics-tab-pane" type="button" role="tab" aria-controls="analytics-tab-pane" aria-selected="true">Line Graphs</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pie-tab" data-bs-toggle="tab" data-bs-target="#pie-tab-pane" type="button" role="tab" aria-controls="pie-tab-pane" aria-selected="false">Doughnut and Pie Charts</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="bar-tab" data-bs-toggle="tab" data-bs-target="#bar-tab-pane" type="button" role="tab" aria-controls="bar-tab-pane" aria-selected="false">Bar Graphs and Stats</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="content-tab" data-bs-toggle="tab" data-bs-target="#content-tab-pane" type="button" role="tab" aria-controls="content-tab-pane" aria-selected="false">Content</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="analytics-tab-pane" role="tabpanel" aria-labelledby="analytics-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-lg card-background-color z-index-2">
+                            <div class="card-header p-3 pb-0 bg-gradient-dark">
+                                <h6 class="green-text maven-pro-title-low">Company Analytics</h6>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="chart">
+                                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="tab-pane fade" id="pie-tab-pane" role="tabpanel" aria-labelledby="pie-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-lg card-background-color z-index-2">
+                            <div class="card-header p-3 pb-0 bg-gradient-dark">
+                                <h6 class="green-text maven-pro-title-low">Profit Percentages</h6>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="chart">
+                                    @*<canvas id="doughnut-chart" class="chart-canvas"></canvas>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="bar-tab-pane" role="tabpanel" aria-labelledby="bar-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-lg card-background-color z-index-2">
+                            <div class="card-header p-3 pb-0 bg-gradient-dark">
+                                <h6 class="green-text maven-pro-title-low">Company Unit Numbers</h6>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="chart">
+                                    <canvas id="bar-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="content-tab-pane" role="tabpanel" aria-labelledby="content-tab" tabindex="0">
+                <p class="ubuntu-bold text-white text-wrap p-3 mt-3 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam assumenda atque cumque dolor dolore dolorem eaque error eum excepturi explicabo in incidunt laudantium modi molestiae numquam perferendis provident quidem rem repudiandae rerum saepe, similique tempora totam unde ut, vel vitae, voluptate! Accusamus accusantium ad aperiam architecto assumenda at cum dolorem dolorum ex facilis impedit ipsam ipsum, iste iusto magni molestias mollitia nam non officiis perspiciatis quam, qui quia recusandae rerum sit soluta suscipit tenetur ullam, velit voluptate! Accusantium aut beatae delectus distinctio dolor dolores doloribus est illo inventore ipsum maxime molestias nostrum perferendis perspiciatis placeat, quibusdam quos sapiente temporibus voluptas.</p>
             </div>
         </div>
     </div>
-    <div class="col-12 col-md-12 col-lg-7">
-        <div class="card shadow-lg bg-gradient-dark z-index-2">
-            <div class="card-header p-3 pb-0 bg-gradient-dark">
-                <h6 class="text-gradient text-info ubuntu-bold">Company Unit Numbers</h6>
-            </div>
-            <div class="card-body p-3">
-                <div class="chart">
-                    <canvas id="bar-chart" class="chart-canvas" height="300"></canvas>
+    <div class="col-12 col-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-lg card-background-color">
+                    <div class="card-header p-3 pb-0 bg-gradient-dark">
+                        <h3 class="green-text maven-pro-title-low">Online People</h3>
+                    </div>
+                    <div class="card-body p-3 clearfix">
+                        @foreach (var user in Model.Users)
+                        {
+                            <span class="maven-pro-button float-start text-white">@user.Email</span>  <span class="float-end green online-dot"> </span><br/>
+                        }
+                        <div id="online-users-list">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -256,199 +322,160 @@
 
 @section Scripts {
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            let ctx2 = document.getElementById("line-chart-gradient").getContext("2d");
-            let ctx3 = document.getElementById('bar-chart').getContext("2d");
-            let gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+       document.addEventListener("DOMContentLoaded", function () {
+           function getData() {
+               return [
+                   {
+                       quarter: "Q1'18",
+                       leadCount: @Model.LeadCount,
+                       jobCount: @Model.JobCount,
+                       userCount: @Model.UserCount,
+                       campaignCount: @Model.CampaignCount,
+                   },
+                   {
+                       quarter: "Q2'18",
+                       leadCount: @Model.LeadCount,
+                       jobCount: @Model.JobCount,
+                       userCount: @Model.UserCount,
+                       campaignCount: @Model.CampaignCount,
+                   },
+                   {
+                       quarter: "Q3'18",
+                       leadCount: @Model.LeadCount,
+                       jobCount: @Model.JobCount,
+                       userCount: @Model.UserCount,
+                       campaignCount: @Model.CampaignCount,
+                   },
+                   {
+                       quarter: "Q4'18",
+                       leadCount: @Model.LeadCount,
+                       jobCount: @Model.JobCount,
+                       userCount: @Model.UserCount,
+                       campaignCount: @Model.CampaignCount,
+                   }
+               ];
+           }
 
-            gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-            gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-            gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+           const { AgCharts } = agCharts;
 
-            let gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
+           const options = {
+               container: document.getElementById("bar-chart"),
+               title: {
+                   text: "Company Counts By Quarter",
+               },
+               subtitle: {
+                   text: "In integer values",
+               },
+               data: getData(),
+               series: [
+                   {
+                       type: "bar",
+                       xKey: "quarter",
+                       yKey: "leadCount",
+                       yName: "Leads",
+                   },
+                   {
+                       type: "bar",
+                       xKey: "quarter",
+                       yKey: "jobCount",
+                       yName: "Jobs",
+                   },
+                   {
+                       type: "bar",
+                       xKey: "quarter",
+                       yKey: "userCount",
+                       yName: "Users",
+                   },
+                   {
+                       type: "bar",
+                       xKey: "quarter",
+                       yKey: "campaignCount",
+                       yName: "Campaigns",
+                   },
+               ],
+           };
 
-            gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
-            gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-            gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+           AgCharts.create(options);
 
-            new Chart(ctx2, {
-                type: "line",
-                data: {
-                    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                    datasets: [{
-                        label: "Mobile apps",
-                        tension: 0.4,
-                        borderWidth: 0,
-                        pointRadius: 0,
-                        borderColor: "#cb0c9f",
-                        borderWidth: 3,
-                        backgroundColor: gradientStroke1,
-                        fill: true,
-                        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                        maxBarThickness: 6
+       })
+    </script>
 
-                    },
-                        {
-                            label: "Websites",
-                            tension: 0.4,
-                            borderWidth: 0,
-                            pointRadius: 0,
-                            borderColor: "#3A416F",
-                            borderWidth: 3,
-                            backgroundColor: gradientStroke2,
-                            fill: true,
-                            data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-                            maxBarThickness: 6
-                        },
-                    ],
+    <script>
+        window.onload = function () {
+
+            const chart = new CanvasJS.Chart("chartContainer", {
+                theme: "dark2",
+                exportFileName: "Doughnut Chart",
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Monthly Expense"
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: true,
-                        }
-                    },
-                    interaction: {
-                        intersect: false,
-                        mode: 'index',
-                    },
-                    scales: {
-                        y: {
-                            grid: {
-                                drawBorder: false,
-                                display: true,
-                                drawOnChartArea: true,
-                                drawTicks: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                display: true,
-                                padding: 10,
-                                color: '#b2b9bf',
-                                font: {
-                                    size: 11,
-                                    family: "Inter",
-                                    style: 'normal',
-                                    lineHeight: 2
-                                },
-                            }
-                        },
-                        x: {
-                            grid: {
-                                drawBorder: false,
-                                display: false,
-                                drawOnChartArea: false,
-                                drawTicks: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                display: true,
-                                color: '#b2b9bf',
-                                padding: 10,
-                                font: {
-                                    size: 11,
-                                    family: "Inter",
-                                    style: 'normal',
-                                    lineHeight: 2
-                                },
-                            }
-                        },
-                    },
+                legend:{
+                    cursor: "pointer",
+                    itemclick: explodePie
                 },
+                backgroundColor: "rgb(22,22,22)",
+                data: [{
+                    fillOpacity: 0.9,
+                    type: "doughnut",
+                    innerRadius: 90,
+                    showInLegend: true,
+                    toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+                    indexLabel: "{name} - #percent%",
+                    dataPoints: [
+                        { y: @Model.UserCount, name: "Users", color: "dodgerblue" },
+                        { y: @Model.CampaignCount, name: "Campaigns", color: "darkorange" },
+                        { y: @Model.CustomerCount, name: "Customers", color: "limegreen" },
+                        { y: @Model.JobCount, name: "Jobs", color: "indigo" },
+                        { y: @Model.LeadCount, name: "Leads", color: "tomato" },
+                        { y: @Model.ProductCount, name: "Products", color: "cyan"},
+                        { y: @Model.EventCount, name: "Events", color: "yellow" }
+                    ]
+                }]
             });
+            chart.render();
 
-    
-            new Chart(ctx3, {
-                type: "bar",
-                data: {
-                    labels: ['Totals Of Entities'],
-                    datasets: [
-                        {
-                            label: 'Leads',
-                            data: [@Model.LeadCount],
-                            borderColor: 'cyan',
-                            backgroundColor: 'cyan'
-                        },
-                        {
-                            label: 'Roles',
-                            data: [@Model.RoleCount],
-                            borderColor: 'tomato',
-                            backgroundColor: 'tomato'
-                        },
-                        {
-                            label: 'Jobs',
-                            data: [@Model.JobCount],
-                            borderColor: 'darkorange',
-                            backgroundColor: 'darkorange'
-                        },
-                        {
-                            label: 'Campaigns',
-                            data: [@Model.CampaignCount],
-                            borderColor: '#fd2345',
-                            backgroundColor: 'rgba(205,0,130,0.8)'
-                        },
-                        {
-                            label: 'Campaign Notes',
-                            data: [@Model.CampaignUserNoteCount],
-                            borderColor: 'rgb(50,205,50)',
-                            backgroundColor: 'rgba(250,192,55,0.8)'
-                        },
-                        {
-                            label: 'Campaign Tasks',
-                            data: [@Model.CampaignUserTaskCount],
-                            borderColor: 'rgb(50,250,250)',
-                            backgroundColor: 'rgba(50,50,250,0.8)'
-                        },
-                        {
-                            label: 'Users',
-                            data: [@Model.UserCount],
-                            borderColor: '#fd2345',
-                            backgroundColor: 'rgba(75,0,130,0.8)'
-                        },
-                        {
-                            label: 'Events',
-                            data: [@Model.EventCount],
-                            borderColor: 'rgb(50,205,50)',
-                            backgroundColor: 'rgba(102,192,55,0.8)'
-                        },
-                        {
-                            label: 'Products',
-                            data: [@Model.ProductCount],
-                            borderColor: 'rgb(50,50,250)',
-                            backgroundColor: 'rgba(50,50,250,0.8)'
-                        },
-                        {
-                            label: 'Customers',
-                            data: [@Model.CustomerCount],
-                            borderColor: 'rgb(250,50,50)',
-                            backgroundColor: 'rgba(250,50,50,0.8)'
-                        }
-                    ],
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            display: false,
-                            position: 'bottom',
-                            labels: {
-                                color: 'white',
-                                font: {
-                                    size: 14
-                                }
-                            }
-                        }
-                    },
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+            function explodePie (e) {
+                if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                    e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+                } else {
+                    e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
                 }
+                e.chart.render();
+            }
+
+        }
+    </script>
+    <script>
+        function loadUsers() {
+            $.get("/Admin/Dashboard/Index", function (data = @Model.Users) {
+                let userList = $('#online-users-list');
+                userList.empty();
+
+                data.forEach(user => {
+                    let userStatus = user.IsOnline ?
+                        '<span class="float-end green offline-dot"> </span>' :
+                        '<span class="float-end cherry offline-dot"> </span>';
+                    userList.append(`
+                        <li>
+                             <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="~/Uploads/AppUsers/${user.ImageUrl}" class="avatar avatar-sm me-3" alt="Picture of ${user.UserName}">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <p class="text-white ubuntu text-xs mb-0">${user.FirstName} ${user.LastName}</p>
+                                        <p class="text-white ubuntu text-xs mb-0">${user.UserName}</p>
+                                    </div>
+                                    <div><p class="text-white ubuntu text-xs mb-0">${userStatus}</p></div>
+                                </div>
+                        </li>
+                    `);
+                });
             });
-        });
-        
-</script>
+        }
+        setInterval(loadUsers, 5000);
+        loadUsers();
+    </script>
+    
 }

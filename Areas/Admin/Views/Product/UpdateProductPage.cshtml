@@ -9,7 +9,7 @@
     <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
         <div class="card shadow-lg bg-gradient-dark">
             <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
-                <h1 class="text-gradient text-warning ubuntu-bold">Update @product.TruncateWords(product.Name, 4)</h1>
+                <h1 class="green-text maven-pro-title">Update @product.TruncateWords(product.Name, 4)</h1>
                 <div class="btn-group text-sm">
                     <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
                        asp-controller="Product" asp-area="Admin" title="Go back to product list"><i
@@ -91,15 +91,15 @@
                                 <div class="main-container">
                                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                                         <div class="editor-container__editor">
-                                            <textarea asp-for="Description" id="editor" cols="10" rows="10" onload="Description()"></textarea>
+                                            <textarea asp-for="Description" id="editor" cols="10" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white">Add Product</button>
+                    <div class="me-2 mx-2 mt-5 mb-3">
+                        <button type="submit" class="btn violet btn-lg w-100 maven-pro-button text-white text-2xl">Add Product</button>
                     </div>
                 </form>
             </div>
@@ -108,25 +108,27 @@
 </div>
 @section Scripts {
     <script type="text/javascript">
-        function Description() {
-            ClassicEditor
-                .create(document.querySelector('#editor'), {
-                    initialData: @Html.Raw(Model.Description)
-                });
-        }
-    document.getElementById('ImageUrl').onchange = function (event) {
-      let reader = new FileReader();
-      reader.onload = function () {
-        let output = document.getElementById('previewImage');
-        output.src = reader.result;
-        output.style.display = 'block';
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    };
-    document.getElementById('ImageUrl').addEventListener('change', function (event) {
-      let fileName = event.target.files.length > 0 ? event.target.files[0].name : "No file selected";
-      document.getElementById('fileName').textContent = fileName;
-    });
-  
+        document.addEventListener("DOMContentLoaded", function () {
+            function Description() {
+                ClassicEditor
+                    .create(document.querySelector('#editor'), {
+                        initialData: @Html.Raw(Model.Description)
+                    });
+            }
+            Description();
+        })
+    </script>
+    <script type="text/javascript">
+        document.getElementById('ImageUrl').onchange = function (event) {
+            let reader = new FileReader();
+            reader.onload = function () {
+                let output = document.getElementById('previewImage');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            let fileName = event.target.files.length > 0 ? event.target.files[0].name : "No file selected";
+            document.getElementById('fileName').textContent = fileName;
+            reader.readAsDataURL(event.target.files[0]);
+        };
     </script>
 }

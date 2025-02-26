@@ -43,11 +43,33 @@
     margin: 0;
     padding: 0;
 }
+#editor-container > div > div > div.ck.ck-editor__main > div > h1.ck-placeholder,
+#editor-container > div > div > div.ck.ck-editor__main > div > h1::placeholder,
+#editor-container > div > div > div.ck.ck-editor__main > div > h1::-ms-input-placeholder,
+#editor-container > div > div > div.ck.ck-editor__main > div > h1::-webkit-input-placeholder {
+    font-weight: bold;
+    background: linear-gradient(120deg, #4776e6, #8e54e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Ubuntu", sans-serif !important;
+}
+#editor-container > div > div > div.ck.ck-editor__main > div > p.ck-placeholder,
+#editor-container > div > div > div.ck.ck-editor__main > div > p::placeholder,
+#editor-container > div > div > div.ck.ck-editor__main > div > p::-ms-input-placeholder,
+#editor-container > div > div > div.ck.ck-editor__main > div > p::-webkit-input-placeholder {
+    font-weight: bold;
+    background: linear-gradient(120deg, #56ab2f, #a8e063);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Ubuntu", sans-serif !important;
+}
 
+#editor-container > div > div > div.ck.ck-editor__main > div > h1,
 .ck-content h2.document-title {
     font-family: 'Ubuntu', sans-serif;
     font-size: 50px;
     font-weight: bold;
+    color: #fff;
     margin: 0;
     padding: 0;
     border: 0;
@@ -56,7 +78,7 @@
 .ck-content h3.document-subtitle {
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
-    color: #555;
+    color: #fff;
     margin: 0 0 1em;
     font-weight: bold;
     padding: 0;
@@ -103,7 +125,7 @@
     left: -10px;
     display: block;
     font-size: 200px;
-    color: #e7e7e7;
+    color: #fff;
     z-index: -1;
     line-height: 1;
 }

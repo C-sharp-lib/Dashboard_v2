@@ -25,6 +25,8 @@ public class AppUser : IdentityUser
     public string? ZipCode { get; set; }
     [DataType(DataType.Text)]
     public string? Bio { get; set; }
+    public bool IsOnline { get; set; }
+    public DateTime? LastActive { get; set; }
     public IEnumerable<UserSchedules> UserSchedules { get; set; }
     public IEnumerable<UserEvents> UserEvents { get; set; }
     public IEnumerable<CampaignUserNotes> CampaignUserNotes { get; set; }

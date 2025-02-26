@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap');
 :root {
   --fc-font-family-main: "Ubuntu", serif;
   --fc-font-color-main: white;
@@ -12,6 +13,22 @@
 
 html {
   font-size: 14px;
+}
+
+body {
+  padding: 20px 50px;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #110d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
 }
 
 @media (min-width: 768px) {
@@ -34,7 +51,26 @@ body {
 }
 
 /*  Fonts  */
-
+.maven-pro-button {
+  font-family: "Maven Pro", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1rem;
+}
+.maven-pro-title {
+  font-family: "Maven Pro", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2.5rem;
+}
+.maven-pro-title-low {
+  font-family: "Maven Pro", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
 .ubuntu-light {
   font-family: "Ubuntu", serif;
   font-weight: 300;
@@ -159,7 +195,7 @@ nav.navbar-expand-lg {
   position: relative !important;
   top: 1% !important;
 }
-.dropdown-item.ubuntu-bold.text-white:hover {
+.dropdown-item.maven-pro-button.text-white:hover {
   color: dodgerblue !important;
   background-color: rgba(55,55,55,0.8) !important;
 }
@@ -173,11 +209,73 @@ nav.navbar-expand-lg {
   background-image: -webkit-linear-gradient(120deg, rgba(22,22,22,0.7), rgba(225,225,225,0.8)) !important;
 }
 /*  End Nav  */
+/*Pagination*/
+.otherPages > a,
+.pageStart > a {
+  color: #fff !important;
+  font-family: "Ubuntu", serif !important;
+  font-size: 1rem !important;
+}
+.pagination > li.disabled > a,
+.paginationBtns > a {
+  font-weight: bold;
+  background: linear-gradient(120deg, #e65c00, #f9d423);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+}
 
-
+.pagination > li.disabled,
+.paginationBtns {
+  border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  background-image: linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -webkit-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -moz-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -ms-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+}
+body > div.container-fluid.mb-11 > main > div > div > div > div.card-footer.mt-3.mb-2 > div > nav > ul > li.page-item.pageStart > a,
+.pageStart {
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-image: linear-gradient(120deg, #4776e6, #8e54e9) !important;
+  background-image: -webkit-linear-gradient(120deg, #4776e6, #8e54e9) !important;
+  background-image: -moz-linear-gradient(120deg, #4776e6, #8e54e9) !important;
+  background-image: -ms-linear-gradient(120deg, #4776e6, #8e54e9) !important;
+}
+body > div.container-fluid.mb-11 > main > div > div > div > div.card-footer.mt-3.mb-2 > div > nav > ul > li.page-item.otherPages:nth-child(1n) > a,
+.otherPages {
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-image: linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -webkit-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -moz-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -ms-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+}
+/*END Pagination*/
 /*  Forms  */
 
-
+#searchBox {
+  width: 320px !important;
+  height: 50px !important;
+}
+input#searchBox::placeholder {
+  color: white !important;
+}
+input#searchBox::-ms-input-placeholder {
+  color: white !important;
+}
+input#searchBox::-webkit-input-placeholder {
+  color: white !important;
+}
+input#searchBox::-moz-placeholder {
+  color: white !important;
+}
 label {
   font-size: 14px !important;
   font-family: "Ubuntu", serif !important;
@@ -199,8 +297,9 @@ label {
 select {
   cursor: pointer !important;
 }
+
 select,
-select.active
+select.active,
 select.focus,
 select:focus,
 input[type=checkbox],
@@ -223,6 +322,36 @@ input[type=email].active,
 input[type=email].focus,
 input[type=text].active,
 input[type=text].focus{
+  font-family: "Ubuntu", serif !important;
+  font-weight: 700 !important;
+  color: white !important;
+  background-image: linear-gradient(90deg, rgb(22,22,22), rgb(80,80,80)) !important;
+  background-image: -webkit-linear-gradient(90deg, rgb(22,22,22), rgb(80,80,80)) !important;
+  background-image: -moz-linear-gradient(90deg, rgb(22,22,22), rgb(80,80,80)) !important;
+  background-image: -ms-linear-gradient(90deg, rgb(22,22,22), rgb(80,80,80)) !important;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+select:-webkit-autofill,
+input[type=email]:-webkit-autofill,
+input[type=text]:-webkit-autofill,
+input[type=password]:-webkit-autofill,
+input[type=datetime-local]:-webkit-autofill,
+input[type=date]:-webkit-autofill,
+input[type=tel]:-webkit-autofill {
+  font-family: "Ubuntu", serif !important;
+  font-weight: 700 !important;
+  color: white !important;
+  background-image: linear-gradient(90deg, rgb(22,22,22), rgb(80,80,80)) !important;
+  background-image: -webkit-linear-gradient(90deg, rgb(22,22,22), rgb(80,80,80)) !important;
+  background-image: -moz-linear-gradient(90deg, rgb(22,22,22), rgb(80,80,80)) !important;
+  background-image: -ms-linear-gradient(90deg, rgb(22,22,22), rgb(80,80,80)) !important;
+}
+
+/*noinspection CssInvalidPseudoSelector*/
+input:-webkit-autofill,
+input:-ms-autofill,
+input:-moz-autofill {
   font-family: "Ubuntu", serif !important;
   font-weight: 700 !important;
   color: white !important;
@@ -805,16 +934,98 @@ input[type=text].focus{
 }
 #line-chart-gradient {
   width: 100%;
-  height: 300px;
+  height: 500px !important;
 }
+
 #bar-chart {
+  z-index: 20000 !important;
+  color: white !important;
+  background-image: linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -webkit-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -moz-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -ms-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -o-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+}
+/*.canvasjs-chart-canvas {
+  color: white;
+  background: linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -webkit-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -moz-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -ms-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+}*/
+#doughnut-chart {
   width: 100%;
-  height: 300px;
+  height: 500px !important;
 }
 .line-chart-card {
   position: relative;
   bottom: 50% !important;
 }
+/*Table Styles*/
+.table-container {
+  width: 100%;
+  height: 500px !important;
+  overflow: auto;
+}
+
+table {
+  width: 100%; 
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+thead {
+  position: sticky;
+  top: 0; 
+  z-index: 1;
+}
+
+
+.table-container::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background-image: linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -webkit-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -moz-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -ms-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -webkit-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -moz-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -ms-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -o-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border: 2px solid #fff; 
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+  background-image: -webkit-linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+  background-image: -moz-linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+  background-image: -ms-linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+  background-image: -o-linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+}
+
+.table-container {
+  scrollbar-color: rgb(2,2,2) rgb(22,22,122);
+  scrollbar-width: thin;
+}
+
+/*END Table Styles*/
 td > a >.fa-solid.fa-list,
 td > a >.fa-regular.fa-pen-to-square,
 td > a >.fa-regular.fa-trash-can {
@@ -823,7 +1034,47 @@ td > a >.fa-regular.fa-trash-can {
 .nav.nav-pills.nav-fill {
   background: transparent !important;
 }
+.tab-pane {
+  height: 500px !important;
+  width: 100%;
+}
+.tab-pane.fade.show.active {
 
+}
+#myTab > li:nth-child(1n) {
+  background-image: linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -webkit-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -moz-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -ms-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  border-radius: 6px !important;
+  -webkit-border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+}
+.dash-tabs > li > .nav-link.active {
+  background-image: linear-gradient(120deg, #e65c00, #f9d423) !important;
+  background-image: -moz-linear-gradient(120deg, #e65c00, #f9d423) !important;
+  background-image: -ms-linear-gradient(120deg, #e65c00, #f9d423) !important;
+  background-image: -webkit-linear-gradient(120deg, #e65c00, #f9d423) !important;
+}
+.dash-tabs > li > .nav-link {
+  color: #fff !important;
+  font-family: "Maven Pro", serif !important;
+  font-weight: 700 !important;
+}
+.online-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.offline-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
 .custom-file-button {
   display: inline;
   font-family: "Ubuntu", serif !important;

@@ -8,9 +8,7 @@ public class Contacts
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int ContactId { get; set; }
-    [ForeignKey("CustomerId")]
-    public int CustomerId { get; set; }
-    public Customers Customer { get; set; }
+    public string ImageUrl { get; set; }
     public string Email { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }

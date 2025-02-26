@@ -44,7 +44,7 @@ public class Campaigns
     public DateTime UpdatedAt { get; set; }
     public ICollection<CampaignUserNotes> CampaignUserNotes { get; set; }
     public ICollection<CampaignUserTasks> CampaignUserTasks { get; set; }
-        
+
     public string TruncateWords(string text, int wordCount)
     {
         if (string.IsNullOrEmpty(text))

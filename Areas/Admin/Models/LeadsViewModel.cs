@@ -37,9 +37,6 @@ public class AddLeadViewModel : Leads
 
 public class UpdateLeadsViewModel : Leads
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int LeadId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }

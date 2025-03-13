@@ -1,4 +1,6 @@
-﻿namespace Dash.Configuration;
+﻿using Dash.Services;
+
+namespace Dash.Configuration;
 
 public static class AppConfiguration
 {

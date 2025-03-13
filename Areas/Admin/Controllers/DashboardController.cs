@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Exception = System.Exception;
 
 
@@ -102,7 +103,8 @@ public class DashboardController : Controller
             _notyfService.Error("You are not logged in, please login before accessing this page.");
             return RedirectToAction("Login", "Identity", new { area = "Identity" });
         }
-        var index = new IndexViewModel
+        IndexViewModel index = null;
+        index = new IndexViewModel
         {
             UserEvents = await _eventRepository.GetAllUserEventsAsync(),
             Events = await _eventRepository.GetAllEventsAsync(),
@@ -122,8 +124,62 @@ public class DashboardController : Controller
             CampaignUserNoteCount = await _campaignUserNoteRepository.CampaignUserNoteCountAsync(),
             CampaignUserTaskCount = await _campaignUserTaskRepository.CampaignUserTaskCountAsync(),
             RoleCount = await _roleManager.Roles.CountAsync(),
-            LeadCount = await _leadsRepository.CountLeadsAsync()
+            LeadCount = await _leadsRepository.CountLeadsAsync(),
+            JobRevenueTotal = await _context.Jobs.SumAsync(j => j.Revenue),
+            JobEstimatateTotal = await _context.Jobs.SumAsync(j => j.EstimatedCost),
+            ClicksCount = await _context.Campaigns.Select(c => c.Clicks).CountAsync(),
+            CoversionCount = await _context.Campaigns.Select(c => c.Conversions).CountAsync(),
+            UserJobs = await _jobRepository.GetAllUserJobsAsync(),
         };
+        
+        List<DataPoint> dataPoints1 = new List<DataPoint>();
+			List<DataPoint> dataPoints2 = new List<DataPoint>();
+			List<DataPoint> dataPoints3 = new List<DataPoint>();
+ 
+			dataPoints1.Add(new DataPoint(1451586600000, 50000, null));
+			dataPoints1.Add(new DataPoint(1454265000000, 40000, null));
+			dataPoints1.Add(new DataPoint(1456770600000, 30000, null));
+			dataPoints1.Add(new DataPoint(1459449000000, 35000, null));
+			dataPoints1.Add(new DataPoint(1462041000000, 43000, null));
+			dataPoints1.Add(new DataPoint(1464719400000, 60000, null));
+			dataPoints1.Add(new DataPoint(1467311400000, 35000, null));
+			dataPoints1.Add(new DataPoint(1469989800000, 50000, null));
+			dataPoints1.Add(new DataPoint(1472668200000, 70000, "High Renewals"));
+			dataPoints1.Add(new DataPoint(1475260200000, 35000, null));
+			dataPoints1.Add(new DataPoint(1477938600000, 30000, null));
+			dataPoints1.Add(new DataPoint(1480530600000, 37000, null));
+ 
+			dataPoints2.Add(new DataPoint(1451586600000, 45000, null));
+			dataPoints2.Add(new DataPoint(1454265000000, 48000, null));
+			dataPoints2.Add(new DataPoint(1456770600000, 40000, null));
+			dataPoints2.Add(new DataPoint(1459449000000, 41000, null));
+			dataPoints2.Add(new DataPoint(1462041000000, 49000, null));
+			dataPoints2.Add(new DataPoint(1464719400000, 46000, null));
+			dataPoints2.Add(new DataPoint(1467311400000, 42000, null));
+			dataPoints2.Add(new DataPoint(1469989800000, 43000, null));
+			dataPoints2.Add(new DataPoint(1472668200000, 50000, null));
+			dataPoints2.Add(new DataPoint(1475260200000, 43000, null));
+			dataPoints2.Add(new DataPoint(1477938600000, 42000, null));
+			dataPoints2.Add(new DataPoint(1480530600000, 50000, null));
+ 
+			dataPoints3.Add(new DataPoint(1451586600000, 27000, null));
+			dataPoints3.Add(new DataPoint(1454265000000, 21000, null));
+			dataPoints3.Add(new DataPoint(1456770600000, 12000, null));
+			dataPoints3.Add(new DataPoint(1459449000000, 18000, null));
+			dataPoints3.Add(new DataPoint(1462041000000, 24000, null));
+			dataPoints3.Add(new DataPoint(1464719400000, 33000, null));
+			dataPoints3.Add(new DataPoint(1467311400000, 16000, null));
+			dataPoints3.Add(new DataPoint(1469989800000, 29000, null));
+			dataPoints3.Add(new DataPoint(1472668200000, 38000, null));
+			dataPoints3.Add(new DataPoint(1475260200000, 24000, null));
+			dataPoints3.Add(new DataPoint(1477938600000, 12000, null));
+			dataPoints3.Add(new DataPoint(1480530600000, 19000, null));
+ 
+ 
+			ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints1);
+			ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
+			ViewBag.DataPoints3 = JsonConvert.SerializeObject(dataPoints3);
+        
         ViewBag.ClicksToConversions = ConversionRate;
         ViewBag.ActualToTarget = RevemuePercentage;
         ViewBag.JobProfitPercentage = _context.Jobs.Select(j => j.GetProfitPercentage());

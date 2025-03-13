@@ -1,0 +1,121 @@
+﻿@model Dash.Areas.Admin.Models.Contacts
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+<div class="row mt-7 mb-7">
+    <div class="col-12 col-md-12">
+        <div class="card shadow-lg bg-gradient-dark">
+            <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
+                <h3 class="text-gradient text-info ubuntu-bold">Contact ID: @Model.ContactId Details</h3>
+                <div class="btn-group m-3">
+                    <a class="btn bg-gradient-dark text-info shadow-md ubuntu-bold btn-tooltip" asp-action="Index" asp-controller="Contact" asp-area="Admin" title="Go back to the campaign list"><i class="fa-solid fa-backward-step"></i></a>
+                    <a class="btn bg-gradient-dark text-warning shadow-md ubuntu-bold btn-tooltip" asp-action="UpdateContactPage" asp-controller="Contact" asp-area="Admin" asp-route-id="@Model.ContactId" title="Edit @Model.ContactId Contact Info"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <form asp-action="DeleteContact" asp-controller="Contact" asp-area="Admin" asp-route-id="@Model.ContactId" method="post">
+                        <button type="submit" class="btn bg-gradient-dark text-danger shadow-md ubuntu-bold btn-tooltip" title="Delete @Model.FirstName Contact Info"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="page-header min-vh-45 rounded"
+                             style="background-image: url(@Url.Content($"~/Uploads/Contacts/{Model?.ImageUrl}")); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                </div>
+                            </div>
+                            <div class="position-absolute w-100 z-index-1 bottom-0">
+                                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+                                    <defs>
+                                        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                                    </defs>
+                                    <g class="moving-waves">
+                                        <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(55,55,55,0.40"/>
+                                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(55,55,55,0.35)"/>
+                                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(55,55,55,0.25)"/>
+                                        <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(55,55,55,0.20)"/>
+                                        <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(55,55,55,0.15)"/>
+                                        <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(55,55,55,1)"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="row">
+                            <div class="col-12"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <img
+                                    width="600"
+                                    height="400"
+                                    src="https://maps.geoapify.com/v1/staticmap?style=toner-grey&width=600&height=400&center=lonlat:@Html.Raw(Json.Serialize(ViewBag.location))&zoom=15.9318&apiKey={}"
+                                    alt="Portland State University, 724 Southwest Hooker Street, Portland, OR 97201, United States of America"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            function initMap() {
+                const contactAddress = @Html.Raw(Json.Serialize(ViewBag.address.ToString()));
+                const contactLocation = @Html.Raw(Json.Serialize(ViewBag.location));
+                const apiKey = @Html.Raw(Json.Serialize(ViewBag.apiKey.ToString()));
+                const platform = new H.service.Platform({
+                    apikey: apiKey
+                });
+                const maptypes = platform.createDefaultLayers();
+                const map = new H.Map(
+                    document.getElementById('map'),
+                    maptypes.vector.normal.map,
+                    {
+                        zoom: 10,
+                        center: { lat: 55, lng: 55 }  // Default center point before geocoding
+                    }
+                );
+            const geocoder = platform.getSearchService();
+
+            geocoder.geocode({ q: contactLocation}, function(result) {
+                if (result.items.length > 0) {
+                    const location = result.items[0].position;
+                    const lat = location.lat;
+                    const lng = location.lng;
+
+                    // Center map on the contact's location
+                    map.setCenter({ lat: lat, lng: lng }, true);
+                    map.setZoom(4);
+
+                    // Add a marker to the map
+                    const markerIcon = new H.map.Icon('~/img/custom-map-marker.png', {
+                        size: { w: 32, h: 32 }  // Adjust the size as needed
+                    });
+
+                    // Create the marker and set its position
+                    const marker = new H.map.Marker({ lat: lat, lng: lng }, { icon: markerIcon });
+                    map.addObject(marker);
+                } else {
+                    alert("Address not found.");
+                }
+            }, function(error) {
+                console.error("Geocoding error: ", error);
+            });
+        }
+
+        // Call initMap to display the map
+        initMap();
+        })
+    </script>
+}

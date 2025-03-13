@@ -5,12 +5,12 @@ var users = ViewBag.users;
 }
 
 
-<div class="row mt-11 mb-11">
-    <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
-        <div class="card shadow-lg bg-gradient-dark">
+<div class="row mt-7 mb-3">
+    <div class="col-12 col-md-8 offset-md-2">
+        <div class="card shadow-lg card-background-color">
             <div class="card-header bg-gradient-dark"
                  style="display: flex; justify-content: space-between; align-items: center">
-                <h1 class="green-text ubuntu-bold">Add A Lead</h1>
+                <h1 class="blue-text maven-pro-title">Add A Lead</h1>
                 <div class="btn-group text-sm">
                     <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
                        asp-controller="Lead" asp-area="Admin" title="Go back to lead list"><i
@@ -24,13 +24,13 @@ var users = ViewBag.users;
                 <form class="form" asp-action="AddLead" asp-controller="Lead" asp-area="Admin" method="post">
                     <div class="row m-2">
                         <div class="col-12 col-md-8 offset-md-2">
-                            <div asp-validation-summary="All" class="cherry-text list-no-style"></div>
+                            <div asp-validation-summary="All" class="cherry-text list-no-style text-center"></div>
                         </div>
                     </div>
                     <div class="row m-2">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="FirstName" class="form-label text-gradient text-info ubuntu-bold">First
+                                <label asp-for="FirstName" class="ubuntu-bold violet-text">First
                                     Name</label>
                                 <input asp-for="FirstName" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -39,7 +39,7 @@ var users = ViewBag.users;
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="LastName" class="form-label text-gradient text-info ubuntu-bold">Last
+                                <label asp-for="LastName" class="ubuntu-bold violet-text">Last
                                     Name</label>
                                 <input asp-for="LastName" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -49,7 +49,7 @@ var users = ViewBag.users;
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label asp-for="Email"
-                                       class="form-label text-gradient text-info ubuntu-bold">Email</label>
+                                       class="ubuntu-bold violet-text">Email</label>
                                 <input asp-for="Email" type="email"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        id="Email"/>
@@ -58,7 +58,7 @@ var users = ViewBag.users;
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label asp-for="Phone"
-                                       class="form-label text-gradient text-info ubuntu-bold">Phone</label>
+                                       class="ubuntu-bold violet-text">Phone</label>
                                 <input asp-for="Phone" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        id="Phone"/>
@@ -68,7 +68,7 @@ var users = ViewBag.users;
                     <div class="row m-2">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="AlternatePhone" class="form-label text-gradient text-info ubuntu-bold">Alternate
+                                <label asp-for="AlternatePhone" class="ubuntu-bold violet-text">Alternate
                                     Phone</label>
                                 <input asp-for="AlternatePhone" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -78,7 +78,7 @@ var users = ViewBag.users;
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label asp-for="Address"
-                                       class="form-label text-gradient text-info ubuntu-bold">Address</label>
+                                       class="ubuntu-bold violet-text">Address</label>
                                 <input asp-for="Address" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        id="Address"/>
@@ -87,7 +87,7 @@ var users = ViewBag.users;
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label asp-for="City"
-                                       class="form-label text-gradient text-info ubuntu-bold">City</label>
+                                       class="ubuntu-bold violet-text">City</label>
                                 <input asp-for="City" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        id="City"/>
@@ -96,7 +96,7 @@ var users = ViewBag.users;
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label asp-for="State"
-                                       class="col-form-label col-form-label-lg text-gradient text-info ubuntu-bold">State</label><br/>
+                                       class="ubuntu-bold violet-text">State</label><br/>
                                 <select asp-for="State"
                                         class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
                                         style="cursor: pointer;" id="State">
@@ -159,7 +159,7 @@ var users = ViewBag.users;
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Zip" class="form-label text-gradient text-info ubuntu-bold">Zip
+                                <label asp-for="Zip" class="ubuntu-bold violet-text">Zip
                                     Code</label>
                                 <input asp-for="Zip" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -169,7 +169,7 @@ var users = ViewBag.users;
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Country"
-                                       class="form-label text-gradient text-info ubuntu-bold">Country</label>
+                                       class="ubuntu-bold violet-text">Country</label>
                                 <select asp-for="Country"
                                         class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
                                         style="cursor: pointer;" id="Country">
@@ -429,7 +429,7 @@ var users = ViewBag.users;
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label asp-for="Status"
-                                       class="form-label text-gradient text-info ubuntu-bold">Status</label>
+                                       class="ubuntu-bold violet-text">Status</label>
                                 <select asp-for="Status"
                                         class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
                                         style="cursor: pointer;" id="Status">
@@ -447,7 +447,7 @@ var users = ViewBag.users;
                         <div class="col-12 col-md-3">
                             <div class="form-group">
                                 <label asp-for="Source"
-                                       class="form-label text-gradient text-info ubuntu-bold">Source</label>
+                                       class="ubuntu-bold violet-text">Source</label>
                                 <input asp-for="Source" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        id="Source"/>
@@ -455,7 +455,7 @@ var users = ViewBag.users;
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Priority" class="form-label text-gradient text-info ubuntu-bold">Priority</label>
+                                <label asp-for="Priority" class="ubuntu-bold violet-text">Priority</label>
                                 <select asp-for="Priority"
                                         class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
                                         style="cursor: pointer;" id="Priority">
@@ -470,7 +470,7 @@ var users = ViewBag.users;
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="JobTitle" class="form-label text-gradient text-info ubuntu-bold">Job
+                                <label asp-for="JobTitle" class="ubuntu-bold violet-text">Job
                                     Title</label>
                                 <input asp-for="JobTitle" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -479,7 +479,7 @@ var users = ViewBag.users;
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="CompanyName" class="form-label text-gradient text-info ubuntu-bold">Company
+                                <label asp-for="CompanyName" class="ubuntu-bold violet-text">Company
                                     Name</label>
                                 <input asp-for="CompanyName" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -490,7 +490,7 @@ var users = ViewBag.users;
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Industry" class="form-label text-gradient text-info ubuntu-bold">Industry</label>
+                                <label asp-for="Industry" class="ubuntu-bold violet-text">Industry</label>
                                 <input asp-for="Industry" type="text"
                                        class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
                                        id="Industry"/>
@@ -498,7 +498,7 @@ var users = ViewBag.users;
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="UserId" class="form-label text-gradient text-info ubuntu-bold">Assigned
+                                <label asp-for="UserId" class="ubuntu-bold violet-text">Assigned
                                     To</label>
                                 <select asp-for="UserId"
                                         class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark"
@@ -512,7 +512,7 @@ var users = ViewBag.users;
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="IsConverted" class="form-check-label text-gradient text-info ubuntu-bold">Converted</label>
+                                <label asp-for="IsConverted" class="ubuntu-bold violet-text">Converted</label>
                                 <br>
                                 <input asp-for="IsConverted" type="checkbox" checked="checked"
                                        class="form-check  bg-gradient-dark text-white ubuntu"
@@ -523,7 +523,7 @@ var users = ViewBag.users;
                     <div class="row m-2">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label asp-for="LastContactDate" class="form-label text-gradient text-info ubuntu-bold">Last
+                                <label asp-for="LastContactDate" class="ubuntu-bold violet-text">Last
                                     Contact Date</label>
                                 <input asp-for="LastContactDate" type="datetime-local"
                                        class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -532,7 +532,7 @@ var users = ViewBag.users;
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label asp-for="FollowUpDate" class="form-label text-gradient text-info ubuntu-bold">Follow
+                                <label asp-for="FollowUpDate" class="ubuntu-bold violet-text">Follow
                                     Up Date</label>
                                 <input asp-for="FollowUpDate" type="datetime-local"
                                        class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu"
@@ -543,7 +543,7 @@ var users = ViewBag.users;
                     <div class="row m-2">
                         <div class="col-12 col-md-12">
                             <div class="form-group">
-                                <label asp-for="Notes" class="form-label text-gradient text-info ubuntu-bold">Notes</label>
+                                <label asp-for="Notes" class="ubuntu-bold violet-text">Notes</label>
                                 <div class="main-container">
                                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                                         <div class="editor-container__editor">
@@ -556,7 +556,7 @@ var users = ViewBag.users;
 
                     </div>
                     <div class="mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white mt-3 mb-3">Add
+                        <button type="submit" class="btn blue btn-lg w-100 ubuntu-bold text-white text-2xl mt-3 mb-3">Add
                             Lead
                         </button>
                     </div>

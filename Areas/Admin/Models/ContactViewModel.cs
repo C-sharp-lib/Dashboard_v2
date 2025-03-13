@@ -24,6 +24,7 @@ public class AddContactViewModel : Contacts
     public string MobilePhone { get; set; }
     [DataType(DataType.PhoneNumber)]
     public string Fax { get; set; }
+    public string Bio { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 
@@ -49,5 +50,7 @@ public class UpdateContactViewModel : Contacts
     public string MobilePhone { get; set; }
     [DataType(DataType.PhoneNumber)]
     public string Fax { get; set; }
+
+    public string Bio { get; set; }
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 }

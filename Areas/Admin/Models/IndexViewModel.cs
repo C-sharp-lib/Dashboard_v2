@@ -16,6 +16,7 @@ public class IndexViewModel
     public IEnumerable<CampaignUserNotes> CampaignUserNotes { get; set; }
     public IEnumerable<CampaignUserTasks> CampaignUserTasks { get; set; }
     public IEnumerable<Jobs> Jobs { get; set; }
+    public IEnumerable<UserJobs> UserJobs { get; set; }
     public int RoleCount { get; set; }
     public int CustomerCount { get; set; }
 
@@ -28,5 +29,12 @@ public class IndexViewModel
     public int CampaignUserTaskCount { get; set; }
     public int JobCount { get; set; }
     public int LeadCount { get; set; }
+    public long ClicksCount { get; set; }
+    public long CoversionCount { get; set; }
+    public decimal JobEstimatateTotal { get; set; }
+    public decimal JobRevenueTotal { get; set; }
+    /*public decimal JobProfitTotal { get; set; }*/
+    /*public decimal ConversionRate { get; set; }
+    public decimal JobProfitPercent { get; set; }*/
     
 }

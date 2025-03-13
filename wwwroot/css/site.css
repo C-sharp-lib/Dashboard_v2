@@ -161,7 +161,7 @@ nav .input-field label.active i {
   display: none;
 }
 nav.navbar-expand-lg {
-  width: 65% !important;
+  width: 70% !important;
   margin: 1% auto !important;
 }
 .nav-link {
@@ -207,6 +207,98 @@ nav.navbar-expand-lg {
   background-image: -moz-linear-gradient(120deg, rgba(22,22,22,0.7), rgba(225,225,225,0.8)) !important;
   background-image: -ms-linear-gradient(120deg, rgba(22,22,22,0.7), rgba(225,225,225,0.8)) !important;
   background-image: -webkit-linear-gradient(120deg, rgba(22,22,22,0.7), rgba(225,225,225,0.8)) !important;
+}
+.sidenav {
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -260px; 
+  background-color: #ffffff;
+  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.2);
+  padding-top: 60px;
+  transition: left 0.4s ease-in-out;
+  border-radius: 0 10px 10px 0;
+  overflow-y: scroll;
+}
+.sidenav > .row > .col-12 > a {
+  position: relative;
+  right: 5% !important;
+}
+.sidenav h3 {
+  font-family: "Ubuntu", serif;
+  font-weight: 700;
+  position: relative;
+  text-align: right;
+  right: 10% !important;
+}
+.sidenav a {
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  text-align: right;
+  font-family: "Ubuntu", serif;
+  font-weight: 700;
+  position: relative;
+  right: 10%;
+}
+.dropdown-menu::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background-image: linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -webkit-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -moz-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  background-image: -ms-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -webkit-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -moz-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -ms-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  background-image: -o-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border: 2px solid #fff;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+  background-image: -webkit-linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+  background-image: -moz-linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+  background-image: -ms-linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+  background-image: -o-linear-gradient(to top right, rgb(44,44,44), rgb(33,33,33), rgb(22,22,122));
+}
+.dropdown-header {
+  text-align: right;
+  font-family: "Ubuntu", serif;
+  font-weight: 700;
+  position: relative;
+  right: 10%;
+}
+.sidenav a:hover {
+  background-color: dodgerblue;
+}
+#main {
+  transition: margin-left 0.4s ease-in-out;
+  padding: 16px;
+}
+.sidenav.open {
+  left: 0;
+  top: -30% !important;
+}
+.main-content.shift {
+  margin-left: 250px;
 }
 /*  End Nav  */
 /*Pagination*/
@@ -937,22 +1029,6 @@ input:-moz-autofill {
   height: 500px !important;
 }
 
-#bar-chart {
-  z-index: 20000 !important;
-  color: white !important;
-  background-image: linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-  background-image: -webkit-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-  background-image: -moz-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-  background-image: -ms-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-  background-image: -o-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-}
-/*.canvasjs-chart-canvas {
-  color: white;
-  background: linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
-  background-image: -webkit-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
-  background-image: -moz-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
-  background-image: -ms-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
-}*/
 #doughnut-chart {
   width: 100%;
   height: 500px !important;
@@ -1296,4 +1372,13 @@ body > div.notyf > div > div.notyf__wrapper > div.notyf__message {
   font-family: "Ubuntu", serif !important;
   font-weight: 700 !important;
   font-size: 1rem !important;
+}
+
+#map {
+  width: 100%;
+  height: 350px;
+}
+#panel {
+  width: 100%;
+  height: 400px;
 }

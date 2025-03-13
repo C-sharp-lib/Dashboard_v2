@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Dash.Areas.Identity.Models;
 using Microsoft.AspNetCore.Html;
 using Microsoft.EntityFrameworkCore;
@@ -46,7 +47,9 @@ public class Jobs
     public decimal EstimatedCost { get; set; }
     [Precision(10,2)]
     public decimal Revenue { get; set; }
-    [Precision(10,2)]
+
+    [Precision(10, 2)] 
+    [NotMapped, JsonIgnore]
     public decimal Profit => Revenue - EstimatedCost;
 
     public decimal GetProfit()

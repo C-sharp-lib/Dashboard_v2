@@ -161,9 +161,9 @@
     background-image: -ms-linear-gradient(to top right, rgb(22,22,22), rgb(33,33,33), rgb(44,44,44)) !important;
 }
 .card-background-color {
-    background-image: linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-    background-image: -webkit-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-    background-image: -moz-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-    background-image: -ms-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
-    background-image: -o-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(22,22,122));
+    background-image: linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(44,44,44));
+    background-image: -webkit-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(44,44,44));
+    background-image: -moz-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(44,44,44));
+    background-image: -ms-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(44,44,44));
+    background-image: -o-linear-gradient(to top right, rgb(2,2,2), rgb(33,33,33), rgb(44,44,44));
 }

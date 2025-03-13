@@ -222,18 +222,18 @@
         </div>
     </div>
 </div>*@
-<div class="row mt-11 mb-11">
+<div class="row mt-7 mb-7">
     <div class="col-12 col-md-12 col-lg-8">
 
         <ul class="nav nav-tabs dash-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="analytics-tab" data-bs-toggle="tab" data-bs-target="#analytics-tab-pane" type="button" role="tab" aria-controls="analytics-tab-pane" aria-selected="true">Line Graphs</button>
+                <button class="nav-link active" id="analytics-tab" data-bs-toggle="tab" data-bs-target="#analytics-tab-pane" type="button" role="tab" aria-controls="analytics-tab-pane" aria-selected="true">Finances</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pie-tab" data-bs-toggle="tab" data-bs-target="#pie-tab-pane" type="button" role="tab" aria-controls="pie-tab-pane" aria-selected="false">Doughnut and Pie Charts</button>
+                <button class="nav-link" id="pie-tab" data-bs-toggle="tab" data-bs-target="#pie-tab-pane" type="button" role="tab" aria-controls="pie-tab-pane" aria-selected="false">Numbers</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="bar-tab" data-bs-toggle="tab" data-bs-target="#bar-tab-pane" type="button" role="tab" aria-controls="bar-tab-pane" aria-selected="false">Bar Graphs and Stats</button>
+                <button class="nav-link" id="bar-tab" data-bs-toggle="tab" data-bs-target="#bar-tab-pane" type="button" role="tab" aria-controls="bar-tab-pane" aria-selected="false">Stats</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="content-tab" data-bs-toggle="tab" data-bs-target="#content-tab-pane" type="button" role="tab" aria-controls="content-tab-pane" aria-selected="false">Content</button>
@@ -243,23 +243,44 @@
             <div class="tab-pane fade show active" id="analytics-tab-pane" role="tabpanel" aria-labelledby="analytics-tab" tabindex="0">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card shadow-lg card-background-color z-index-2">
+                        <div class="card shadow-lg background z-index-2">
                             <div class="card-header p-3 pb-0 bg-gradient-dark">
                                 <h6 class="green-text maven-pro-title-low">Company Analytics</h6>
                             </div>
                             <div class="card-body p-3">
-                                <div class="chart">
-                                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                           
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="chart">
+                                                        <div id="chartContainer" class="bg-gradient-dark" style="height: 300px; width: 100%;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="chart">
+                                                        <div id="barChart" style="height: 300px; width:  100%;"></div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12">
+                                                    <div class="chart">
+                                                        <div id="lineChart" style="height: 400px; width: 100%;"></div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <div class="tab-pane fade" id="pie-tab-pane" role="tabpanel" aria-labelledby="pie-tab" tabindex="0">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card shadow-lg card-background-color z-index-2">
+                        <div class="card shadow-lg background z-index-2">
                             <div class="card-header p-3 pb-0 bg-gradient-dark">
                                 <h6 class="green-text maven-pro-title-low">Profit Percentages</h6>
                             </div>
@@ -275,13 +296,13 @@
             <div class="tab-pane fade" id="bar-tab-pane" role="tabpanel" aria-labelledby="bar-tab" tabindex="0">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card shadow-lg card-background-color z-index-2">
+                        <div class="card shadow-lg background z-index-2">
                             <div class="card-header p-3 pb-0 bg-gradient-dark">
-                                <h6 class="green-text maven-pro-title-low">Company Unit Numbers</h6>
+                                <h6 class="green-text maven-pro-title-low">Company Profit Sums</h6>
                             </div>
                             <div class="card-body p-3">
                                 <div class="chart">
-                                    <canvas id="bar-chart"></canvas>
+                                    @*<div id="barChart" style="height: 500px; width:  100%;"></div>*@
                                 </div>
                             </div>
                         </div>
@@ -296,19 +317,62 @@
     <div class="col-12 col-md-4">
         <div class="row">
             <div class="col-12">
-                <div class="card shadow-lg card-background-color">
-                    <div class="card-header p-3 pb-0 bg-gradient-dark">
-                        <h3 class="green-text maven-pro-title-low">Online People</h3>
-                    </div>
-                    <div class="card-body p-3 clearfix">
-                        @foreach (var user in Model.Users)
-                        {
-                            <span class="maven-pro-button float-start text-white">@user.Email</span>  <span class="float-end green online-dot"> </span><br/>
-                        }
-                        <div id="online-users-list">
-                            
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-lg card-background-color">
+                            <div class="card-header p-3 pb-0 bg-gradient-dark">
+                                <h3 class="green-text maven-pro-title-low">Online People</h3>
+                            </div>
+                            <div class="card-body p-3 clearfix">
+                                @foreach (var user in Model.Users)
+                                {
+                                    <span class="maven-pro-button float-start text-white">@user.Email</span>  <span class="float-end green online-dot"> </span><br/>
+                                }
+                                <div id="online-users-list">
+
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card shadow-lg card-background-color">
+                            <div class="card-header p-3 pb-0 bg-gradient-dark">
+                                <h3 class="green-text maven-pro-title-low">Jobs Assigned</h3>
+                            </div>
+                            <div class="card-body p-3 clearfix">
+                                <table class="table table-hover table-borderless table-striped">
+                                    <thead>
+                                    <tr class="ubuntu-bold violet-text text-center">
+                                        <th>User</th>
+                                        <th>Job ID</th>
+                                        <th>Job Title</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if (Model.UserJobs.Count() > 0)
+                                    {
+                                        @foreach (var jobs in Model.UserJobs)
+                                        {
+                                            <tr class="ubuntu text-white text-center">
+                                                <td>@jobs.User.UserName</td>
+                                                <td>@jobs.Job.JobId</td>
+                                                <td>@jobs.Job.Title</td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr class="ubuntu-bold text-white text-center">
+                                            <td>There are no assigned jobs at this moment.</td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -323,97 +387,48 @@
 @section Scripts {
     <script type="text/javascript">
        document.addEventListener("DOMContentLoaded", function () {
-           function getData() {
-               return [
-                   {
-                       quarter: "Q1'18",
-                       leadCount: @Model.LeadCount,
-                       jobCount: @Model.JobCount,
-                       userCount: @Model.UserCount,
-                       campaignCount: @Model.CampaignCount,
-                   },
-                   {
-                       quarter: "Q2'18",
-                       leadCount: @Model.LeadCount,
-                       jobCount: @Model.JobCount,
-                       userCount: @Model.UserCount,
-                       campaignCount: @Model.CampaignCount,
-                   },
-                   {
-                       quarter: "Q3'18",
-                       leadCount: @Model.LeadCount,
-                       jobCount: @Model.JobCount,
-                       userCount: @Model.UserCount,
-                       campaignCount: @Model.CampaignCount,
-                   },
-                   {
-                       quarter: "Q4'18",
-                       leadCount: @Model.LeadCount,
-                       jobCount: @Model.JobCount,
-                       userCount: @Model.UserCount,
-                       campaignCount: @Model.CampaignCount,
-                   }
-               ];
-           }
 
-           const { AgCharts } = agCharts;
-
-           const options = {
-               container: document.getElementById("bar-chart"),
-               title: {
-                   text: "Company Counts By Quarter",
-               },
-               subtitle: {
-                   text: "In integer values",
-               },
-               data: getData(),
-               series: [
-                   {
-                       type: "bar",
-                       xKey: "quarter",
-                       yKey: "leadCount",
-                       yName: "Leads",
-                   },
-                   {
-                       type: "bar",
-                       xKey: "quarter",
-                       yKey: "jobCount",
-                       yName: "Jobs",
-                   },
-                   {
-                       type: "bar",
-                       xKey: "quarter",
-                       yKey: "userCount",
-                       yName: "Users",
-                   },
-                   {
-                       type: "bar",
-                       xKey: "quarter",
-                       yKey: "campaignCount",
-                       yName: "Campaigns",
-                   },
-               ],
-           };
-
-           AgCharts.create(options);
 
        })
     </script>
 
     <script>
-        window.onload = function () {
+        document.addEventListener("DOMContentLoaded", function () {
 
             const chart = new CanvasJS.Chart("chartContainer", {
                 theme: "dark2",
-                exportFileName: "Doughnut Chart",
+                exportFileName: "Company Growth Numbers",
                 exportEnabled: true,
                 animationEnabled: true,
                 title:{
-                    text: "Monthly Expense"
+                    text: "Company Growth Numbers",
+                    fontColor: "dodgerblue",
+                    fontWeight: "bold",
+                    fontSize: 22,
+                    fontFamily: "Ubuntu"
                 },
                 legend:{
                     cursor: "pointer",
-                    itemclick: explodePie
+                    itemclick: explodePie,
+                    fontFamily: "Ubuntu",
+                    fontWeight: "bold",
+                    fontSize: 15,
+                },
+                toolbar: {
+                    itemBackgroundColor: "rgb(22,22,22)",
+                    itemBackgroundColorOnHover: "dodgerblue",
+                    fontColor: "dodgerblue",
+                    fontColorOnHover: "#fff",
+                },
+                toolTip: {
+                    enabled: true,
+                    backgroundColor: "rgb(33,33,33)",
+                    fontColor: "#fff",
+                    borderColor: "dodgerblue",
+                    borderThickness: 2,
+                    fontFamily: "Ubuntu",
+                    fontSize: 13,
+                    cornerRadius: 4
                 },
                 backgroundColor: "rgb(22,22,22)",
                 data: [{
@@ -421,7 +436,7 @@
                     type: "doughnut",
                     innerRadius: 90,
                     showInLegend: true,
-                    toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+                    toolTipContent: "<b>{name}</b>: {y} (#percent%)",
                     indexLabel: "{name} - #percent%",
                     dataPoints: [
                         { y: @Model.UserCount, name: "Users", color: "dodgerblue" },
@@ -434,7 +449,7 @@
                     ]
                 }]
             });
-            chart.render();
+            
 
             function explodePie (e) {
                 if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
@@ -445,7 +460,132 @@
                 e.chart.render();
             }
 
-        }
+
+
+            const bar = new CanvasJS.Chart("barChart", {
+                animationEnabled: true,
+                theme: "dark2",
+                title: {
+                    text: "Company Profit Totals",
+                    fontColor: "dodgerblue",
+                    fontWeight: "bold",
+                    fontSize: 22,
+                    fontFamily: "Ubuntu"
+                },
+                legend:{
+                    cursor: "pointer",
+                    fontFamily: "Ubuntu",
+                    fontWeight: "bold",
+                    fontSize: 15,
+                },
+                toolbar: {
+                    itemBackgroundColor: "rgb(22,22,22)",
+                    itemBackgroundColorOnHover: "dodgerblue",
+                    fontColor: "dodgerblue",
+                    fontColorOnHover: "#fff",
+                },
+                toolTip: {
+                    enabled: true,
+                    backgroundColor: "rgb(33,33,33)",
+                    fontColor: "#fff",
+                    borderColor: "dodgerblue",
+                    borderThickness: 2,
+                    fontFamily: "Ubuntu",
+                    fontSize: 13,
+                    cornerRadius: 4
+                },
+                axisY: {
+                    title: "Sum"
+                },
+                backgroundColor: "rgb(22,22,22)",
+                data: [{
+                    type: "column",
+                    showInLegend: true,
+                    legendMarkerColor: "grey",
+                    dataPoints: [
+                        {y: @Model.JobEstimatateTotal, label: "Job Estimate Total", color: "darkorange"},
+                        {y: @Model.JobRevenueTotal, label: "Job Revenue Total", color: "dodgerblue"},
+                        {y: @(Model.JobRevenueTotal - Model.JobEstimatateTotal), label: "Job Profit Total", color: "limegreen"},
+                    ]
+                }]
+            });
+            const line = new CanvasJS.Chart("lineChart", {
+                animationEnabled: true,
+                theme: "dark2",
+                backgroundColor: "rgb(22,22,22)",
+                title: {
+                    text: "Monthly Sales Data"
+                },
+                axisX: {
+                    valueFormatString: "MMM"
+                },
+                axisY: {
+                    prefix: "$",
+                    labelFormatter: addSymbols
+                },
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: [
+                    {
+                        type: "column",
+                        name: "Actual Sales",
+                        showInLegend: true,
+                        xValueType: "dateTime",
+                        xValueFormatString: "MMM YYYY",
+                        yValueFormatString: "$#,##0.##",
+                        dataPoints: @Html.Raw(ViewBag.DataPoints1)
+                    },
+                    {
+                        type: "line",
+                        name: "Expected Sales",
+                        showInLegend: true,
+                        xValueType: "dateTime",
+                        yValueFormatString: "$#,##0.##",
+                        dataPoints: @Html.Raw(ViewBag.DataPoints2)
+                    },
+                    {
+                        type: "area",
+                        name: "Profit",
+                        markerBorderColor: "white",
+                        markerBorderThickness: 2,
+                        showInLegend: true,
+                        xValueType: "dateTime",
+                        yValueFormatString: "$#,##0.##",
+                        dataPoints: @Html.Raw(ViewBag.DataPoints3)
+                    }]
+            });
+            
+
+            function addSymbols(e) {
+                const suffixes = ["", "K", "M", "B"];
+                let order = Math.max(Math.floor(Math.log(Math.abs(e.value)) / Math.log(1000)), 0);
+
+                if (order > suffixes.length - 1)
+                    order = suffixes.length - 1;
+
+                const suffix = suffixes[order];
+                return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
+            }
+
+            function toggleDataSeries(e) {
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+                e.chart.render();
+            }
+            line.render();
+            chart.render();
+            bar.render();
+
+        });
+        
     </script>
     <script>
         function loadUsers() {

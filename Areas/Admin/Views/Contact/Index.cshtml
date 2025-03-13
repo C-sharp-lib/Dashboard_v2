@@ -1,7 +1,46 @@
-﻿@model IEnumerable<Dash.Areas.Admin.Models.Contacts>
+﻿@using Dash.Areas.Admin.Models
+@model IEnumerable<Dash.Areas.Admin.Models.Contacts>
 
 @{
     Layout = "_Layout";
 }
 
 
+<div class="row mt-7 mb-7">
+    <div class="col-12 col-md-12">
+        <div class="card shadow-lg bg-gradient-dark">
+            <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
+                <h1 class="violet-text ubuntu-bold">All Contacts</h1>
+                <div class="btn-group m-3">
+                    <a class="btn bg-gradient-dark green-text shadow-md ubuntu-bold btn-tooltip" asp-action="AddContactPage" asp-controller="Contact" asp-area="Admin" title="Add a contact"><i class="fa-solid fa-plus"></i></a>
+                    <a class="btn bg-gradient-dark orange-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index" asp-controller="Dashboard" asp-area="Admin" title="Go back to the admin dashboard"><i class="fa-solid fa-backward-step"></i></a>
+                </div>
+            </div>
+            <div class="card-body p-3">
+                <div class="row">
+                    @if (Model.Count() > 0)
+                    {
+                        @foreach (Contacts contact in Model)
+                        {
+                            <div class="col-12 col-md-3">
+                                <a asp-action="ContactDetails" asp-controller="Contact" asp-route-id="@contact?.ContactId" asp-area="Admin">
+                                    <div class="card card-background shadow-xl">
+                                        <div class="full-background" style="background-image: url('@Url.Content($"~/Uploads/Contacts/{contact?.ImageUrl}")')"></div>
+                                        <div class="card-body pt-12">
+                                            <h4 class="text-white ubuntu-bold"><span class="violet-text text-center">@contact?.Email</span><br> <span class="text-center">@contact?.FirstName @contact?.LastName</span></h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        }
+                    }
+                    else
+                    {
+                        <p class="ubuntu-bold text-white">There are no contacts at this moment.  Add one to create a list.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -86,10 +86,10 @@ const {
 } = window.CKEDITOR_PREMIUM_FEATURES;
 
 const LICENSE_KEY =
-	'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NDE1NjQ3OTksImp0aSI6IjExMDUzOGRhLWYxZmUtNDFhZS1hZWFhLWY2NDE3MjcyM2JlZiIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6ImFmZWZmNGFjIn0.G1ipfoD4VKkUZoYt5bmossRHMZa9nHfmfyEa8inkvUQbPCbSrNKBZiIcD7OHRuIO9rUy8QET7gshV4FWWCnGjw';
+	'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NDI4NjA3OTksImp0aSI6Ijg2MzQ1Y2VhLTQ4NTktNGFiMy1iMmY4LTI1Y2U4NjgzZWRmYSIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6IjEwY2M0MjZjIn0.THOgoBnwfwr85QKRF22iUEfNi08ZaCzUiyV5D2kDsuLYUasdX4uTWIe4unxNO1mFIUbIiV_BYLUHNwnF6QGkyw';
 
 const CLOUD_SERVICES_TOKEN_URL =
-	'https://4zezc086ci1s.cke-cs.com/token/dev/058b15392ebfbdb224cf4dea37d522c486064f4ad892758be77306f1179f?limit=10';
+	'https://lg4j84rpstpl.cke-cs.com/token/dev/6c0d5b81997b3cb6bd0ab2da397167b9c6512141910e928146cf530f678e?limit=10';
 
 const editorConfig = {
 	toolbar: {
@@ -97,7 +97,12 @@ const editorConfig = {
 			'insertMergeField',
 			'previewMergeFields',
 			'|',
+			'importWord',
+			'exportWord',
+			'exportPdf',
 			'formatPainter',
+			'caseChange',
+			'findAndReplace',
 			'|',
 			'heading',
 			'style',
@@ -110,10 +115,25 @@ const editorConfig = {
 			'bold',
 			'italic',
 			'underline',
+			'strikethrough',
+			'subscript',
+			'superscript',
+			'code',
+			'removeFormat',
 			'|',
+			'emoji',
+			'specialCharacters',
+			'horizontalLine',
+			'pageBreak',
 			'link',
+			'bookmark',
 			'insertImage',
+			'insertImageViaUrl',
+			'ckbox',
+			'mediaEmbed',
 			'insertTable',
+			'tableOfContents',
+			'insertTemplate',
 			'highlight',
 			'blockQuote',
 			'|',
@@ -220,8 +240,8 @@ const editorConfig = {
 			/* See: https://ckeditor.com/docs/ckeditor5/latest/features/converters/export-pdf.html */
 			'./style.css',
 			/* Export PDF needs access to stylesheets that style the content. */
-			'https://cdn.ckeditor.com/ckeditor5/44.2.1/ckeditor5.css',
-			'https://cdn.ckeditor.com/ckeditor5-premium-features/44.2.1/ckeditor5-premium-features.css'
+			'https://cdn.ckeditor.com/ckeditor5/44.3.0/ckeditor5.css',
+			'https://cdn.ckeditor.com/ckeditor5-premium-features/44.3.0/ckeditor5-premium-features.css'
 		],
 		fileName: 'export-pdf-demo.pdf',
 		converterOptions: {
@@ -239,8 +259,8 @@ const editorConfig = {
 			/* See: https://ckeditor.com/docs/ckeditor5/latest/features/converters/export-word.html */
 			'./style.css',
 			/* Export Word needs access to stylesheets that style the content. */
-			'https://cdn.ckeditor.com/ckeditor5/44.2.1/ckeditor5.css',
-			'https://cdn.ckeditor.com/ckeditor5-premium-features/44.2.1/ckeditor5-premium-features.css'
+			'https://cdn.ckeditor.com/ckeditor5/44.3.0/ckeditor5.css',
+			'https://cdn.ckeditor.com/ckeditor5-premium-features/44.3.0/ckeditor5-premium-features.css'
 		],
 		fileName: 'export-word-demo.docx',
 		converterOptions: {

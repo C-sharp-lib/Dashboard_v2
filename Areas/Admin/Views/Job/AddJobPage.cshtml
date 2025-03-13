@@ -4,11 +4,11 @@
     Layout = "_Layout";
 }
 
-<div class="row mt-11 mb-11">
+<div class="row mt-7 mb-3">
     <div class="col-12 col-md-12 col-lg-8 offset-lg-2">
         <div class="card shadow-lg bg-gradient-dark">
-            <div class="card-header bg-gradient-dark" style="display: flex; justify-content: space-between; align-items: center">
-                <h1 class="text-gradient text-warning ubuntu-bold">Add A Job</h1>
+            <div class="card-header card-background-color" style="display: flex; justify-content: space-between; align-items: center">
+                <h1 class="blue-text ubuntu-bold">Add A Job</h1>
                 <div class="btn-group text-sm">
                     <a class="btn bg-gradient-dark violet-text shadow-md ubuntu-bold btn-tooltip" asp-action="Index"
                        asp-controller="Job" asp-area="Admin" title="Go back to job list"><i
@@ -28,13 +28,13 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.Title" class="form-label text-gradient text-info ubuntu-bold">Title</label>
+                                <label asp-for="Job.Title" class="ubuntu-bold violet-text">Title</label>
                                 <input asp-for="Job.Title" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Title"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.Type" class="form-label text-gradient text-info ubuntu-bold">Type</label>
+                                <label asp-for="Job.Type" class="ubuntu-bold violet-text">Type</label>
                                 <select asp-for="Job.Type" id="Type" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
                                     <option value="Individual">Individual</option>
                                     <option value="Enterprise">Enterprise</option>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.Status" class="form-label text-gradient text-info ubuntu-bold">Status</label>
+                                <label asp-for="Job.Status" class="ubuntu-bold violet-text">Status</label>
                                 <select asp-for="Job.Status" id="Status" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
                                     <option value="Created">Created</option>
                                     <option value="Processing">Processing</option>
@@ -62,19 +62,19 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.StartDate" class="form-label text-gradient text-info ubuntu-bold">Start Date</label>
+                                <label asp-for="Job.StartDate" class="ubuntu-bold violet-text">Start Date</label>
                                 <input asp-for="Job.StartDate" class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="StartDate">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.EndDate" class="form-label text-gradient text-info ubuntu-bold">End Date</label>
+                                <label asp-for="Job.EndDate" class="ubuntu-bold violet-text">End Date</label>
                                 <input asp-for="Job.EndDate" class="datepicker form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="EndDate">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.Category" class="form-label text-gradient text-info ubuntu-bold">Category</label>
+                                <label asp-for="Job.Category" class="ubuntu-bold violet-text">Category</label>
                                 <input asp-for="Job.Category" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Category">
                             </div>        
                         </div>
@@ -82,7 +82,7 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.Priority" class="form-label text-gradient text-info ubuntu-bold">Priority</label>
+                                <label asp-for="Job.Priority" class="ubuntu-bold violet-text">Priority</label>
                                 <select asp-for="Job.Priority" id="Priority" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" >
                                     <option value="Low">Low</option>
                                     <option value="Medium">Medium</option>
@@ -93,19 +93,19 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.EstimatedCost" class="form-label text-gradient text-info ubuntu-bold">Estimated Cost</label>
+                                <label asp-for="Job.EstimatedCost" class="ubuntu-bold violet-text">Estimated Cost</label>
                                 <input asp-for="Job.EstimatedCost" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="EstimatedCost">
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.Revenue" class="form-label text-gradient text-info ubuntu-bold">Revenue</label>
+                                <label asp-for="Job.Revenue" class="ubuntu-bold violet-text">Revenue</label>
                                 <input asp-for="Job.Revenue" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Revenue">
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="UserId" class="form-label text-gradient text-info ubuntu-bold">User</label>
+                                <label asp-for="UserId" class="ubuntu-bold violet-text">User</label>
                                 <select asp-for="UserId" id="UserId" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" style="cursor: pointer;">
                                     @foreach (var user in ViewBag.users)
                                     {
@@ -118,25 +118,25 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.Company" class="form-label text-gradient text-info ubuntu-bold">Contact Company</label>
+                                <label asp-for="Job.Company" class="ubuntu-bold violet-text">Contact Company</label>
                                 <input asp-for="Job.Company" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Company"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.ContactAddress" class="form-label text-gradient text-info ubuntu-bold">Contact Address</label>
+                                <label asp-for="Job.ContactAddress" class="ubuntu-bold violet-text">Contact Address</label>
                                 <input asp-for="Job.ContactAddress" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="Address"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.ContactCity" class="form-label text-gradient text-info ubuntu-bold">Contact City</label>
+                                <label asp-for="Job.ContactCity" class="ubuntu-bold violet-text">Contact City</label>
                                 <input asp-for="Job.ContactCity" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="City"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="form-group">
-                                <label asp-for="Job.ContactState" class="col-form-label col-form-label-lg text-gradient text-info ubuntu-bold">Contact State</label><br/>
+                                <label asp-for="Job.ContactState" class="ubuntu-bold violet-text">Contact State</label><br/>
                                 <select asp-for="Job.ContactState" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" style="cursor: pointer;" id="State">
                                     <option value="0">Select A State</option>
                                     <option value="AL">Alabama</option>
@@ -197,13 +197,13 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.ContactZip" class="form-label text-gradient text-info ubuntu-bold">Contact Zip Code</label>
+                                <label asp-for="Job.ContactZip" class="ubuntu-bold violet-text">Contact Zip Code</label>
                                 <input asp-for="Job.ContactZip" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="ZipCode"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.ContactCountry" class="form-label text-gradient text-info ubuntu-bold">Contact Country</label>
+                                <label asp-for="Job.ContactCountry" class="ubuntu-bold violet-text">Contact Country</label>
                                 <select asp-for="Job.ContactCountry" class="form-select-lg form-control form-control-lg bg-gradient-dark text-white ubuntu-bold bg-dark" style="cursor: pointer;" id="Country">
                                     <option value="0">Select A Country</option>
                                     <option value="AFG">Afghanistan</option>
@@ -460,7 +460,7 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.ContactNumber" class="form-label text-gradient text-info ubuntu-bold">Phone Number</label>
+                                <label asp-for="Job.ContactNumber" class="ubuntu-bold violet-text">Phone Number</label>
                                 <input asp-for="Job.ContactNumber" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="PhoneNumber"/>
                             </div>
                         </div>
@@ -468,19 +468,19 @@
                     <div class="row m-2">
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.ContactPerson" class="form-label text-gradient text-info ubuntu-bold">Contact Person</label>
+                                <label asp-for="Job.ContactPerson" class="ubuntu-bold violet-text">Contact Person</label>
                                 <input asp-for="Job.ContactPerson" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="ContactPerson"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label asp-for="Job.ContactEmail" class="form-label text-gradient text-info ubuntu-bold">Contact Email</label>
+                                <label asp-for="Job.ContactEmail" class="ubuntu-bold violet-text">Contact Email</label>
                                 <input asp-for="Job.ContactEmail" type="email" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="ContactEmail"/>
                             </div>
                         </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
-                            <label asp-for="Job.ContactFax" class="form-label text-gradient text-info ubuntu-bold">Contact Fax</label>
+                            <label asp-for="Job.ContactFax" class="ubuntu-bold violet-text">Contact Fax</label>
                             <input asp-for="Job.ContactFax" type="text" class="form-control form-control-lg color-background bg-gradient-dark text-white ubuntu" id="ContactFax"/>
                         </div>
                     </div>
@@ -488,7 +488,7 @@
                     <div class="row m-2">
                         <div class="col-12">
                             <div class="form-group">
-                                <label asp-for="Job.Description" class="form-label text-gradient text-info ubuntu-bold">Description</label>
+                                <label asp-for="Job.Description" class="ubuntu-bold violet-text">Description</label>
                                 <div class="main-container">
                                     <div class="editor-container editor-container_classic-editor editor-container_include-style" id="editor-container">
                                         <div class="editor-container__editor">
@@ -500,7 +500,7 @@
                         </div>
                     </div>
                     <div class="modal-footer mt-3 mb-3">
-                        <button type="submit" class="btn violet btn-lg w-100 ubuntu-bold text-white">Add Job</button>
+                        <button type="submit" class="btn blue btn-lg w-100 ubuntu-bold text-white text-2xl">Add Job</button>
                     </div>
                 </form>
             </div>

@@ -34,7 +34,7 @@ public class ContactRepository : Repository<Contacts>, IContactRepository
 
     public async Task AddContactAsync([FromForm] AddContactViewModel model)
     {
-        string uniqueFileName3 = null;
+        /*string uniqueFileName3 = "";
         if (model.ImageUrl != null && model.ImageUrl.Length > 0)
         {
             var permittedExtensions3 = new[] { ".jpg", ".jpeg", ".png", ".gif" };
@@ -46,7 +46,7 @@ public class ContactRepository : Repository<Contacts>, IContactRepository
             }
 
             string fileName3 = Path.GetFileNameWithoutExtension(model.ImageUrl.FileName);
-            uniqueFileName3 = $"{fileName3}_{Guid.NewGuid()}{extension3}";
+            uniqueFileName3 = Guid.NewGuid().ToString() + "_" + Path.GetFileName(model.ImageUrl.FileName);
             string uploadsFolder3 = Path.Combine(_webenv.WebRootPath, "Uploads/Contacts/");
             if (!Directory.Exists(uploadsFolder3))
             {
@@ -58,29 +58,41 @@ public class ContactRepository : Repository<Contacts>, IContactRepository
             {
                 await model.ImageUrl.CopyToAsync(fileStream);
             }
-        }
+        }*/
 
-        var contact = new Contacts
+        string uploadsFolder = Path.Combine(_webenv.WebRootPath, "Uploads/Contacts/");
+        if (model.ImageUrl != null && model.ImageUrl.Length > 0)
         {
-            FirstName = model.FirstName,
-            LastName = model.LastName,
-            PhoneNumber = model.PhoneNumber,
-            Email = model.Email,
-            Address = model.Address,
-            City = model.City,
-            State = model.State,
-            ZipCode = model.ZipCode,
-            Country = model.Country,
-            Website = model.Website,
-            JobTitle = model.JobTitle,
-            Department = model.Department,
-            WorkPhone = model.WorkPhone,
-            MobilePhone = model.MobilePhone,
-            Fax = model.Fax,
-            ImageUrl = (uniqueFileName3 != null ? Path.Combine("Uploads/Contacts/", uniqueFileName3) : null)!
-        };
-        await _dbSet.AddAsync(contact);
-        await _context.SaveChangesAsync();
+            string uniqueFileName1 =
+                Guid.NewGuid().ToString() + "_" + Path.GetFileName(model.ImageUrl.FileName);
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName1);
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await model.ImageUrl.CopyToAsync(fileStream);
+            }
+            var contact = new Contacts
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                Address = model.Address,
+                City = model.City,
+                State = model.State,
+                ZipCode = model.ZipCode,
+                Country = model.Country,
+                Website = model.Website,
+                JobTitle = model.JobTitle,
+                Department = model.Department,
+                WorkPhone = model.WorkPhone,
+                MobilePhone = model.MobilePhone,
+                Bio = model.Bio,
+                Fax = model.Fax,
+                ImageUrl = uniqueFileName1 != null! ? Path.Combine("Uploads/Contacts/", uniqueFileName1) : null!
+            };
+            await _dbSet.AddAsync(contact);
+            await _context.SaveChangesAsync();  
+        }
     }
 
     public async Task UpdateContactAsync(int id, UpdateContactViewModel model)
@@ -118,7 +130,7 @@ public class ContactRepository : Repository<Contacts>, IContactRepository
         contact.WorkPhone = model.WorkPhone;
         contact.MobilePhone = model.MobilePhone;
         contact.Fax = model.Fax;
-
+        contact.Bio = model.Bio;
         _dbSet.Update(contact);
         await _context.SaveChangesAsync();
     }

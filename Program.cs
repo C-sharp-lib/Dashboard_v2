@@ -1,5 +1,6 @@
 using System.Text.Json;
 using AspNetCoreHero.ToastNotification;
+using Dash.Areas.Admin.Models;
 using Dash.Areas.Identity.Models;
 using Dash.Configuration;
 using Microsoft.AspNetCore.Identity;
@@ -21,6 +22,8 @@ public class Program
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
         builder.Services.AddIdentityConfiguration();
         builder.Services.AddControllersWithViews();
+        builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
+        builder.Services.AddHttpClient<GeoService>();
         builder.Services.AddControllers().AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
@@ -44,6 +47,7 @@ public class Program
         builder.Services.AddScoped<ILeadsRepository, LeadsRepository>();
         builder.Services.AddScoped<IJobRepository, JobRepository>();
         builder.Services.AddScoped<IContactRepository, ContactRepository>();
+        builder.Services.AddScoped<GeoService>();
         builder.Services.AddNotyf(config =>
         {
             config.DurationInSeconds = 10;
